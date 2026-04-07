@@ -131,6 +131,7 @@
     <div id="calendar-debug-bar-wrap"></div>
     <div id="birthday-banner-container"></div>
     <div class="today-block" id="today-block"></div>
+    <div class="next-up" id="next-up" aria-live="polite"></div>
 
     <div class="section-label">✦ &nbsp; Het Harptos-jaar &nbsp; ✦</div>
     <div class="months-grid" id="months-grid"></div>
@@ -159,6 +160,9 @@
   </div>
 </div>
 
+<div id="tooltip-layer" class="tooltip-layer" aria-hidden="true">
+  <div id="tooltip" class="tooltip" role="tooltip"></div>
+</div>
 <script type="module" src="./app.js"></script>
 </body>
 </html>

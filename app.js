@@ -292,6 +292,116 @@ function birthdayListDateLabel(b, doy) {
   return `${b.day} ${b.month}`;
 }
 
+function wrapDoy1to365(doy) {
+  const x = ((doy - 1) % 365 + 365) % 365;
+  return x + 1;
+}
+
+function daysUntil(fromDoy, targetDoy) {
+  const a = wrapDoy1to365(fromDoy);
+  const b = wrapDoy1to365(targetDoy);
+  const d = b - a;
+  return d >= 0 ? d : (365 + d);
+}
+
+function describeInDays(d) {
+  if (d === 0) return 'vandaag';
+  if (d === 1) return 'morgen';
+  return `over ${d} dagen`;
+}
+
+function findNextBirthdayOrMemorial(fromDoy, refYear) {
+  const start = wrapDoy1to365(fromDoy);
+  for (let delta = 0; delta < 365; delta++) {
+    const doy = wrapDoy1to365(start + delta);
+    const bd = getBirthdayForDoy(doy, refYear);
+    const mems = getMemorialsForDoy(doy);
+    if (!bd && (!mems || mems.length === 0)) continue;
+
+    const labelParts = [];
+    if (bd) labelParts.push(`🎂 ${bd.name}`);
+    if (mems && mems.length) {
+      const memLabel = mems
+        .map((m) => (isMemorialDeath(m) ? `🕯 ${m.title}` : `✦ ${m.title}`))
+        .join(' · ');
+      labelParts.push(memLabel);
+    }
+
+    return {
+      doy,
+      deltaDays: delta,
+      whenText: describeInDays(delta),
+      harptosLabel: harptosLabelForDoy(doy),
+      label: labelParts.join(' · '),
+    };
+  }
+  return null;
+}
+
+function findNextMoonPhase(fromDoy, phasePrefixLower) {
+  const start = wrapDoy1to365(fromDoy);
+  for (let delta = 0; delta < 365; delta++) {
+    const doy = wrapDoy1to365(start + delta);
+    const phase = getMoonPhase(doy);
+    if ((phase || '').toLowerCase().startsWith(phasePrefixLower)) {
+      return {
+        doy,
+        deltaDays: delta,
+        whenText: describeInDays(delta),
+        phase,
+      };
+    }
+  }
+  return null;
+}
+
+function renderNextUpUI({ harptosDoy, refYear }) {
+  const el = document.getElementById('next-up');
+  if (!el) return;
+
+  const nextEvent = findNextBirthdayOrMemorial(harptosDoy, refYear);
+  const nextFull = findNextMoonPhase(harptosDoy, 'full moon');
+
+  const fullExact = nextFull ? findNextExactMoonPhase(harptosDoy, 'full moon') : null;
+
+  const left = nextEvent
+    ? `<span class="next-up-item"><span class="next-up-label">Eerstvolgende</span> <span class="next-up-value">${nextEvent.label}</span> <span class="next-up-when">${nextEvent.harptosLabel} · ${nextEvent.whenText}</span></span>`
+    : '';
+
+  const right = fullExact
+    ? `<span class="next-up-item"><span class="next-up-label">Volgende Full Moon</span> <span class="next-up-value">🌕</span> <span class="next-up-when">${harptosLabelForDoy(fullExact.doy)} · ${fullExact.whenText}</span></span>`
+    : '';
+
+  if (!left && !right) {
+    el.innerHTML = '';
+    return;
+  }
+
+  el.innerHTML = `
+    <div class="next-up-inline" role="note" aria-label="Volgende Full Moon en eerstvolgende events">
+      ${right}
+      ${left && right ? `<span class="next-up-sep" aria-hidden="true">•</span>` : ''}
+      ${left}
+    </div>
+  `;
+}
+
+function findNextExactMoonPhase(fromDoy, exactLower) {
+  const start = wrapDoy1to365(fromDoy);
+  for (let delta = 0; delta < 365; delta++) {
+    const doy = wrapDoy1to365(start + delta);
+    const phase = (getMoonPhase(doy) || '').toLowerCase();
+    if (phase === exactLower) {
+      return {
+        doy,
+        deltaDays: delta,
+        whenText: describeInDays(delta),
+      };
+    }
+  }
+  return null;
+}
+
 function updateDebugBar(harptosDoy) {
   const wrap = document.getElementById('calendar-debug-bar-wrap');
   if (!wrap) return;
@@ -834,6 +944,146 @@ function applyBodyFestivalTheme(todayDnd, todayBd, todayMemorials) {
   }
 }
 
+function getMoonAccentVars(moonPhase) {
+  const p = (moonPhase || '').toLowerCase();
+
+  // Defaults: warm parchment-gold
+  let accent = 'rgba(184, 134, 11, 0.55)';
+  let halo = 'rgba(240, 208, 96, 0.16)';
+
+  if (p.startsWith('full moon')) {
+    accent = 'rgba(240, 208, 96, 0.62)';
+    halo = 'rgba(240, 208, 96, 0.22)';
+  } else if (p.startsWith('new moon') || p.startsWith('dark moon')) {
+    accent = 'rgba(130, 160, 210, 0.55)';
+    halo = 'rgba(140, 180, 255, 0.14)';
+  } else if (p.includes('quarter')) {
+    accent = 'rgba(212, 112, 10, 0.52)';
+    halo = 'rgba(255, 170, 60, 0.12)';
+  } else if (p.includes('waxing') || p.includes('waning')) {
+    accent = 'rgba(196, 162, 56, 0.52)';
+    halo = 'rgba(240, 208, 96, 0.12)';
+  }
+
+  return { accent, halo };
+}
+
+function getSeasonKeyFromDndMonth(monthName) {
+  // Subtle / lore-friendly seasons: coarse mapping.
+  const m = (monthName || '').toLowerCase();
+  if (['hammer', 'alturiak', 'nightal'].includes(m)) return 'winter';
+  if (['ches', 'tarsakh', 'mirtul'].includes(m)) return 'spring';
+  if (['kythorn', 'flamerule', 'eleasis'].includes(m)) return 'summer';
+  if (['eleint', 'marpenoth', 'uktar'].includes(m)) return 'autumn';
+  return 'neutral';
+}
+
+function getSeasonWashVars(seasonKey) {
+  switch (seasonKey) {
+    case 'winter':
+      return { washA: 'rgba(120, 210, 255, 0.07)', washB: 'rgba(20, 40, 80, 0.03)' };
+    case 'spring':
+      return { washA: 'rgba(80, 220, 120, 0.07)', washB: 'rgba(20, 60, 30, 0.03)' };
+    case 'summer':
+      return { washA: 'rgba(255, 200, 80, 0.08)', washB: 'rgba(80, 30, 0, 0.03)' };
+    case 'autumn':
+      return { washA: 'rgba(212, 112, 10, 0.08)', washB: 'rgba(60, 20, 0, 0.03)' };
+    default:
+      return { washA: 'rgba(184, 134, 11, 0.06)', washB: 'rgba(26, 10, 0, 0.02)' };
+  }
+}
+
+function applyTodayBlockAccents({ todayBlock, todayDnd, moon }) {
+  if (!todayBlock) return;
+
+  const { accent, halo } = getMoonAccentVars(moon);
+  todayBlock.style.setProperty('--today-accent', accent);
+  todayBlock.style.setProperty('--today-halo', halo);
+
+  const seasonKey = todayDnd && !todayDnd.special ? getSeasonKeyFromDndMonth(todayDnd.month) : 'neutral';
+  const { washA, washB } = getSeasonWashVars(seasonKey);
+  todayBlock.style.setProperty('--today-wash-a', washA);
+  todayBlock.style.setProperty('--today-wash-b', washB);
+}
+
+function buildTodaySummaryText() {
+  const harptosDoy = getActiveDoy();
+  const todayDnd = getDndDate(harptosDoy);
+  const today = getActiveGregorianDate();
+  const refYear = today.getUTCFullYear();
+
+  const dateStr = todayDnd?.special ? todayDnd.special.name : `${todayDnd?.day ?? ''} ${todayDnd?.month ?? ''}`.trim();
+  const moon = todayDnd?.moon || getMoonPhase(harptosDoy);
+  const realStr = formatGregorianInDisplayTz(today, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+  const nextEvent = findNextBirthdayOrMemorial(harptosDoy, refYear);
+  const fullExact = findNextExactMoonPhase(harptosDoy, 'full moon');
+
+  const lines = [];
+  lines.push(`Vandaag: ${dateStr} (${realStr})`);
+  lines.push(`Maan: ${moonEmoji(moon)} ${moon}`);
+  if (fullExact) lines.push(`Volgende Full Moon: ${harptosLabelForDoy(fullExact.doy)} (${fullExact.whenText})`);
+  if (nextEvent) lines.push(`Eerstvolgende: ${nextEvent.label} — ${nextEvent.harptosLabel} (${nextEvent.whenText})`);
+  return lines.join('\n');
+}
+
+async function copyTextToClipboard(text) {
+  if (!text) return false;
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+  } catch (_) {
+    // fall through
+  }
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    const ok = document.execCommand('copy');
+    document.body.removeChild(ta);
+    return ok;
+  } catch (_) {
+    return false;
+  }
+}
+
+function setupTodayBlockCopyOnce() {
+  if (window.__eryndorTodayCopySetupDone) return;
+  const el = document.getElementById('today-block');
+  if (!el) return;
+  window.__eryndorTodayCopySetupDone = true;
+
+  el.classList.add('is-clickable');
+  el.tabIndex = 0;
+  el.setAttribute('role', 'button');
+  el.setAttribute('aria-label', 'Kopieer vandaag-overzicht');
+
+  const doCopy = async () => {
+    const text = buildTodaySummaryText();
+    const ok = await copyTextToClipboard(text);
+    const toast = el.querySelector('.today-copy-toast');
+    if (toast) {
+      toast.textContent = ok ? 'Copied' : 'Copy failed';
+      toast.classList.add('is-visible');
+      window.setTimeout(() => toast.classList.remove('is-visible'), 900);
+    }
+  };
+
+  el.addEventListener('click', () => { void doCopy(); });
+  el.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      void doCopy();
+    }
+  });
+}
+
 let debugTitleTapSetupDone = false;
 let titleDebugTapCount = 0;
 let titleDebugTapTimer = null;
@@ -871,6 +1121,7 @@ function renderCalendar() {
   const todayMemorials = getMemorialsForDoy(harptosDoy);
 
   updateDebugBar(harptosDoy);
+  renderNextUpUI({ harptosDoy, refYear });
 
   const leapWrap = document.getElementById('leap-year-notice-wrap');
   if (leapWrap) {
@@ -908,11 +1159,15 @@ function renderCalendar() {
     const dateStr = todayDnd.special ? todayDnd.special.name : `${todayDnd.day} ${todayDnd.month}`;
     const debugTag = debugCalendarActive && debugSimulatedDoy != null ? ' <span style="opacity:0.65;font-size:10px;">(simulatie)</span>' : '';
     todayBlock.innerHTML = `
-    <div class="today-label">Heden — Today${debugTag}</div>
+    <div class="today-label">Vandaag${debugTag}</div>
     <span class="moon-symbol">${emoji}</span>
     <div class="today-dnd-date">${dateStr}</div>
     <div class="today-moon">${moon}</div>
-    <div class="today-real-date">${realStr}</div>`;
+    <div class="today-real-date">${realStr}</div>
+    <div class="today-copy-toast" aria-hidden="true">Copied</div>`;
+
+    applyTodayBlockAccents({ todayBlock, harptosDoy, todayDnd, moon });
+    setupTodayBlockCopyOnce();
   } else {
     todayBlock.innerHTML = '';
   }
@@ -958,10 +1213,11 @@ function renderCalendar() {
         if (birthday) pips += '<span class="cake-pip">🎂</span>';
         if (hasDeath) pips += '<span class="memorial-pip memorial-pip--death">🕯</span>';
         if (hasCel) pips += '<span class="memorial-pip memorial-pip--celebration">✦</span>';
+        const tooltipText = `${phase} · ${realStr}${bdTitle}${memTitle}`;
         if (birthday || memorials.length) {
-          cells += `<div class="day-cell ${baseCls}${markers}" title="${phase} · ${realStr}${bdTitle}${memTitle}">${d}${pips}</div>`;
+          cells += `<div class="day-cell ${baseCls}${markers}" data-tooltip="${tooltipText}" tabindex="0" role="button" aria-label="${tooltipText}">${d}${pips}</div>`;
         } else {
-          cells += `<div class="day-cell ${baseCls}" title="${phase} · ${realStr}">${d}</div>`;
+          cells += `<div class="day-cell ${baseCls}" data-tooltip="${tooltipText}" tabindex="0" role="button" aria-label="${tooltipText}">${d}</div>`;
         }
       }
       const g0 = doyToRealDate(m.start, refYear);
@@ -1093,7 +1349,149 @@ document.addEventListener('visibilitychange', () => {
   if (document.hidden) {
     stopFestFx();
     stopConfetti();
+    hideTooltip();
     return;
   }
   renderCalendar();
 });
+
+let tooltipPinned = false;
+let tooltipPinnedTarget = null;
+let tooltipLastAnchorRect = null;
+
+function getTooltipEls() {
+  const layer = document.getElementById('tooltip-layer');
+  const tip = document.getElementById('tooltip');
+  return { layer, tip };
+}
+
+function hideTooltip() {
+  const { layer, tip } = getTooltipEls();
+  if (!layer || !tip) return;
+  tooltipPinned = false;
+  tooltipPinnedTarget = null;
+  tooltipLastAnchorRect = null;
+  layer.setAttribute('aria-hidden', 'true');
+  layer.style.display = 'none';
+  tip.textContent = '';
+}
+
+function showTooltipForTarget(targetEl, { pinned }) {
+  const { layer, tip } = getTooltipEls();
+  if (!layer || !tip || !targetEl) return;
+
+  const text = targetEl.getAttribute('data-tooltip') || '';
+  if (!text) return;
+
+  tooltipPinned = !!pinned;
+  tooltipPinnedTarget = tooltipPinned ? targetEl : null;
+  tooltipLastAnchorRect = targetEl.getBoundingClientRect();
+
+  tip.textContent = text;
+  layer.style.display = 'block';
+  layer.setAttribute('aria-hidden', 'false');
+  positionTooltip(tooltipLastAnchorRect);
+}
+
+function positionTooltip(anchorRect) {
+  const { layer, tip } = getTooltipEls();
+  if (!layer || !tip || !anchorRect) return;
+
+  // Ensure measurable
+  const pad = 10;
+  const gap = 8;
+
+  const tipRect = tip.getBoundingClientRect();
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+
+  let left = anchorRect.left + anchorRect.width / 2 - tipRect.width / 2;
+  left = Math.max(pad, Math.min(vw - pad - tipRect.width, left));
+
+  // Prefer above; if not enough space, place below.
+  let top = anchorRect.top - gap - tipRect.height;
+  if (top < pad) top = anchorRect.bottom + gap;
+  top = Math.max(pad, Math.min(vh - pad - tipRect.height, top));
+
+  layer.style.left = `${left}px`;
+  layer.style.top = `${top}px`;
+}
+
+function closestTooltipTarget(el) {
+  if (!el) return null;
+  if (el instanceof Element) {
+    const t = el.closest('[data-tooltip]');
+    return t;
+  }
+  return null;
+}
+
+function setupTooltipInteractionsOnce() {
+  if (window.__eryndorTooltipSetupDone) return;
+  window.__eryndorTooltipSetupDone = true;
+
+  document.addEventListener('pointerover', (e) => {
+    if (tooltipPinned) return;
+    const t = closestTooltipTarget(e.target);
+    if (!t) return;
+    showTooltipForTarget(t, { pinned: false });
+  });
+
+  document.addEventListener('pointerout', (e) => {
+    if (tooltipPinned) return;
+    const from = closestTooltipTarget(e.target);
+    const to = closestTooltipTarget(e.relatedTarget);
+    if (from && from !== to) hideTooltip();
+  });
+
+  document.addEventListener('focusin', (e) => {
+    if (tooltipPinned) return;
+    const t = closestTooltipTarget(e.target);
+    if (!t) return;
+    showTooltipForTarget(t, { pinned: false });
+  });
+
+  document.addEventListener('focusout', (e) => {
+    if (tooltipPinned) return;
+    const from = closestTooltipTarget(e.target);
+    const to = closestTooltipTarget(e.relatedTarget);
+    if (from && from !== to) hideTooltip();
+  });
+
+  document.addEventListener('click', (e) => {
+    const { tip } = getTooltipEls();
+    const t = closestTooltipTarget(e.target);
+
+    // Close if pinned and click outside tooltip + outside pinned target
+    if (tooltipPinned) {
+      const clickedInsideTooltip = !!(tip && tip.contains(e.target));
+      const clickedPinnedTarget = !!(tooltipPinnedTarget && tooltipPinnedTarget.contains(e.target));
+      if (!clickedInsideTooltip && !clickedPinnedTarget) {
+        hideTooltip();
+      }
+      return;
+    }
+
+    // Pin on click
+    if (t) {
+      showTooltipForTarget(t, { pinned: true });
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') hideTooltip();
+  });
+
+  window.addEventListener('resize', () => {
+    if (!tooltipLastAnchorRect) return;
+    positionTooltip(tooltipLastAnchorRect);
+  });
+
+  window.addEventListener('scroll', () => {
+    if (!tooltipLastAnchorRect || !tooltipPinnedTarget) return;
+    tooltipLastAnchorRect = tooltipPinnedTarget.getBoundingClientRect();
+    positionTooltip(tooltipLastAnchorRect);
+  }, true);
+}
+
+setupTooltipInteractionsOnce();
