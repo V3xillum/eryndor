@@ -1215,9 +1215,9 @@ function renderCalendar() {
         if (hasCel) pips += '<span class="memorial-pip memorial-pip--celebration">✦</span>';
         const tooltipText = `${phase} · ${realStr}${bdTitle}${memTitle}`;
         if (birthday || memorials.length) {
-          cells += `<div class="day-cell ${baseCls}${markers}" data-tooltip="${tooltipText}" tabindex="0" role="button" aria-label="${tooltipText}">${d}${pips}</div>`;
+          cells += `<div class="day-cell ${baseCls}${markers}" data-doy="${doy}" data-tooltip="${tooltipText}" tabindex="0" role="button" aria-label="${tooltipText}">${d}${pips}</div>`;
         } else {
-          cells += `<div class="day-cell ${baseCls}" data-tooltip="${tooltipText}" tabindex="0" role="button" aria-label="${tooltipText}">${d}</div>`;
+          cells += `<div class="day-cell ${baseCls}" data-doy="${doy}" data-tooltip="${tooltipText}" tabindex="0" role="button" aria-label="${tooltipText}">${d}</div>`;
         }
       }
       const g0 = doyToRealDate(m.start, refYear);
@@ -1343,6 +1343,7 @@ function renderCalendar() {
 }
 
 setupDebugTitleTapToggle();
+setupDebugDayPickerOnce();
 renderCalendar();
 
 document.addEventListener('visibilitychange', () => {
@@ -1354,6 +1355,44 @@ document.addEventListener('visibilitychange', () => {
   }
   renderCalendar();
 });
+
+function setupDebugDayPickerOnce() {
+  if (window.__eryndorDebugDayPickerSetupDone) return;
+  window.__eryndorDebugDayPickerSetupDone = true;
+
+  const grid = document.getElementById('months-grid');
+  if (!grid) return;
+
+  const activate = (target) => {
+    if (!debugCalendarActive) return;
+    const el = target && target.closest ? target.closest('.day-cell[data-doy]') : null;
+    if (!el) return;
+    const doy = Number(el.getAttribute('data-doy'));
+    if (!Number.isFinite(doy) || doy < 1 || doy > 365) return;
+    debugSimulatedDoy = doy;
+    hideTooltip();
+    renderCalendar();
+  };
+
+  grid.addEventListener('click', (e) => {
+    if (!debugCalendarActive) return;
+    const el = e.target && e.target.closest ? e.target.closest('.day-cell[data-doy]') : null;
+    if (!el) return;
+    e.preventDefault();
+    e.stopPropagation(); // avoid pinning tooltip on debug-click
+    activate(e.target);
+  });
+
+  grid.addEventListener('keydown', (e) => {
+    if (!debugCalendarActive) return;
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const el = e.target && e.target.closest ? e.target.closest('.day-cell[data-doy]') : null;
+    if (!el) return;
+    e.preventDefault();
+    e.stopPropagation();
+    activate(e.target);
+  });
+}
 
 let tooltipPinned = false;
 let tooltipPinnedTarget = null;
