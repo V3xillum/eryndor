@@ -1088,3 +1088,12 @@ function renderCalendar() {
 
 setupDebugTitleTapToggle();
 renderCalendar();
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    stopFestFx();
+    stopConfetti();
+    return;
+  }
+  renderCalendar();
+});
