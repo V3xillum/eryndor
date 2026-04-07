@@ -73,8 +73,26 @@ function getEffectiveMemorialDays() {
   return base;
 }
 
-function getMemorialsForDoy(doy) {
-  return getEffectiveMemorialDays().filter((e) => e.dayOfYear === doy);
+function harptosDoyForMemorial(mem, refYear) {
+  if (!mem) return null;
+  if (mem.dayOfYear != null) {
+    const x = mem.dayOfYear;
+    return x >= 1 && x <= 365 ? x : null;
+  }
+  const g = parseGregorianBirthdayShape(mem.gregorian);
+  if (g) return gregorianMDToHarptosDoy(refYear, g.month, g.day);
+  if (mem.month != null && mem.day != null) {
+    const m = MONTHS.find((x) => x.name === mem.month);
+    if (!m) return null;
+    if (mem.day < 1 || mem.day > m.days) return null;
+    return m.start + mem.day - 1;
+  }
+  return null;
+}
+
+function getMemorialsForDoy(doy, refYear) {
+  const y = refYear != null ? refYear : getBirthdayRefYear();
+  return getEffectiveMemorialDays().filter((e) => harptosDoyForMemorial(e, y) === doy);
 }
 
 function memorialsHasDeath(arr) {
@@ -315,7 +333,7 @@ function findNextBirthdayOrMemorial(fromDoy, refYear) {
   for (let delta = 0; delta < 365; delta++) {
     const doy = wrapDoy1to365(start + delta);
     const bd = getBirthdayForDoy(doy, refYear);
-    const mems = getMemorialsForDoy(doy);
+    const mems = getMemorialsForDoy(doy, refYear);
     if (!bd && (!mems || mems.length === 0)) continue;
 
     const labelParts = [];
@@ -978,32 +996,145 @@ function getSeasonKeyFromDndMonth(monthName) {
   return 'neutral';
 }
 
+function getSeasonKeyForDoy(doy) {
+  const d = getDndDate(doy);
+  if (d && !d.special) return getSeasonKeyFromDndMonth(d.month);
+  // For specials: pick the season of the most recent month segment.
+  const x = wrapDoy1to365(doy);
+  let last = MONTHS[0];
+  for (const m of MONTHS) {
+    if (m.start <= x) last = m;
+  }
+  return getSeasonKeyFromDndMonth(last.name);
+}
+
 function getSeasonWashVars(seasonKey) {
   switch (seasonKey) {
     case 'winter':
-      return { washA: 'rgba(120, 210, 255, 0.07)', washB: 'rgba(20, 40, 80, 0.03)' };
+      return {
+        washA: 'rgba(120, 210, 255, 0.07)', washB: 'rgba(20, 40, 80, 0.03)',
+        palette: ['rgba(120, 210, 255, 0.55)', 'rgba(170, 230, 255, 0.52)', 'rgba(90, 150, 230, 0.5)'],
+      };
     case 'spring':
-      return { washA: 'rgba(80, 220, 120, 0.07)', washB: 'rgba(20, 60, 30, 0.03)' };
+      return {
+        washA: 'rgba(80, 220, 120, 0.07)', washB: 'rgba(20, 60, 30, 0.03)',
+        palette: ['rgba(80, 220, 120, 0.55)', 'rgba(160, 245, 175, 0.5)', 'rgba(50, 180, 90, 0.52)'],
+      };
     case 'summer':
-      return { washA: 'rgba(255, 200, 80, 0.08)', washB: 'rgba(80, 30, 0, 0.03)' };
+      return {
+        washA: 'rgba(255, 200, 80, 0.08)', washB: 'rgba(80, 30, 0, 0.03)',
+        palette: ['rgba(255, 200, 80, 0.6)', 'rgba(240, 208, 96, 0.55)', 'rgba(212, 112, 10, 0.5)'],
+      };
     case 'autumn':
-      return { washA: 'rgba(212, 112, 10, 0.08)', washB: 'rgba(60, 20, 0, 0.03)' };
+      return {
+        washA: 'rgba(212, 112, 10, 0.08)', washB: 'rgba(60, 20, 0, 0.03)',
+        palette: ['rgba(212, 112, 10, 0.6)', 'rgba(255, 160, 50, 0.52)', 'rgba(160, 70, 10, 0.5)'],
+      };
     default:
-      return { washA: 'rgba(184, 134, 11, 0.06)', washB: 'rgba(26, 10, 0, 0.02)' };
+      return {
+        washA: 'rgba(184, 134, 11, 0.06)', washB: 'rgba(26, 10, 0, 0.02)',
+        palette: ['rgba(184, 134, 11, 0.55)', 'rgba(240, 208, 96, 0.5)', 'rgba(196, 162, 56, 0.5)'],
+      };
   }
 }
 
-function applyTodayBlockAccents({ todayBlock, todayDnd, moon }) {
+const TENDAY_RUNES = ['ᚠ','ᚢ','ᚦ','ᚨ','ᚱ','ᚲ','ᛉ','ᚹ','ᚺ','ᛃ'];
+
+function getSpecialAccentVars(slug) {
+  switch (slug) {
+    case 'midwinter':
+      return {
+        washA: 'rgba(120, 210, 255, 0.10)', washB: 'rgba(20, 40, 80, 0.04)',
+        palette: ['rgba(120, 210, 255, 0.62)', 'rgba(210, 250, 255, 0.55)', 'rgba(90, 150, 230, 0.52)'],
+      };
+    case 'greengrass':
+      return {
+        washA: 'rgba(80, 220, 120, 0.10)', washB: 'rgba(20, 60, 30, 0.04)',
+        palette: ['rgba(80, 220, 120, 0.62)', 'rgba(210, 255, 220, 0.52)', 'rgba(50, 180, 90, 0.55)'],
+      };
+    case 'midsummer':
+      return {
+        washA: 'rgba(255, 200, 80, 0.11)', washB: 'rgba(80, 30, 0, 0.04)',
+        palette: ['rgba(255, 200, 80, 0.66)', 'rgba(255, 245, 200, 0.52)', 'rgba(212, 112, 10, 0.55)'],
+      };
+    case 'highharvestide':
+      return {
+        washA: 'rgba(212, 112, 10, 0.11)', washB: 'rgba(60, 20, 0, 0.04)',
+        palette: ['rgba(212, 112, 10, 0.66)', 'rgba(255, 190, 120, 0.5)', 'rgba(160, 70, 10, 0.55)'],
+      };
+    case 'feastofthemoon':
+      return {
+        washA: 'rgba(200, 190, 255, 0.10)', washB: 'rgba(50, 30, 110, 0.04)',
+        palette: ['rgba(200, 190, 255, 0.66)', 'rgba(255, 255, 255, 0.5)', 'rgba(136, 112, 208, 0.55)'],
+      };
+    default:
+      return null;
+  }
+}
+
+function tendayIndexFromDoy(doy) {
+  return ((wrapDoy1to365(doy) - 1) % 10 + 10) % 10;
+}
+
+function svgDataUrlForRune(runeChar, rgbaColor, { size = 220 } = {}) {
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}">
+      <defs>
+        <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="0.6"/>
+        </filter>
+      </defs>
+      <rect width="${size}" height="${size}" fill="transparent"/>
+      <text x="50%" y="53%" text-anchor="middle" dominant-baseline="middle"
+            font-family="Cinzel Decorative, Cinzel, serif"
+            font-size="${Math.round(size * 0.62)}"
+            fill="${rgbaColor}"
+            opacity="1"
+            filter="url(#blur)">${runeChar}</text>
+    </svg>
+  `.trim();
+  return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
+}
+
+function applyTodayBlockAccents({ todayBlock, harptosDoy, todayDnd, moon }) {
   if (!todayBlock) return;
 
-  const { accent, halo } = getMoonAccentVars(moon);
+  const festSlug = (todayDnd && todayDnd.special && todayDnd.special.css) ? todayDnd.special.css : '';
+  const special = festSlug ? getSpecialAccentVars(festSlug) : null;
+  const seasonKey = getSeasonKeyForDoy(harptosDoy);
+  const season = getSeasonWashVars(seasonKey);
+  const washA = special?.washA ?? season.washA;
+  const washB = special?.washB ?? season.washB;
+  const palette = special?.palette ?? season.palette;
+
+  const ui = (SETTINGS && SETTINGS.ui) ? SETTINGS.ui : {};
+  const showSeasonAccent = ui.showSeasonAccent !== false;
+  const showTendaySigil = ui.showTendaySigil !== false;
+  const showWaxSeal = ui.showWaxSeal !== false;
+
+  const { accent: moonAccent, halo: moonHalo } = getMoonAccentVars(moon);
+  const accent = showSeasonAccent ? (palette && palette[0] ? palette[0] : moonAccent) : moonAccent;
+  const halo = showSeasonAccent ? (palette && palette[1] ? palette[1] : moonHalo) : moonHalo;
+
   todayBlock.style.setProperty('--today-accent', accent);
   todayBlock.style.setProperty('--today-halo', halo);
+  todayBlock.style.setProperty('--today-wash-a', showSeasonAccent ? washA : 'rgba(0,0,0,0)');
+  todayBlock.style.setProperty('--today-wash-b', showSeasonAccent ? washB : 'rgba(0,0,0,0)');
+  todayBlock.style.setProperty('--today-sigil-opacity', festSlug ? '0.22' : '0.16');
 
-  const seasonKey = todayDnd && !todayDnd.special ? getSeasonKeyFromDndMonth(todayDnd.month) : 'neutral';
-  const { washA, washB } = getSeasonWashVars(seasonKey);
-  todayBlock.style.setProperty('--today-wash-a', washA);
-  todayBlock.style.setProperty('--today-wash-b', washB);
+  // Tenday sigil + wax seal visuals (watermark & stamp)
+  const idx = tendayIndexFromDoy(getActiveDoy());
+  const rune = TENDAY_RUNES[idx] || '✦';
+  const sigilColor = palette && palette.length ? palette[idx % palette.length] : accent;
+  const sealColor = palette && palette.length ? palette[(idx + 1) % palette.length] : accent;
+
+  todayBlock.style.setProperty('--today-rune', `"${rune}"`);
+  todayBlock.style.setProperty('--today-sigil-image', showTendaySigil ? svgDataUrlForRune(rune, sigilColor) : 'none');
+  todayBlock.style.setProperty('--today-seal-color', showWaxSeal ? sealColor : 'transparent');
+  todayBlock.style.setProperty('--today-seal-visible', showWaxSeal ? '1' : '0');
+
+  const sealRuneEl = todayBlock.querySelector('.today-seal-rune');
+  if (sealRuneEl) sealRuneEl.textContent = rune;
 }
 
 function buildTodaySummaryText() {
@@ -1118,7 +1249,18 @@ function renderCalendar() {
   const harptosDoy = todayDoyGreg;
   const todayDnd = getDndDate(harptosDoy);
   const todayBd = getBirthdayForDoy(harptosDoy, refYear);
-  const todayMemorials = getMemorialsForDoy(harptosDoy);
+  const todayMemorials = getMemorialsForDoy(harptosDoy, refYear);
+  const ui = (SETTINGS && SETTINGS.ui) ? SETTINGS.ui : {};
+  const showSeasonAccent = ui.showSeasonAccent !== false;
+
+  // Global CSS animation toggle (banners/special cards/today pulse)
+  document.body.classList.toggle('ui-animations-off', ui.enableCssAnimations === false);
+  document.body.classList.toggle('ui-haze-off', ui.enableBackgroundHaze === false);
+  if (ui.enableBackgroundHaze === false) {
+    delete document.body.dataset.season;
+  } else {
+    document.body.dataset.season = getSeasonKeyForDoy(harptosDoy);
+  }
 
   updateDebugBar(harptosDoy);
   renderNextUpUI({ harptosDoy, refYear });
@@ -1136,7 +1278,8 @@ function renderCalendar() {
   if (todayBd) {
     bannerEl.innerHTML +=
       `<div class="birthday-banner"><div class="birthday-banner-text">🎂 Gelukkige Naamdag, ${todayBd.name}! 🎂</div></div>`;
-    startConfetti();
+    if (ui.enableConfetti !== false) startConfetti();
+    else stopConfetti();
   } else {
     stopConfetti();
   }
@@ -1164,6 +1307,9 @@ function renderCalendar() {
     <div class="today-dnd-date">${dateStr}</div>
     <div class="today-moon">${moon}</div>
     <div class="today-real-date">${realStr}</div>
+    <div class="today-sigil today-sigil--primary" aria-hidden="true"></div>
+    <div class="today-sigil today-sigil--secondary" aria-hidden="true"></div>
+    <div class="today-seal" aria-hidden="true"><span class="today-seal-rune" aria-hidden="true"></span></div>
     <div class="today-copy-toast" aria-hidden="true">Copied</div>`;
 
     applyTodayBlockAccents({ todayBlock, harptosDoy, todayDnd, moon });
@@ -1180,6 +1326,7 @@ function renderCalendar() {
       const isCurrent = todayDnd && !todayDnd.special && todayDnd.month === m.name;
       const card = document.createElement('div');
       card.className = 'month-card' + (isCurrent ? ' is-current' : '');
+      if (showSeasonAccent) card.setAttribute('data-season', getSeasonKeyFromDndMonth(m.name));
       let cells = '';
       for (let d = 1; d <= m.days; d++) {
         const doy = m.start + d - 1;
@@ -1187,7 +1334,7 @@ function renderCalendar() {
         const cls = getDayClass(phase);
         const isToday = isCurrent && todayDnd.day === d;
         const birthday = getBirthdayForDoy(doy, refYear);
-        const memorials = getMemorialsForDoy(doy);
+        const memorials = getMemorialsForDoy(doy, refYear);
         const hasDeath = memorialsHasDeath(memorials);
         const hasCel = memorialsHasCelebration(memorials);
         const realStr = formatGregorianInDisplayTz(doyToRealDate(doy, refYear), { day: 'numeric', month: 'long' });
@@ -1236,7 +1383,7 @@ function renderCalendar() {
       const realDateStr = formatGregorianInDisplayTz(doyToRealDate(s.dayOfYear, refYear), { day: 'numeric', month: 'long', year: 'numeric' });
       const sdoy = s.dayOfYear;
       const sBd = getBirthdayForDoy(sdoy, refYear);
-      const sMems = getMemorialsForDoy(sdoy);
+      const sMems = getMemorialsForDoy(sdoy, refYear);
       const sHasDeath = memorialsHasDeath(sMems);
       const sHasCel = memorialsHasCelebration(sMems);
       let scMarkers = '';
@@ -1249,6 +1396,7 @@ function renderCalendar() {
       if (isCurrent) cls += ' is-current';
       if (debugCalendarActive) cls += ' debug-clickable';
       card.className = cls;
+      if (showSeasonAccent) card.setAttribute('data-season', getSeasonKeyForDoy(s.dayOfYear));
       if (debugCalendarActive) {
         card.tabIndex = 0;
         card.setAttribute('role', 'button');
@@ -1295,12 +1443,14 @@ function renderCalendar() {
 
   const memorialListEl = document.getElementById('memorial-list');
   memorialListEl.innerHTML = '';
-  const memorialSorted = [...getEffectiveMemorialDays()].sort((a, b) => {
-    if (a.dayOfYear !== b.dayOfYear) return a.dayOfYear - b.dayOfYear;
-    return (isMemorialDeath(a) ? 1 : 0) - (isMemorialDeath(b) ? 1 : 0);
-  });
-  for (const mem of memorialSorted) {
-    const doyM = mem.dayOfYear;
+  const memorialSorted = [...getEffectiveMemorialDays()]
+    .map((mem) => ({ mem, doy: harptosDoyForMemorial(mem, refYear) }))
+    .filter((x) => x.doy != null)
+    .sort((a, b) => {
+      if (a.doy !== b.doy) return a.doy - b.doy;
+      return (isMemorialDeath(a.mem) ? 1 : 0) - (isMemorialDeath(b.mem) ? 1 : 0);
+    });
+  for (const { mem, doy: doyM } of memorialSorted) {
     const isTodayM = doyM === harptosDoy;
     const row = document.createElement('div');
     const hLabel = harptosLabelForDoy(doyM);
@@ -1332,14 +1482,18 @@ function renderCalendar() {
 
   applyBodyFestivalTheme(todayDnd, todayBd, todayMemorials);
 
-  if (todayDnd && todayDnd.special && todayDnd.special.css)
-    startFestFx(todayDnd.special.css);
-  else if (memorialsHasCelebration(todayMemorials))
-    startFestFx('memorial-celebration');
-  else if (memorialsHasDeath(todayMemorials))
-    startFestFx('memorial-mourning');
-  else
+  if (ui.enableFestFx === false) {
     stopFestFx();
+  } else {
+    if (todayDnd && todayDnd.special && todayDnd.special.css)
+      startFestFx(todayDnd.special.css);
+    else if (memorialsHasCelebration(todayMemorials))
+      startFestFx('memorial-celebration');
+    else if (memorialsHasDeath(todayMemorials))
+      startFestFx('memorial-mourning');
+    else
+      stopFestFx();
+  }
 }
 
 setupDebugTitleTapToggle();
