@@ -1236,6 +1236,6 @@
     /* Heel smal: sterdecoratie mag de titel/tekst niet raken. */
     .scroll::before { top: 14px; left: 14px; font-size: 22px; }
     .scroll::after  { bottom: 14px; right: 14px; font-size: 22px; }
-    .title-block { margin-bottom: 32px; padding-bottom: 24px; }
+    .title-block { padding-bottom: 24px; }
     .title-block::after { letter-spacing: 4px; margin-top: 10px; }
   }
