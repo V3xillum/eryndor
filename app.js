@@ -1320,12 +1320,17 @@ function renderCalendar() {
 
   const monthsGrid = document.getElementById('months-grid');
   monthsGrid.innerHTML = '';
+  let currentMonthCard = null;
   for (const seg of buildYearTimeline()) {
     if (seg.type === 'month') {
       const m = seg.month;
       const isCurrent = todayDnd && !todayDnd.special && todayDnd.month === m.name;
       const card = document.createElement('div');
       card.className = 'month-card' + (isCurrent ? ' is-current' : '');
+      if (isCurrent) {
+        card.id = 'current-month';
+        currentMonthCard = card;
+      }
       if (showSeasonAccent) card.setAttribute('data-season', getSeasonKeyFromDndMonth(m.name));
       let cells = '';
       for (let d = 1; d <= m.days; d++) {
@@ -1407,6 +1412,20 @@ function renderCalendar() {
         });
       }
       monthsGrid.appendChild(card);
+    }
+  }
+
+  const jumpBtn = document.getElementById('jump-to-current-month');
+  if (jumpBtn) {
+    const visible = !!currentMonthCard;
+    jumpBtn.style.display = visible ? 'inline-flex' : 'none';
+    if (!jumpBtn.__eryndorBound) {
+      jumpBtn.__eryndorBound = true;
+      jumpBtn.addEventListener('click', () => {
+        const target = document.getElementById('current-month') || document.querySelector('.month-card.is-current');
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
     }
   }
 
