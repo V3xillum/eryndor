@@ -1097,19 +1097,21 @@
   /* Midwinter — icy blue */
   .special-midwinter { background:linear-gradient(160deg,#0e1a2e,#162840,#0e1a2e); border-color:#4a90c4; box-shadow:0 0 16px rgba(74,144,196,0.2); }
   .special-midwinter::before { content:''; position:absolute; inset:0; background:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(255,255,255,0.02) 8px,rgba(255,255,255,0.02) 9px); }
+  .special-midwinter::after { content:'❄ ✦ ❄'; position:absolute; bottom:3px; left:0; right:0; font-size:9px; color:rgba(168,212,240,0.22); letter-spacing:4px; text-align:center; }
   .special-midwinter .s-name { color:#a8d4f0; text-shadow:0 0 10px rgba(168,212,240,0.5); }
   .special-midwinter .s-moon { color:rgba(168,212,240,0.6); }
   .special-midwinter .s-icon { filter:drop-shadow(0 0 6px #4a90c4); }
 
   /* Greengrass — spring green */
   .special-greengrass { background:linear-gradient(160deg,#0d1e0e,#162b12,#0d1e0e); border-color:#4caf50; box-shadow:0 0 16px rgba(76,175,80,0.2); }
-  .special-greengrass::after { content:'✿ ✾ ✿'; position:absolute; bottom:3px; left:0; right:0; font-size:9px; color:rgba(165,214,167,0.25); letter-spacing:4px; text-align:center; }
+  .special-greengrass::after { content:'✿ ✦ ✿'; position:absolute; bottom:3px; left:0; right:0; font-size:9px; color:rgba(165,214,167,0.25); letter-spacing:4px; text-align:center; }
   .special-greengrass .s-name { color:#a5d6a7; text-shadow:0 0 10px rgba(165,214,167,0.5); }
   .special-greengrass .s-moon { color:rgba(165,214,167,0.6); }
   .special-greengrass .s-icon { filter:drop-shadow(0 0 6px #4caf50); }
 
   /* Midsummer — golden sun */
   .special-midsummer { background:linear-gradient(160deg,#1e1400,#2e1e00,#1e1400); border-color:#f0b000; box-shadow:0 0 20px rgba(240,176,0,0.25); }
+  .special-midsummer::after { content:'☀ ✦ ☀'; position:absolute; bottom:3px; left:0; right:0; font-size:9px; color:rgba(255,224,130,0.22); letter-spacing:4px; text-align:center; }
   .special-midsummer .s-name { color:#ffe082; text-shadow:0 0 12px rgba(255,224,130,0.7); }
   .special-midsummer .s-moon { color:rgba(255,224,130,0.6); }
   .special-midsummer .s-icon { animation:sunPulse 3s ease-in-out infinite; }
@@ -1118,6 +1120,7 @@
   /* Highharvestide — amber harvest */
   .special-highharvestide { background:linear-gradient(160deg,#1e1000,#2e1800,#1e1000); border-color:#d4700a; box-shadow:0 0 16px rgba(212,112,10,0.2); }
   .special-highharvestide::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 100%,rgba(212,112,10,0.12),transparent 70%); }
+  .special-highharvestide::after { content:'🌾 ✦ 🌾'; position:absolute; bottom:3px; left:0; right:0; font-size:9px; color:rgba(255,204,128,0.20); letter-spacing:4px; text-align:center; }
   .special-highharvestide .s-name { color:#ffcc80; text-shadow:0 0 10px rgba(255,204,128,0.5); }
   .special-highharvestide .s-moon { color:rgba(255,204,128,0.6); }
   .special-highharvestide .s-icon { filter:drop-shadow(0 0 6px #d4700a); }
@@ -1125,6 +1128,7 @@
   /* Feast of the Moon — silver moonlight */
   .special-feastofthemoon { background:linear-gradient(160deg,#0f0f1e,#191928,#0f0f1e); border-color:#9e9ecf; box-shadow:0 0 16px rgba(158,158,207,0.25); }
   .special-feastofthemoon::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 0%,rgba(158,158,207,0.1),transparent 60%); }
+  .special-feastofthemoon::after { content:'☽ ✦ ☽'; position:absolute; bottom:3px; left:0; right:0; font-size:9px; color:rgba(209,209,240,0.22); letter-spacing:4px; text-align:center; }
   .special-feastofthemoon .s-name { color:#d1d1f0; text-shadow:0 0 10px rgba(209,209,240,0.6); }
   .special-feastofthemoon .s-moon { color:rgba(209,209,240,0.6); }
   .special-feastofthemoon .s-icon { animation:moonGlow 4s ease-in-out infinite; }
