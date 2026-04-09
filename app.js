@@ -1498,6 +1498,7 @@ function renderCalendar() {
 
 setupDebugTitleTapToggle();
 setupDebugDayPickerOnce();
+setupMobileGarlandAspectOnce();
 renderCalendar();
 
 document.addEventListener('visibilitychange', () => {
@@ -1546,6 +1547,26 @@ function setupDebugDayPickerOnce() {
     e.stopPropagation();
     activate(e.target);
   });
+}
+
+function setupMobileGarlandAspectOnce() {
+  if (window.__eryndorMobileGarlandSetupDone) return;
+  window.__eryndorMobileGarlandSetupDone = true;
+
+  const garland = document.querySelector('.garland-svg');
+  const buntings = Array.from(document.querySelectorAll('.birthday-bunting'));
+  if (!garland && buntings.length === 0) return;
+
+  const mq = window.matchMedia('(max-width: 600px)');
+  const apply = () => {
+    // Desktop keeps the original full-frame stretch; mobile prefers less distortion.
+    if (garland) garland.setAttribute('preserveAspectRatio', mq.matches ? 'xMidYMid slice' : 'none');
+    // Birthday bunting: same idea; avoids weird skinny scaling on mobile.
+    for (const b of buntings) b.setAttribute('preserveAspectRatio', mq.matches ? 'xMidYMid slice' : 'none');
+  };
+
+  apply();
+  mq.addEventListener?.('change', apply);
 }
 
 let tooltipPinned = false;

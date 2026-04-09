@@ -1195,13 +1195,25 @@
   .memorial-item.debug-clickable:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
   @media (max-width:600px) {
-    /* Meer marge t.o.v. de viewport zodat de vaste garland-rand (SVG) zichtbaar blijft naast de perkamentkolom. */
+    /* Mobiel: maak de scroll breder en beperk decoratie-dominantie. */
     body {
-      padding: 60px;
-      padding-left: clamp(26px, 8.5vw, 44px);
-      padding-right: clamp(26px, 8.5vw, 44px);
+      padding: 54px 14px 78px;
+      padding-left: clamp(14px, 4.2vw, 20px);
+      padding-right: clamp(14px, 4.2vw, 20px);
     }
-    .scroll { padding: 28px clamp(14px, 4vw, 22px) 34px; }
+    .scroll { padding: 26px clamp(12px, 3.6vw, 18px) 32px; }
     /* Eén maand per rij; tenday blijft 10 kolommen (geen 5-koloms override). */
     .months-grid { grid-template-columns:1fr; }
+
+    .garland-svg { opacity: 0.6; filter: none; }
+    /* Vlaggen: op mobiel kleiner/subtieler, maar alleen zichtbaar bij verjaardag */
+    body.birthday-theme .birthday-bunting {
+      opacity: 0.82;
+      height: 40px;
+      width: 120vw;
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+    }
+    .day-cell { font-size: 10px; }
   }
