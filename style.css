@@ -990,6 +990,37 @@
   @media (max-width:600px) {
     .next-up-inline { flex-direction: column; align-items: flex-start; justify-content: flex-start; text-align: left; }
     .next-up-sep { display: none; }
+
+    /* Alleen bij grotere tekst: label + inhoud onder elkaar per item */
+    body.font-scale-reader .next-up-inline,
+    body.font-scale-grand .next-up-inline {
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    body.font-scale-reader .next-up-item,
+    body.font-scale-grand .next-up-item {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2px;
+      align-items: start;
+      justify-items: center;
+    }
+    body.font-scale-reader .next-up-label,
+    body.font-scale-grand .next-up-label {
+      display: block;
+      margin-right: 0;
+    }
+    body.font-scale-reader .next-up-value,
+    body.font-scale-grand .next-up-value {
+      display: block;
+    }
+    body.font-scale-reader .next-up-when,
+    body.font-scale-grand .next-up-when {
+      display: block;
+      margin-top: 1px;
+    }
   }
 
   .jump-to-current-month {
