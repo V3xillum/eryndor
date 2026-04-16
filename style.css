@@ -1465,6 +1465,14 @@
     .font-face-toggle__item-emoji {
       font-size: calc(15px * var(--ery-font-scale));
     }
+
+    /* Opa-stand op mobiel: geef alle section labels extra ademruimte */
+    body.font-scale-grand .section-label {
+      margin-top: 12px;
+      margin-bottom: 20px;
+      /* In opa-stand wordt 5px letter-spacing erg “tab-achtig” op kleine schermen */
+      letter-spacing: 3px;
+    }
   }
 
   @media (max-width:434px) {
