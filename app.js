@@ -1695,6 +1695,11 @@ function setupTooltipInteractionsOnce() {
     const { tip } = getTooltipEls();
     const t = closestTooltipTarget(e.target);
 
+    // Font-size toggle: never pin tooltips on click (avoid sticky tooltip)
+    if (t && t.closest && t.closest('.font-face-toggle')) {
+      return;
+    }
+
     // Close if pinned and click outside tooltip + outside pinned target
     if (tooltipPinned) {
       const clickedInsideTooltip = !!(tip && tip.contains(e.target));
@@ -1728,3 +1733,109 @@ function setupTooltipInteractionsOnce() {
 }
 
 setupTooltipInteractionsOnce();
+
+const FONT_SCALE_STORAGE_KEY = 'eryndor_font_scale_v1';
+
+function emojiForFontScale(slug) {
+  // Normal/default should feel friendly.
+  if (slug === 'normal') return '🙂';
+  if (slug === 'young') return '😐';
+  if (slug === 'reader') return '🤓';
+  if (slug === 'grand') return '👴';
+  return '🙂';
+}
+
+function applyFontScaleClass(scaleSlug) {
+  const valid = ['young', 'normal', 'reader', 'grand'];
+  const fallback = 'normal';
+  const slug = valid.includes(scaleSlug) ? scaleSlug : fallback;
+
+  document.body.classList.remove(
+    'font-scale-young',
+    'font-scale-normal',
+    'font-scale-reader',
+    'font-scale-grand',
+  );
+
+  let cls = 'font-scale-young';
+  if (slug === 'normal') cls = 'font-scale-normal';
+  else if (slug === 'reader') cls = 'font-scale-reader';
+  else if (slug === 'grand') cls = 'font-scale-grand';
+
+  document.body.classList.add(cls);
+
+  try {
+    window.localStorage.setItem(FONT_SCALE_STORAGE_KEY, slug);
+  } catch (_) {
+    // ignore storage errors (private mode, etc.)
+  }
+
+  const menuItems = document.querySelectorAll('.font-face-toggle__item[data-font-scale]');
+  menuItems.forEach((btn) => {
+    const v = btn.getAttribute('data-font-scale');
+    if (v === slug) btn.classList.add('is-active');
+    else btn.classList.remove('is-active');
+  });
+
+  const triggerEmoji = document.querySelector('.font-face-toggle__trigger-emoji');
+  if (triggerEmoji) triggerEmoji.textContent = emojiForFontScale(slug);
+}
+
+function setupFontScaleToggleOnce() {
+  if (window.__eryndorFontScaleSetupDone) return;
+  window.__eryndorFontScaleSetupDone = true;
+
+  const container = document.querySelector('.font-face-toggle');
+  if (!container) return;
+
+  const trigger = container.querySelector('.font-face-toggle__trigger');
+  const menu = container.querySelector('.font-face-toggle__menu');
+
+  let initialSlug = 'normal';
+  try {
+    const stored = window.localStorage.getItem(FONT_SCALE_STORAGE_KEY);
+    if (stored) initialSlug = stored;
+  } catch (_) {
+    // ignore storage errors
+  }
+
+  applyFontScaleClass(initialSlug);
+
+  const closeMenu = () => {
+    container.classList.remove('is-open');
+    trigger?.setAttribute('aria-expanded', 'false');
+  };
+
+  const openMenu = () => {
+    container.classList.add('is-open');
+    trigger?.setAttribute('aria-expanded', 'true');
+  };
+
+  trigger?.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (container.classList.contains('is-open')) closeMenu();
+    else openMenu();
+  });
+
+  menu?.addEventListener('click', (e) => {
+    const btn = e.target.closest?.('.font-face-toggle__item[data-font-scale]');
+    if (!btn) return;
+    const slug = btn.getAttribute('data-font-scale');
+    if (!slug) return;
+    applyFontScaleClass(slug);
+    closeMenu();
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!container.classList.contains('is-open')) return;
+    if (container.contains(e.target)) return;
+    closeMenu();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
+}
+
+setupFontScaleToggleOnce();
