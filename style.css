@@ -644,20 +644,24 @@
     position: relative;
     overflow: hidden;
   }
-  .scroll::before { content:'✦'; position:absolute; top:18px; left:22px; font-size:28px; color:var(--gold); opacity:0.6; }
-  .scroll::after  { content:'✦'; position:absolute; bottom:18px; right:22px; font-size:28px; color:var(--gold); opacity:0.6; }
+  .scroll::before { content:'✦'; position:absolute; top:18px; left:22px; font-size:calc(28px * var(--ery-font-scale)); color:var(--gold); opacity:0.6; }
+  .scroll::after  { content:'✦'; position:absolute; bottom:18px; right:22px; font-size:calc(28px * var(--ery-font-scale)); color:var(--gold); opacity:0.6; }
 
   /* Title */
   .title-block { text-align:center; margin-bottom:0; padding-bottom:22px; border-bottom:2px solid var(--gold); position:relative; user-select:none; -webkit-user-select:none; }
-  .title-block::after { content:'⸻ ✦ ⸻'; display:block; color:var(--gold); font-size:14px; letter-spacing:6px; margin-top:12px; }
+  .title-block::after { content:'⸻ ✦ ⸻'; display:block; color:var(--gold); font-size:calc(14px * var(--ery-font-scale)); letter-spacing:6px; margin-top:12px; }
   .scroll-title {
     font-family:'Cinzel Decorative', serif;
-    font-size: clamp(20px, 4vw, 32px);
+    font-size: clamp(
+      calc(20px * var(--ery-font-scale)),
+      calc(4vw * var(--ery-font-scale)),
+      calc(32px * var(--ery-font-scale))
+    );
     color: var(--crimson);
     text-shadow: 1px 1px 0 var(--parchment-deep), 0 0 30px rgba(139,26,26,0.3);
     letter-spacing: 2px; margin-bottom: 4px; line-height: 1.3;
   }
-  .scroll-subtitle { font-family:'Cinzel', serif; font-size:13px; color:var(--ink-light); letter-spacing:4px; text-transform:uppercase; }
+  .scroll-subtitle { font-family:'Cinzel', serif; font-size:calc(13px * var(--ery-font-scale)); color:var(--ink-light); letter-spacing:4px; text-transform:uppercase; }
 
   /* Lettergrootte dropdown (desktop + mobile) */
   .font-face-toggle {
@@ -694,11 +698,11 @@
     transition: background 0.15s ease, transform 0.12s ease, box-shadow 0.15s ease;
   }
   .font-face-toggle__trigger-emoji {
-    font-size: 16px;
+    font-size: calc(16px * var(--ery-font-scale));
     line-height: 1;
   }
   .font-face-toggle__chev {
-    font-size: 10px;
+    font-size: calc(10px * var(--ery-font-scale));
     opacity: 0.7;
     transform: translateY(1px);
   }
@@ -745,7 +749,7 @@
     text-align: left;
   }
   .font-face-toggle__item-emoji {
-    font-size: 16px;
+    font-size: calc(16px * var(--ery-font-scale));
     line-height: 1;
   }
   .font-face-toggle__item.is-active {
@@ -775,13 +779,13 @@
   .birthday-banner::before {
     content: '🎉 🎂 🎊 🎈 🎉 🎂 🎊 🎈 🎉 🎂 🎊 🎈';
     position: absolute; top: 4px; left: 0; right: 0;
-    font-size: 11px; letter-spacing: 2px; opacity: 0.5;
+    font-size: calc(11px * var(--ery-font-scale)); letter-spacing: 2px; opacity: 0.5;
   }
   @keyframes bannerPulse {
     0%,100% { box-shadow: 0 0 10px rgba(184,134,11,0.3); }
     50%      { box-shadow: 0 0 30px rgba(184,134,11,0.7); }
   }
-  .birthday-banner-text { font-family:'Cinzel Decorative',serif; font-size:15px; color:var(--gold-pale); text-shadow:0 0 20px rgba(240,208,96,0.6); margin-top:14px; }
+  .birthday-banner-text { font-family:'Cinzel Decorative',serif; font-size:calc(15px * var(--ery-font-scale)); color:var(--gold-pale); text-shadow:0 0 20px rgba(240,208,96,0.6); margin-top:14px; }
 
   .memorial-banner {
     background: linear-gradient(135deg, #0c1018, #141c28, #0c1018);
@@ -797,14 +801,14 @@
   .memorial-banner::before {
     content: '✦ · ✦ · ✦';
     position: absolute; top: 5px; left: 0; right: 0;
-    font-size: 10px; letter-spacing: 6px; opacity: 0.35; color: rgba(200, 215, 245, 0.9);
+    font-size: calc(10px * var(--ery-font-scale)); letter-spacing: 6px; opacity: 0.35; color: rgba(200, 215, 245, 0.9);
   }
   @keyframes memorialBannerGlow {
     0%, 100% { box-shadow: 0 0 8px rgba(100, 130, 180, 0.25); }
     50%      { box-shadow: 0 0 22px rgba(130, 160, 210, 0.4); }
   }
-  .memorial-banner-text { font-family:'Cinzel Decorative',serif; font-size:14px; color:#d8e4f8; text-shadow:0 0 16px rgba(180,200,240,0.45); margin-top:12px; line-height:1.35; }
-  .memorial-banner-sub { font-family:'IM Fell English',serif; font-size:11px; font-style:italic; color:rgba(200,215,245,0.65); margin-top:6px; }
+  .memorial-banner-text { font-family:'Cinzel Decorative',serif; font-size:calc(14px * var(--ery-font-scale)); color:#d8e4f8; text-shadow:0 0 16px rgba(180,200,240,0.45); margin-top:12px; line-height:1.35; }
+  .memorial-banner-sub { font-family:'IM Fell English',serif; font-size:calc(11px * var(--ery-font-scale)); font-style:italic; color:rgba(200,215,245,0.65); margin-top:6px; }
 
   .memorial-banner--mourning {
     background: linear-gradient(135deg, #0a0a0c, #121218, #0a0a0c);
@@ -923,7 +927,7 @@
     display: grid;
     place-items: center;
     font-family: 'Cinzel', serif;
-    font-size: 16px;
+    font-size: calc(16px * var(--ery-font-scale));
     color: rgba(255, 250, 232, 0.78);
     text-shadow: 0 1px 0 rgba(0,0,0,0.35);
     transform: translateY(-0.5px);
@@ -940,7 +944,7 @@
     padding: 4px 8px;
     border-radius: 999px;
     font-family: 'Cinzel', serif;
-    font-size: 9px;
+    font-size: calc(9px * var(--ery-font-scale));
     letter-spacing: 0.12em;
     text-transform: uppercase;
     opacity: 0;
@@ -948,11 +952,11 @@
     transition: opacity 180ms ease;
   }
   .today-copy-toast.is-visible { opacity: 1; }
-  .today-label { font-family:'Cinzel',serif; font-size:11px; letter-spacing:5px; text-transform:uppercase; color:var(--gold); opacity:0.7; margin-bottom:10px; }
+  .today-label { font-family:'Cinzel',serif; font-size:calc(11px * var(--ery-font-scale)); letter-spacing:5px; text-transform:uppercase; color:var(--gold); opacity:0.7; margin-bottom:10px; }
   .today-dnd-date { font-family:'Cinzel Decorative',serif; font-size:calc(22px * var(--ery-font-scale)); color:var(--gold-pale); text-shadow:0 0 20px rgba(240,208,96,0.4); line-height:1.2; margin-bottom:6px; }
   .today-moon { font-family:'IM Fell English',serif; font-style:italic; font-size:calc(16px * var(--ery-font-scale)); color:var(--moon-yellow); opacity:0.85; margin-bottom:14px; }
   .today-real-date { font-family:'Cinzel',serif; font-size:calc(12px * var(--ery-font-scale)); color:rgba(244,232,193,0.4); letter-spacing:3px; }
-  .moon-symbol { font-size:28px; display:block; margin-bottom:8px; filter:drop-shadow(0 0 8px rgba(245,226,122,0.5)); }
+  .moon-symbol { font-size:calc(28px * var(--ery-font-scale)); display:block; margin-bottom:8px; filter:drop-shadow(0 0 8px rgba(245,226,122,0.5)); }
 
   /* Next up */
   .next-up { margin: 10px 0 18px; }
@@ -972,14 +976,14 @@
   .next-up-item { display: inline-flex; gap: 6px; align-items: baseline; }
   .next-up-label {
     font-family: 'Cinzel', serif;
-    font-size: 10px;
+    font-size: calc(10px * var(--ery-font-scale));
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--ink-light);
     opacity: 0.9;
     margin-right: 2px;
   }
-  .next-up-value { font-size: 12px; color: var(--ink); }
+  .next-up-value { font-size: calc(12px * var(--ery-font-scale)); color: var(--ink); }
   .next-up-when { font-size: calc(11px * var(--ery-font-scale)); font-style: italic; color: var(--ink-light); opacity: 0.95; }
   .next-up-sep { opacity: 0.45; }
 
@@ -1000,7 +1004,7 @@
     background: rgba(255, 250, 232, 0.35);
     color: var(--ink);
     font-family: 'Cinzel', serif;
-    font-size: 10px;
+    font-size: calc(10px * var(--ery-font-scale));
     letter-spacing: 0.08em;
     text-transform: uppercase;
     cursor: pointer;
@@ -1022,7 +1026,7 @@
 
 
   /* Section label */
-  .section-label { font-family:'Cinzel',serif; font-size:11px; letter-spacing:5px; text-transform:uppercase; color:var(--ink-light); text-align:center; margin-bottom:20px; }
+  .section-label { font-family:'Cinzel',serif; font-size:calc(11px * var(--ery-font-scale)); letter-spacing:5px; text-transform:uppercase; color:var(--ink-light); text-align:center; margin-bottom:20px; }
 
   /* Month cards */
   .months-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:16px; margin-bottom:30px; }
@@ -1034,7 +1038,7 @@
     position:relative;
   }
   .month-card.is-current { border-color:var(--gold); background:linear-gradient(180deg, rgba(255,250,220,0.9), rgba(244,232,175,0.8)); box-shadow:0 0 0 1px var(--gold-light), 0 4px 16px rgba(184,134,11,0.2); }
-  .month-card.is-current::before { content:'◆'; position:absolute; top:8px; right:10px; font-size:8px; color:var(--gold); }
+  .month-card.is-current::before { content:'◆'; position:absolute; top:8px; right:10px; font-size:calc(8px * var(--ery-font-scale)); color:var(--gold); }
   .month-name { font-family:'Cinzel',serif; font-size:calc(15px * var(--ery-font-scale)); font-weight:600; color:var(--crimson); margin-bottom:4px; }
   .month-days { font-family:'IM Fell English',serif; font-size:calc(12px * var(--ery-font-scale)); color:var(--ink-fade); font-style:italic; margin-bottom:8px; }
 
@@ -1044,7 +1048,7 @@
   /* Subtiele schrikkeljaar-melding (Gregoriaans) */
   .leap-year-notice {
     font-family:'IM Fell English',serif;
-    font-size:11px;
+    font-size:calc(11px * var(--ery-font-scale));
     font-style:italic;
     color:var(--ink-light);
     text-align:center;
@@ -1137,7 +1141,7 @@
 
   /* Birthday day — small cake pip, no layout shift */
   .day-cell.birthday-day .cake-pip {
-    position:absolute; top:-1px; right:-1px; font-size:7px; line-height:1; pointer-events:none;
+    position:absolute; top:-1px; right:-1px; font-size:calc(7px * var(--ery-font-scale)); line-height:1; pointer-events:none;
   }
   .day-cell.birthday-today {
     background: linear-gradient(135deg, #8b1a1a, #b8860b);
@@ -1146,12 +1150,12 @@
   }
 
   .day-cell .memorial-pip--celebration {
-    position:absolute; bottom:-1px; right:-1px; font-size:7px; line-height:1; pointer-events:none;
+    position:absolute; bottom:-1px; right:-1px; font-size:calc(7px * var(--ery-font-scale)); line-height:1; pointer-events:none;
     color: #3d4a6e;
     text-shadow: 0 0 3px rgba(180, 200, 240, 0.5);
   }
   .day-cell .memorial-pip--death {
-    position:absolute; bottom:-1px; left:-1px; font-size:8px; line-height:1; pointer-events:none;
+    position:absolute; bottom:-1px; left:-1px; font-size:calc(8px * var(--ery-font-scale)); line-height:1; pointer-events:none;
     color: #2c2c32;
     text-shadow: 0 0 4px rgba(80, 80, 92, 0.45);
   }
@@ -1219,7 +1223,7 @@
     display:flex; flex-wrap:wrap; justify-content:center; gap:16px;
     padding:20px 0 24px; border-bottom:1px solid var(--parchment-deep); margin-bottom:28px;
   }
-  .legend-item { display:flex; align-items:center; gap:6px; font-family:'IM Fell English',serif; font-size:12px; color:var(--ink-fade); font-style:italic; }
+  .legend-item { display:flex; align-items:center; gap:6px; font-family:'IM Fell English',serif; font-size:calc(12px * var(--ery-font-scale)); color:var(--ink-fade); font-style:italic; }
   .legend-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
 
   /* ——— FEESTDAG-KAARTEN (in jaarlijst) ——— */
@@ -1244,44 +1248,44 @@
     position:absolute; inset:0; pointer-events:none; z-index:3;
   }
   .special-card-markers .sc-marker-cake {
-    position:absolute; top:6px; right:8px; font-size:11px; line-height:1;
+    position:absolute; top:6px; right:8px; font-size:calc(11px * var(--ery-font-scale)); line-height:1;
     filter:drop-shadow(0 0 2px rgba(0,0,0,0.35));
   }
   .special-card-markers .sc-marker-death {
-    position:absolute; bottom:8px; left:8px; font-size:12px; line-height:1;
+    position:absolute; bottom:8px; left:8px; font-size:calc(12px * var(--ery-font-scale)); line-height:1;
     filter:drop-shadow(0 0 2px rgba(0,0,0,0.4));
   }
   .special-card-markers .sc-marker-celebration {
-    position:absolute; bottom:8px; right:8px; font-size:10px; line-height:1;
+    position:absolute; bottom:8px; right:8px; font-size:calc(10px * var(--ery-font-scale)); line-height:1;
     color:#4a5a78;
     filter:drop-shadow(0 0 2px rgba(200,210,240,0.5));
   }
   .special-card:hover { transform:translateY(-2px); }
   .special-card.is-current { outline: 2px solid #fff; outline-offset:2px; }
 
-  .s-icon { font-size:28px; display:block; margin-bottom:8px; position:relative; }
-  .s-name { font-family:'Cinzel',serif; font-size:12px; font-weight:600; margin-bottom:4px; position:relative; }
-  .s-moon { font-family:'IM Fell English',serif; font-size:10px; font-style:italic; position:relative; }
-  .special-card .s-real-date { font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.04em; color:rgba(244,232,213,0.78); margin-bottom:6px; position:relative; }
+  .s-icon { font-size:calc(28px * var(--ery-font-scale)); display:block; margin-bottom:8px; position:relative; }
+  .s-name { font-family:'Cinzel',serif; font-size:calc(12px * var(--ery-font-scale)); font-weight:600; margin-bottom:4px; position:relative; }
+  .s-moon { font-family:'IM Fell English',serif; font-size:calc(10px * var(--ery-font-scale)); font-style:italic; position:relative; }
+  .special-card .s-real-date { font-family:'Cinzel',serif; font-size:calc(10px * var(--ery-font-scale)); letter-spacing:0.04em; color:rgba(244,232,213,0.78); margin-bottom:6px; position:relative; }
 
   /* Midwinter — icy blue */
   .special-midwinter { background:linear-gradient(160deg,#0e1a2e,#162840,#0e1a2e); border-color:#4a90c4; box-shadow:0 0 16px rgba(74,144,196,0.2); }
   .special-midwinter::before { content:''; position:absolute; inset:0; background:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(255,255,255,0.02) 8px,rgba(255,255,255,0.02) 9px); }
-  .special-midwinter::after { content:'❄ ✦ ❄'; position:absolute; bottom:3px; left:0; right:0; font-size:9px; color:rgba(168,212,240,0.22); letter-spacing:4px; text-align:center; }
+  .special-midwinter::after { content:'❄ ✦ ❄'; position:absolute; bottom:3px; left:0; right:0; font-size:calc(9px * var(--ery-font-scale)); color:rgba(168,212,240,0.22); letter-spacing:4px; text-align:center; }
   .special-midwinter .s-name { color:#a8d4f0; text-shadow:0 0 10px rgba(168,212,240,0.5); }
   .special-midwinter .s-moon { color:rgba(168,212,240,0.6); }
   .special-midwinter .s-icon { filter:drop-shadow(0 0 6px #4a90c4); }
 
   /* Greengrass — spring green */
   .special-greengrass { background:linear-gradient(160deg,#0d1e0e,#162b12,#0d1e0e); border-color:#4caf50; box-shadow:0 0 16px rgba(76,175,80,0.2); }
-  .special-greengrass::after { content:'✿ ✦ ✿'; position:absolute; bottom:3px; left:0; right:0; font-size:9px; color:rgba(165,214,167,0.25); letter-spacing:4px; text-align:center; }
+  .special-greengrass::after { content:'✿ ✦ ✿'; position:absolute; bottom:3px; left:0; right:0; font-size:calc(9px * var(--ery-font-scale)); color:rgba(165,214,167,0.25); letter-spacing:4px; text-align:center; }
   .special-greengrass .s-name { color:#a5d6a7; text-shadow:0 0 10px rgba(165,214,167,0.5); }
   .special-greengrass .s-moon { color:rgba(165,214,167,0.6); }
   .special-greengrass .s-icon { filter:drop-shadow(0 0 6px #4caf50); }
 
   /* Midsummer — golden sun */
   .special-midsummer { background:linear-gradient(160deg,#1e1400,#2e1e00,#1e1400); border-color:#f0b000; box-shadow:0 0 20px rgba(240,176,0,0.25); }
-  .special-midsummer::after { content:'☀ ✦ ☀'; position:absolute; bottom:3px; left:0; right:0; font-size:9px; color:rgba(255,224,130,0.22); letter-spacing:4px; text-align:center; }
+  .special-midsummer::after { content:'☀ ✦ ☀'; position:absolute; bottom:3px; left:0; right:0; font-size:calc(9px * var(--ery-font-scale)); color:rgba(255,224,130,0.22); letter-spacing:4px; text-align:center; }
   .special-midsummer .s-name { color:#ffe082; text-shadow:0 0 12px rgba(255,224,130,0.7); }
   .special-midsummer .s-moon { color:rgba(255,224,130,0.6); }
   .special-midsummer .s-icon { animation:sunPulse 3s ease-in-out infinite; }
@@ -1290,7 +1294,7 @@
   /* Highharvestide — amber harvest */
   .special-highharvestide { background:linear-gradient(160deg,#1e1000,#2e1800,#1e1000); border-color:#d4700a; box-shadow:0 0 16px rgba(212,112,10,0.2); }
   .special-highharvestide::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 100%,rgba(212,112,10,0.12),transparent 70%); }
-  .special-highharvestide::after { content:'🌾 ✦ 🌾'; position:absolute; bottom:3px; left:0; right:0; font-size:9px; color:rgba(255,204,128,0.20); letter-spacing:4px; text-align:center; }
+  .special-highharvestide::after { content:'🌾 ✦ 🌾'; position:absolute; bottom:3px; left:0; right:0; font-size:calc(9px * var(--ery-font-scale)); color:rgba(255,204,128,0.20); letter-spacing:4px; text-align:center; }
   .special-highharvestide .s-name { color:#ffcc80; text-shadow:0 0 10px rgba(255,204,128,0.5); }
   .special-highharvestide .s-moon { color:rgba(255,204,128,0.6); }
   .special-highharvestide .s-icon { filter:drop-shadow(0 0 6px #d4700a); }
@@ -1298,14 +1302,14 @@
   /* Feast of the Moon — silver moonlight */
   .special-feastofthemoon { background:linear-gradient(160deg,#0f0f1e,#191928,#0f0f1e); border-color:#9e9ecf; box-shadow:0 0 16px rgba(158,158,207,0.25); }
   .special-feastofthemoon::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 0%,rgba(158,158,207,0.1),transparent 60%); }
-  .special-feastofthemoon::after { content:'☽ ✦ ☽'; position:absolute; bottom:3px; left:0; right:0; font-size:9px; color:rgba(209,209,240,0.22); letter-spacing:4px; text-align:center; }
+  .special-feastofthemoon::after { content:'☽ ✦ ☽'; position:absolute; bottom:3px; left:0; right:0; font-size:calc(9px * var(--ery-font-scale)); color:rgba(209,209,240,0.22); letter-spacing:4px; text-align:center; }
   .special-feastofthemoon .s-name { color:#d1d1f0; text-shadow:0 0 10px rgba(209,209,240,0.6); }
   .special-feastofthemoon .s-moon { color:rgba(209,209,240,0.6); }
   .special-feastofthemoon .s-icon { animation:moonGlow 4s ease-in-out infinite; }
   @keyframes moonGlow { 0%,100% { filter:drop-shadow(0 0 4px #9e9ecf); } 50% { filter:drop-shadow(0 0 14px #d1d1f0); } }
 
   /* Ornate divider */
-  .ornate-divider { text-align:center; color:var(--gold); font-size:13px; letter-spacing:8px; margin:24px 0; opacity:0.6; }
+  .ornate-divider { text-align:center; color:var(--gold); font-size:calc(13px * var(--ery-font-scale)); letter-spacing:8px; margin:24px 0; opacity:0.6; }
 
   /* Birthdays */
   .birthday-list { display:grid; grid-template-columns:repeat(auto-fill, minmax(190px,1fr)); gap:10px; margin-bottom:10px; }
@@ -1315,7 +1319,7 @@
     display:flex; align-items:center; gap:10px;
   }
   .birthday-item.is-today { border-color:var(--gold); background:linear-gradient(135deg,rgba(184,134,11,0.15),rgba(244,232,175,0.7)); box-shadow:0 0 0 1px var(--gold-light); }
-  .birthday-icon { font-size:18px; flex-shrink:0; }
+  .birthday-icon { font-size:calc(18px * var(--ery-font-scale)); flex-shrink:0; }
   .birthday-name { font-family:'Cinzel',serif; font-size:calc(12px * var(--ery-font-scale)); font-weight:600; color:var(--ink); }
   .birthday-date { font-family:'IM Fell English',serif; font-size:calc(11px * var(--ery-font-scale)); font-style:italic; color:var(--ink-light); }
 
@@ -1333,7 +1337,7 @@
     margin-bottom: 16px;
     border-radius: 3px;
     font-family: 'Cinzel', serif;
-    font-size: 11px;
+    font-size: calc(11px * var(--ery-font-scale));
     letter-spacing: 0.04em;
     display: flex;
     align-items: center;
@@ -1344,7 +1348,7 @@
   .calendar-debug-bar .debug-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
   .calendar-debug-bar button {
     font-family: 'Cinzel', serif;
-    font-size: 10px;
+    font-size: calc(10px * var(--ery-font-scale));
     text-transform: uppercase;
     letter-spacing: 0.08em;
     padding: 6px 12px;
@@ -1376,8 +1380,8 @@
     background: linear-gradient(135deg, rgba(30, 30, 38, 0.2), rgba(210, 210, 220, 0.38));
     box-shadow: 0 0 0 1px rgba(70, 70, 82, 0.45);
   }
-  .memorial-icon { font-size: 16px; flex-shrink: 0; opacity: 0.9; }
-  .memorial-title { font-family: 'Cinzel', serif; font-size: 12px; font-weight: 600; color: var(--ink); line-height: 1.3; }
+  .memorial-icon { font-size: calc(16px * var(--ery-font-scale)); flex-shrink: 0; opacity: 0.9; }
+  .memorial-title { font-family: 'Cinzel', serif; font-size: calc(12px * var(--ery-font-scale)); font-weight: 600; color: var(--ink); line-height: 1.3; }
   .memorial-date { font-family: 'IM Fell English', serif; font-size: calc(11px * var(--ery-font-scale)); font-style: italic; color: var(--ink-light); }
   .memorial-item.debug-clickable { cursor: pointer; }
   .memorial-item.debug-clickable:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
@@ -1428,14 +1432,14 @@
     }
     .font-face-toggle__trigger-emoji,
     .font-face-toggle__item-emoji {
-      font-size: 15px;
+      font-size: calc(15px * var(--ery-font-scale));
     }
   }
 
   @media (max-width:434px) {
     /* Heel smal: sterdecoratie mag de titel/tekst niet raken. */
-    .scroll::before { top: 14px; left: 14px; font-size: 22px; }
-    .scroll::after  { bottom: 14px; right: 14px; font-size: 22px; }
+    .scroll::before { top: 14px; left: 14px; font-size: calc(22px * var(--ery-font-scale)); }
+    .scroll::after  { bottom: 14px; right: 14px; font-size: calc(22px * var(--ery-font-scale)); }
     .title-block { padding-bottom: 24px; }
     .title-block::after { letter-spacing: 4px; margin-top: 10px; }
   }
