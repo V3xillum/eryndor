@@ -35,6 +35,7 @@ export const SETTINGS = Object.freeze({
     { month: 'Flamerule', day: 29, name: 'Fireheart' },
     { name: 'Tony', gregorian: { month: 1, day: 22 } },
     { month: 'Nightal', day: 12, name: 'Skyrend'},
+    { month: 'Ches', day: 25, name: 'Nootje'},
   ],
   /**
    * Mijlpalen / herdenkingen.
