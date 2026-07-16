@@ -16,7 +16,13 @@ export const SETTINGS = Object.freeze({
     enableFestFx: true,        // seasonal/memorial canvas FX
     enableConfetti: true,      // birthday confetti canvas
     enableDayReveal: true,     // korte intro-splash bij speciale dagen (1× per sessie)
+    enableFullMoonReveal: true, // splash op exacte Full Moon-dagen (were fox e.d.)
     enableBackgroundHaze: true, // subtle non-festival background depth
+  },
+  /** Teksten voor de Full Moon day-reveal (aanpasbaar). */
+  fullMoonReveal: {
+    title: 'Volle Maan',
+    tagline: 'De maan roept…',
   },
   /**
    * Verjaardagen.
@@ -46,11 +52,13 @@ export const SETTINGS = Object.freeze({
    *
    * Extra velden:
    * - `subtitle`: extra tekst onder de titel (bv. “4 april 2026”)
+   * - `type: 'festive'`: feestelijke mijlpaal (warm thema + fireworks)
    * - `type: 'death'`: toont de 🕯 styling (gevallen personage / rouw)
+   * - geen type: ingetogen mijlpaal (zilver/blauw, geen fireworks)
    */
   memorialDays: [
-    { dayOfYear: 311, title: 'Eerste stap op Eryndor',},
-    { dayOfYear: 312, title: 'Stichting van The Pixie\'s Promise' },
+    { dayOfYear: 311, title: 'Eerste stap op Eryndor', type: 'festive' },
+    { dayOfYear: 312, title: 'Stichting van The Pixie\'s Promise', type: 'festive' },
     { dayOfYear: 348, title: 'Draxion', type: 'death', subtitle: '14 december 2025' },
     { gregorian: "4-4", title: "Velkan", type: "death", subtitle: "4 april 2026" },
     { gregorian: "7-9", title: "Orlin Ashleaf", type: "death", subtitle: "9 juli 2026" },

@@ -99,12 +99,49 @@ function memorialsHasDeath(arr) {
   return arr.some((m) => isMemorialDeath(m));
 }
 
-function memorialsHasCelebration(arr) {
-  return arr.some((m) => !isMemorialDeath(m));
-}
-
 function isMemorialDeath(mem) {
   return !!(mem && mem.type === 'death');
+}
+
+function isMemorialFestive(mem) {
+  return !!(mem && mem.type === 'festive');
+}
+
+/** Ingetogen mijlpaal zonder expliciet type. */
+function isMemorialSubdued(mem) {
+  return !!mem && !isMemorialDeath(mem) && !isMemorialFestive(mem);
+}
+
+function getMemorialType(mem) {
+  if (isMemorialDeath(mem)) return 'death';
+  if (isMemorialFestive(mem)) return 'festive';
+  return 'memorial';
+}
+
+function memorialsHasFestive(arr) {
+  return arr.some((m) => isMemorialFestive(m));
+}
+
+function memorialsHasSubdued(arr) {
+  return arr.some((m) => isMemorialSubdued(m));
+}
+
+function memorialIconFor(mem) {
+  const t = getMemorialType(mem);
+  if (t === 'death') return '🕯';
+  if (t === 'festive') return '✨';
+  return '✦';
+}
+
+function memorialSortOrder(mem) {
+  const t = getMemorialType(mem);
+  if (t === 'festive') return 0;
+  if (t === 'memorial') return 1;
+  return 2;
+}
+
+function memorialLabelFor(mem) {
+  return `${memorialIconFor(mem)} ${mem.title}`;
 }
 
 /** Harptos weergave "7 Uktar" voor jaardag 1–365. */
@@ -128,6 +165,10 @@ const LUNAR_CYCLE_30 = [
 function getMoonPhase(doy) {
   if (doy < 1 || doy > 365) return LUNAR_CYCLE_30[0];
   return LUNAR_CYCLE_30[(doy - 1) % 30];
+}
+
+function isExactFullMoonDoy(doy) {
+  return (getMoonPhase(doy) || '').toLowerCase() === 'full moon';
 }
 
 function moonEmoji(p) {
@@ -339,9 +380,7 @@ function findNextBirthdayOrMemorial(fromDoy, refYear) {
     const labelParts = [];
     if (bd) labelParts.push(`🎂 ${bd.name}`);
     if (mems && mems.length) {
-      const memLabel = mems
-        .map((m) => (isMemorialDeath(m) ? `🕯 ${m.title}` : `✦ ${m.title}`))
-        .join(' · ');
+      const memLabel = mems.map((m) => memorialLabelFor(m)).join(' · ');
       labelParts.push(memLabel);
     }
 
@@ -918,6 +957,7 @@ function applyBodyFestivalTheme(todayDnd, todayBd, todayMemorials) {
   FEST_BODY_CLASSES.forEach((c) => document.body.classList.remove(c));
   document.body.classList.remove('birthday-theme');
   document.body.classList.remove('memorial-theme');
+  document.body.classList.remove('memorial-festive-theme');
   document.body.classList.remove('memorial-mourning-theme');
 
   const festSlug = (todayDnd && todayDnd.special && todayDnd.special.css) ? todayDnd.special.css : '';
@@ -939,7 +979,14 @@ function applyBodyFestivalTheme(todayDnd, todayBd, todayMemorials) {
       svg.querySelectorAll('.gar-ornament').forEach((el) => { el.textContent = '🎂'; });
       svg.querySelectorAll('.gar-corner').forEach((el) => { el.textContent = '🎈'; });
     }
-  } else if (memorialsHasCelebration(todayMemorials)) {
+  } else if (memorialsHasFestive(todayMemorials)) {
+    document.body.classList.add('memorial-festive-theme');
+    if (svg) {
+      svg.setAttribute('data-garland', 'memorial-festive');
+      svg.querySelectorAll('.gar-ornament').forEach((el) => { el.textContent = '✨'; });
+      svg.querySelectorAll('.gar-corner').forEach((el) => { el.textContent = '✦'; });
+    }
+  } else if (memorialsHasSubdued(todayMemorials)) {
     document.body.classList.add('memorial-theme');
     if (svg) {
       svg.setAttribute('data-garland', 'memorial');
@@ -1257,7 +1304,9 @@ const DAY_REVEAL_THEME_CLASSES = [
   'day-reveal-card--feastofthemoon',
   'day-reveal-card--birthday',
   'day-reveal-card--memorial',
+  'day-reveal-card--festive',
   'day-reveal-card--mourning',
+  'day-reveal-card--fullmoon',
 ];
 
 function prefersReducedMotion() {
@@ -1287,11 +1336,12 @@ function markDayRevealShown(refYear, harptosDoy) {
 /**
  * @returns {{ themeClass: string, icon: string, title: string, subtitle: string }|null}
  */
-function buildDayRevealPayload({ todayDnd, todayBd, todayMemorials, harptosDoy, today }) {
+function buildDayRevealPayload({ todayDnd, todayBd, todayMemorials, harptosDoy, today, ui }) {
   const hasFest = !!(todayDnd && todayDnd.special);
   const hasBd = !!todayBd;
   const hasMem = !!(todayMemorials && todayMemorials.length);
-  if (!hasFest && !hasBd && !hasMem) return null;
+  const hasFullMoon = ui.enableFullMoonReveal !== false && isExactFullMoonDoy(harptosDoy);
+  if (!hasFest && !hasBd && !hasMem && !hasFullMoon) return null;
 
   const extras = [];
   let themeClass = 'day-reveal-card--memorial';
@@ -1307,7 +1357,7 @@ function buildDayRevealPayload({ todayDnd, todayBd, todayMemorials, harptosDoy, 
     subtitle = s.moon || '';
     if (hasBd) extras.push(`🎂 ${todayBd.name}`);
     for (const mem of todayMemorials) {
-      extras.push(isMemorialDeath(mem) ? `🕯 ${mem.title}` : `✦ ${mem.title}`);
+      extras.push(memorialLabelFor(mem));
     }
   } else if (hasBd) {
     themeClass = 'day-reveal-card--birthday';
@@ -1315,19 +1365,29 @@ function buildDayRevealPayload({ todayDnd, todayBd, todayMemorials, harptosDoy, 
     title = `Gelukkige Naamdag, ${todayBd.name}!`;
     subtitle = harptosLabelForDoy(harptosDoy);
     for (const mem of todayMemorials) {
-      extras.push(isMemorialDeath(mem) ? `🕯 ${mem.title}` : `✦ ${mem.title}`);
+      extras.push(memorialLabelFor(mem));
     }
-  } else if (memorialsHasCelebration(todayMemorials)) {
+  } else if (memorialsHasFestive(todayMemorials)) {
+    themeClass = 'day-reveal-card--festive';
+    const cel = todayMemorials.find((m) => isMemorialFestive(m));
+    icon = '✨';
+    title = cel.title;
+    subtitle = cel.subtitle || harptosLabelForDoy(harptosDoy);
+    for (const mem of todayMemorials) {
+      if (mem === cel) continue;
+      extras.push(memorialLabelFor(mem));
+    }
+  } else if (memorialsHasSubdued(todayMemorials)) {
     themeClass = 'day-reveal-card--memorial';
-    const cel = todayMemorials.find((m) => !isMemorialDeath(m));
+    const cel = todayMemorials.find((m) => isMemorialSubdued(m));
     icon = '✦';
     title = cel.title;
     subtitle = cel.subtitle || harptosLabelForDoy(harptosDoy);
     for (const mem of todayMemorials) {
       if (mem === cel) continue;
-      extras.push(isMemorialDeath(mem) ? `🕯 ${mem.title}` : `✦ ${mem.title}`);
+      extras.push(memorialLabelFor(mem));
     }
-  } else {
+  } else if (memorialsHasDeath(todayMemorials)) {
     themeClass = 'day-reveal-card--mourning';
     const death = todayMemorials.find((m) => isMemorialDeath(m));
     icon = '🕯';
@@ -1335,8 +1395,14 @@ function buildDayRevealPayload({ todayDnd, todayBd, todayMemorials, harptosDoy, 
     subtitle = death.subtitle || harptosLabelForDoy(harptosDoy);
     for (const mem of todayMemorials) {
       if (mem === death) continue;
-      extras.push(isMemorialDeath(mem) ? `🕯 ${mem.title}` : `✦ ${mem.title}`);
+      extras.push(memorialLabelFor(mem));
     }
+  } else if (hasFullMoon) {
+    themeClass = 'day-reveal-card--fullmoon';
+    icon = '🌕';
+    const fm = (SETTINGS && SETTINGS.fullMoonReveal) ? SETTINGS.fullMoonReveal : {};
+    title = fm.title || 'Full Moon';
+    subtitle = fm.tagline || getMoonPhase(harptosDoy);
   }
 
   if (extras.length) {
@@ -1362,40 +1428,19 @@ function hideDayRevealLayer() {
   dayRevealShowing = false;
 }
 
-function maybeShowDayReveal({ todayDnd, todayBd, todayMemorials, harptosDoy, refYear, today, ui }) {
-  if (ui.enableDayReveal === false) return;
-  if (dayRevealShowing) return;
+function resetDayRevealAnimation(layer) {
+  layer.classList.remove('is-visible', 'is-hiding');
+  void layer.offsetWidth;
+}
 
-  const payload = buildDayRevealPayload({ todayDnd, todayBd, todayMemorials, harptosDoy, today });
-  if (!payload) return;
-  if (hasDayRevealBeenShown(refYear, harptosDoy)) return;
-
-  const layer = document.getElementById('day-reveal-layer');
-  const card = layer?.querySelector('.day-reveal-card');
-  const iconEl = layer?.querySelector('.day-reveal-icon');
-  const titleEl = layer?.querySelector('.day-reveal-title');
-  const subEl = layer?.querySelector('.day-reveal-sub');
-  if (!layer || !card || !iconEl || !titleEl || !subEl) return;
-
-  if (prefersReducedMotion()) return;
-
-  DAY_REVEAL_THEME_CLASSES.forEach((c) => card.classList.remove(c));
-  card.classList.add(payload.themeClass);
-  iconEl.textContent = payload.icon;
-  titleEl.textContent = payload.title;
-  subEl.textContent = payload.subtitle;
-
-  layer.hidden = false;
-  layer.setAttribute('aria-hidden', 'false');
-  dayRevealShowing = true;
-  markDayRevealShown(refYear, harptosDoy);
-
-  requestAnimationFrame(() => {
-    layer.classList.add('is-visible');
-  });
-
+function scheduleDayRevealHide(layer, ui) {
   const visibleMs = ui.enableCssAnimations === false ? 1200 : DAY_REVEAL_VISIBLE_MS;
   const fadeMs = ui.enableCssAnimations === false ? 200 : DAY_REVEAL_FADE_MS;
+
+  if (dayRevealHideTimer) {
+    clearTimeout(dayRevealHideTimer);
+    dayRevealHideTimer = null;
+  }
 
   dayRevealHideTimer = window.setTimeout(() => {
     layer.classList.add('is-hiding');
@@ -1403,6 +1448,63 @@ function maybeShowDayReveal({ todayDnd, todayBd, todayMemorials, harptosDoy, ref
       hideDayRevealLayer();
     }, fadeMs);
   }, visibleMs);
+}
+
+function showDayReveal(payload, ui, { restart = false } = {}) {
+  const layer = document.getElementById('day-reveal-layer');
+  const card = layer?.querySelector('.day-reveal-card');
+  const iconEl = layer?.querySelector('.day-reveal-icon');
+  const titleEl = layer?.querySelector('.day-reveal-title');
+  const subEl = layer?.querySelector('.day-reveal-sub');
+  if (!layer || !card || !iconEl || !titleEl || !subEl) return false;
+
+  if (dayRevealHideTimer) {
+    clearTimeout(dayRevealHideTimer);
+    dayRevealHideTimer = null;
+  }
+
+  DAY_REVEAL_THEME_CLASSES.forEach((c) => card.classList.remove(c));
+  card.classList.add(payload.themeClass);
+  iconEl.textContent = payload.icon;
+  iconEl.style.display = '';
+  titleEl.textContent = payload.title;
+  subEl.textContent = payload.subtitle;
+
+  layer.hidden = false;
+  layer.setAttribute('aria-hidden', 'false');
+  dayRevealShowing = true;
+
+  if (restart) resetDayRevealAnimation(layer);
+
+  requestAnimationFrame(() => {
+    layer.classList.add('is-visible');
+  });
+
+  scheduleDayRevealHide(layer, ui);
+  return true;
+}
+
+function maybeShowDayReveal({ todayDnd, todayBd, todayMemorials, harptosDoy, refYear, today, ui }) {
+  if (ui.enableDayReveal === false) return;
+
+  const payload = buildDayRevealPayload({ todayDnd, todayBd, todayMemorials, harptosDoy, today, ui });
+  if (!payload) {
+    if (dayRevealShowing) hideDayRevealLayer();
+    return;
+  }
+
+  const debugReplay = debugCalendarActive && debugSimulatedDoy != null;
+
+  if (!debugReplay) {
+    if (prefersReducedMotion()) return;
+    if (dayRevealShowing) return;
+    if (hasDayRevealBeenShown(refYear, harptosDoy)) return;
+  }
+
+  const didShow = showDayReveal(payload, ui, { restart: debugReplay && dayRevealShowing });
+  if (!didShow) return;
+
+  if (!debugReplay) markDayRevealShown(refYear, harptosDoy);
 }
 
 function renderCalendar() {
@@ -1450,11 +1552,18 @@ function renderCalendar() {
     const sub = mem.subtitle
       ? `<div class="memorial-banner-sub">${mem.subtitle}</div>`
       : '';
-    const deathMem = isMemorialDeath(mem);
-    const bcls = deathMem ? 'memorial-banner memorial-banner--mourning' : 'memorial-banner';
-    const deco = deathMem ? '🕯' : '✦';
-    bannerEl.innerHTML +=
-      `<div class="${bcls}"><div class="memorial-banner-text">${deco} ${mem.title} ${deco}</div>${sub}</div>`;
+    const memType = getMemorialType(mem);
+    let bcls = 'memorial-banner';
+    if (memType === 'death') bcls += ' memorial-banner--mourning';
+    else if (memType === 'festive') bcls += ' memorial-banner--festive';
+    if (memType === 'death') {
+      bannerEl.innerHTML +=
+        `<div class="${bcls}"><div class="memorial-banner-text">${mem.title}</div>${sub}</div>`;
+    } else {
+      const deco = memorialIconFor(mem);
+      bannerEl.innerHTML +=
+        `<div class="${bcls}"><div class="memorial-banner-text">${deco} ${mem.title} ${deco}</div>${sub}</div>`;
+    }
   }
 
   const todayBlock = document.getElementById('today-block');
@@ -1504,17 +1613,19 @@ function renderCalendar() {
         const birthday = getBirthdayForDoy(doy, refYear);
         const memorials = getMemorialsForDoy(doy, refYear);
         const hasDeath = memorialsHasDeath(memorials);
-        const hasCel = memorialsHasCelebration(memorials);
+        const hasFestive = memorialsHasFestive(memorials);
+        const hasSubdued = memorialsHasSubdued(memorials);
         const realStr = formatGregorianInDisplayTz(doyToRealDate(doy, refYear), { day: 'numeric', month: 'long' });
         const bdTitle = birthday ? ` · 🎂 ${birthday.name} is jarig!` : '';
         let memTitle = '';
         for (const mem of memorials) {
-          memTitle += isMemorialDeath(mem) ? ` · 🕯 ${mem.title}` : ` · ✦ ${mem.title}`;
+          memTitle += ` · ${memorialLabelFor(mem)}`;
         }
         let baseCls;
         if (isToday) {
           if (birthday) baseCls = 'birthday-today';
-          else if (hasCel) baseCls = 'memorial-today';
+          else if (hasFestive) baseCls = 'memorial-festive-today';
+          else if (hasSubdued) baseCls = 'memorial-today';
           else if (hasDeath) baseCls = 'memorial-death-today';
           else baseCls = 'today-cell';
         } else {
@@ -1522,12 +1633,14 @@ function renderCalendar() {
         }
         let markers = '';
         if (birthday) markers += ' birthday-day';
-        if (hasCel) markers += ' memorial-day';
+        if (hasFestive) markers += ' memorial-day memorial-day--festive';
+        if (hasSubdued) markers += ' memorial-day';
         if (hasDeath) markers += ' memorial-day--death';
         let pips = '';
         if (birthday) pips += '<span class="cake-pip">🎂</span>';
         if (hasDeath) pips += '<span class="memorial-pip memorial-pip--death">🕯</span>';
-        if (hasCel) pips += '<span class="memorial-pip memorial-pip--celebration">✦</span>';
+        if (hasFestive) pips += '<span class="memorial-pip memorial-pip--festive">✨</span>';
+        if (hasSubdued) pips += '<span class="memorial-pip memorial-pip--celebration">✦</span>';
         const tooltipText = `${phase} · ${realStr}${bdTitle}${memTitle}`;
         if (birthday || memorials.length) {
           cells += `<div class="day-cell ${baseCls}${markers}" data-doy="${doy}" data-tooltip="${tooltipText}" tabindex="0" role="button" aria-label="${tooltipText}">${d}${pips}</div>`;
@@ -1553,11 +1666,13 @@ function renderCalendar() {
       const sBd = getBirthdayForDoy(sdoy, refYear);
       const sMems = getMemorialsForDoy(sdoy, refYear);
       const sHasDeath = memorialsHasDeath(sMems);
-      const sHasCel = memorialsHasCelebration(sMems);
+      const sHasFestive = memorialsHasFestive(sMems);
+      const sHasSubdued = memorialsHasSubdued(sMems);
       let scMarkers = '';
       if (sBd) scMarkers += '<span class="sc-marker-cake" aria-hidden="true">🎂</span>';
       if (sHasDeath) scMarkers += '<span class="sc-marker-death" aria-hidden="true">🕯</span>';
-      if (sHasCel) scMarkers += '<span class="sc-marker-celebration" aria-hidden="true">✦</span>';
+      if (sHasFestive) scMarkers += '<span class="sc-marker-festive" aria-hidden="true">✨</span>';
+      if (sHasSubdued) scMarkers += '<span class="sc-marker-celebration" aria-hidden="true">✦</span>';
       const markerWrap = scMarkers ? `<div class="special-card-markers">${scMarkers}</div>` : '';
       card.innerHTML = `<span class="s-icon">${s.icon}</span><div class="s-name">${s.name}</div><div class="s-real-date">${realDateStr}</div><div class="s-moon">${s.moon}</div>${markerWrap}`;
       let cls = `special-card special-${s.css}`;
@@ -1630,7 +1745,7 @@ function renderCalendar() {
     .filter((x) => x.doy != null)
     .sort((a, b) => {
       if (a.doy !== b.doy) return a.doy - b.doy;
-      return (isMemorialDeath(a.mem) ? 1 : 0) - (isMemorialDeath(b.mem) ? 1 : 0);
+      return memorialSortOrder(a.mem) - memorialSortOrder(b.mem);
     });
   for (const { mem, doy: doyM } of memorialSorted) {
     const isTodayM = doyM === harptosDoy;
@@ -1639,15 +1754,18 @@ function renderCalendar() {
     const subLine = mem.subtitle
       ? `<div class="memorial-date">${hLabel} · ${mem.subtitle}</div>`
       : `<div class="memorial-date">${hLabel}</div>`;
-    const deathRow = isMemorialDeath(mem);
-    const rowIcon = deathRow ? '🕯' : (isTodayM ? '✦' : '·');
+    const memType = getMemorialType(mem);
+    const rowIcon = memType === 'death' ? '🕯' : (memType === 'festive' ? '✨' : (isTodayM ? '✦' : '·'));
     row.innerHTML = `
     <span class="memorial-icon">${rowIcon}</span>
     <div>
       <div class="memorial-title">${mem.title}</div>
       ${subLine}
     </div>`;
-    let mcls = 'memorial-item' + (deathRow ? ' memorial-item--death' : '') + (isTodayM ? ' is-today' : '');
+    let mcls = 'memorial-item';
+    if (memType === 'death') mcls += ' memorial-item--death';
+    else if (memType === 'festive') mcls += ' memorial-item--festive';
+    if (isTodayM) mcls += ' is-today';
     if (debugCalendarActive) mcls += ' debug-clickable';
     row.className = mcls;
     if (debugCalendarActive) {
@@ -1669,7 +1787,7 @@ function renderCalendar() {
   } else {
     if (todayDnd && todayDnd.special && todayDnd.special.css)
       startFestFx(todayDnd.special.css);
-    else if (memorialsHasCelebration(todayMemorials))
+    else if (memorialsHasFestive(todayMemorials))
       startFestFx('memorial-celebration');
     else if (memorialsHasDeath(todayMemorials))
       startFestFx('memorial-mourning');
