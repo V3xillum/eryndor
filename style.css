@@ -1354,6 +1354,155 @@
   .birthday-name { font-family:'Cinzel',serif; font-size:calc(12px * var(--ery-font-scale)); font-weight:600; color:var(--ink); }
   .birthday-date { font-family:'IM Fell English',serif; font-size:calc(11px * var(--ery-font-scale)); font-style:italic; color:var(--ink-light); }
 
+  /* Day reveal — donkere backdrop + intro-kaart (onder canvas-FX, confetti blijft bovenop) */
+  .day-reveal-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 990;
+    pointer-events: none;
+  }
+  .day-reveal-layer[hidden] { display: none !important; }
+  .day-reveal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.64);
+    opacity: 0;
+    transition: opacity 0.55s ease;
+  }
+  .day-reveal-card {
+    position: absolute;
+    left: 50%;
+    top: 42%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: min(92vw, 380px);
+    padding: 28px 26px 24px;
+    border-radius: 4px;
+    text-align: center;
+    opacity: 0;
+    border: 1px solid transparent;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.65);
+    transition:
+      opacity 0.5s ease,
+      transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .day-reveal-icon {
+    display: block;
+    font-size: calc(42px * var(--ery-font-scale));
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .day-reveal-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: calc(20px * var(--ery-font-scale));
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
+  .day-reveal-sub {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: calc(13px * var(--ery-font-scale));
+    line-height: 1.4;
+    opacity: 0.82;
+  }
+  .day-reveal-layer.is-visible .day-reveal-backdrop { opacity: 1; }
+  .day-reveal-layer.is-visible .day-reveal-card {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .day-reveal-layer.is-hiding .day-reveal-backdrop,
+  .day-reveal-layer.is-hiding .day-reveal-card {
+    opacity: 0;
+    transition-duration: 0.72s;
+  }
+  .day-reveal-layer.is-hiding .day-reveal-card {
+    transform: translate(-50%, -50%) scale(0.96);
+  }
+
+  /* Thema’s — afgestemd op special-cards en banners */
+  .day-reveal-card--midwinter {
+    background: linear-gradient(160deg, #0e1a2e, #162840, #0e1a2e);
+    border-color: #4a90c4;
+    box-shadow: 0 0 28px rgba(74, 144, 196, 0.35), 0 24px 80px rgba(0, 0, 0, 0.65);
+  }
+  .day-reveal-card--midwinter .day-reveal-title { color: #a8d4f0; text-shadow: 0 0 14px rgba(168, 212, 240, 0.55); }
+  .day-reveal-card--midwinter .day-reveal-sub { color: rgba(168, 212, 240, 0.72); }
+  .day-reveal-card--midwinter .day-reveal-icon { filter: drop-shadow(0 0 8px #4a90c4); }
+
+  .day-reveal-card--greengrass {
+    background: linear-gradient(160deg, #0d1e0e, #162b12, #0d1e0e);
+    border-color: #4caf50;
+    box-shadow: 0 0 28px rgba(76, 175, 80, 0.3), 0 24px 80px rgba(0, 0, 0, 0.65);
+  }
+  .day-reveal-card--greengrass .day-reveal-title { color: #a5d6a7; text-shadow: 0 0 14px rgba(165, 214, 167, 0.5); }
+  .day-reveal-card--greengrass .day-reveal-sub { color: rgba(165, 214, 167, 0.72); }
+  .day-reveal-card--greengrass .day-reveal-icon { filter: drop-shadow(0 0 8px #4caf50); }
+
+  .day-reveal-card--midsummer {
+    background: linear-gradient(160deg, #1e1400, #2e1e00, #1e1400);
+    border-color: #f0b000;
+    box-shadow: 0 0 32px rgba(240, 176, 0, 0.38), 0 24px 80px rgba(0, 0, 0, 0.65);
+  }
+  .day-reveal-card--midsummer .day-reveal-title { color: #ffe082; text-shadow: 0 0 16px rgba(255, 224, 130, 0.65); }
+  .day-reveal-card--midsummer .day-reveal-sub { color: rgba(255, 224, 130, 0.72); }
+  .day-reveal-card--midsummer .day-reveal-icon { filter: drop-shadow(0 0 10px #f0b000); }
+
+  .day-reveal-card--highharvestide {
+    background: linear-gradient(160deg, #1e1000, #2e1800, #1e1000);
+    border-color: #d4700a;
+    box-shadow: 0 0 28px rgba(212, 112, 10, 0.32), 0 24px 80px rgba(0, 0, 0, 0.65);
+  }
+  .day-reveal-card--highharvestide .day-reveal-title { color: #ffcc80; text-shadow: 0 0 14px rgba(255, 204, 128, 0.55); }
+  .day-reveal-card--highharvestide .day-reveal-sub { color: rgba(255, 204, 128, 0.72); }
+  .day-reveal-card--highharvestide .day-reveal-icon { filter: drop-shadow(0 0 8px #d4700a); }
+
+  .day-reveal-card--feastofthemoon {
+    background: linear-gradient(160deg, #0f0f1e, #191928, #0f0f1e);
+    border-color: #9e9ecf;
+    box-shadow: 0 0 28px rgba(158, 158, 207, 0.35), 0 24px 80px rgba(0, 0, 0, 0.65);
+  }
+  .day-reveal-card--feastofthemoon .day-reveal-title { color: #d1d1f0; text-shadow: 0 0 14px rgba(209, 209, 240, 0.6); }
+  .day-reveal-card--feastofthemoon .day-reveal-sub { color: rgba(209, 209, 240, 0.72); }
+  .day-reveal-card--feastofthemoon .day-reveal-icon { filter: drop-shadow(0 0 8px #9e9ecf); }
+
+  .day-reveal-card--birthday {
+    background: linear-gradient(135deg, #1a0800, #2d1200, #1a0800);
+    border-color: var(--gold-light);
+    box-shadow: 0 0 28px rgba(184, 134, 11, 0.45), 0 24px 80px rgba(0, 0, 0, 0.65);
+  }
+  .day-reveal-card--birthday .day-reveal-title { color: var(--gold-pale); text-shadow: 0 0 18px rgba(240, 208, 96, 0.55); }
+  .day-reveal-card--birthday .day-reveal-sub { color: rgba(244, 232, 193, 0.72); }
+
+  .day-reveal-card--memorial {
+    background: linear-gradient(135deg, #0c1018, #141c28, #0c1018);
+    border-color: rgba(138, 158, 196, 0.55);
+    box-shadow: 0 0 24px rgba(100, 130, 180, 0.3), 0 24px 80px rgba(0, 0, 0, 0.65);
+  }
+  .day-reveal-card--memorial .day-reveal-title { color: #d8e4f8; text-shadow: 0 0 14px rgba(180, 200, 240, 0.4); }
+  .day-reveal-card--memorial .day-reveal-sub { color: rgba(200, 215, 245, 0.72); }
+
+  .day-reveal-card--mourning {
+    background: linear-gradient(135deg, #0a0a0c, #121218, #0a0a0c);
+    border-color: rgba(90, 90, 100, 0.5);
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.75), 0 24px 80px rgba(0, 0, 0, 0.8);
+  }
+  .day-reveal-card--mourning .day-reveal-title { color: #c8c8d2; text-shadow: 0 0 10px rgba(100, 100, 115, 0.3); }
+  .day-reveal-card--mourning .day-reveal-sub { color: rgba(150, 150, 162, 0.72); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .day-reveal-backdrop,
+    .day-reveal-card {
+      transition-duration: 0.01ms !important;
+    }
+    .day-reveal-layer.is-hiding .day-reveal-card {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  body.ui-animations-off .day-reveal-backdrop,
+  body.ui-animations-off .day-reveal-card {
+    transition-duration: 0.2s !important;
+  }
+
   /* Subtiele feestdag-FX (onder confetti) */
   #fest-fx-canvas { position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:998; }
   /* Confetti (verjaardag) */

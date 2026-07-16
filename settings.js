@@ -15,6 +15,7 @@ export const SETTINGS = Object.freeze({
     enableCssAnimations: true, // banners + special cards + today pulse
     enableFestFx: true,        // seasonal/memorial canvas FX
     enableConfetti: true,      // birthday confetti canvas
+    enableDayReveal: true,     // korte intro-splash bij speciale dagen (1× per sessie)
     enableBackgroundHaze: true, // subtle non-festival background depth
   },
   /**

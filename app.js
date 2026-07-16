@@ -1242,6 +1242,169 @@ function setupDebugTitleTapToggle() {
   });
 }
 
+const DAY_REVEAL_STORAGE_PREFIX = 'eryndor_day_reveal_v1_';
+const DAY_REVEAL_VISIBLE_MS = 2400;
+const DAY_REVEAL_FADE_MS = 750;
+
+let dayRevealHideTimer = null;
+let dayRevealShowing = false;
+
+const DAY_REVEAL_THEME_CLASSES = [
+  'day-reveal-card--midwinter',
+  'day-reveal-card--greengrass',
+  'day-reveal-card--midsummer',
+  'day-reveal-card--highharvestide',
+  'day-reveal-card--feastofthemoon',
+  'day-reveal-card--birthday',
+  'day-reveal-card--memorial',
+  'day-reveal-card--mourning',
+];
+
+function prefersReducedMotion() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+function dayRevealStorageKey(refYear, harptosDoy) {
+  return `${DAY_REVEAL_STORAGE_PREFIX}${refYear}_${harptosDoy}`;
+}
+
+function hasDayRevealBeenShown(refYear, harptosDoy) {
+  try {
+    return window.sessionStorage.getItem(dayRevealStorageKey(refYear, harptosDoy)) === '1';
+  } catch (_) {
+    return false;
+  }
+}
+
+function markDayRevealShown(refYear, harptosDoy) {
+  try {
+    window.sessionStorage.setItem(dayRevealStorageKey(refYear, harptosDoy), '1');
+  } catch (_) {
+    // ignore storage errors
+  }
+}
+
+/**
+ * @returns {{ themeClass: string, icon: string, title: string, subtitle: string }|null}
+ */
+function buildDayRevealPayload({ todayDnd, todayBd, todayMemorials, harptosDoy, today }) {
+  const hasFest = !!(todayDnd && todayDnd.special);
+  const hasBd = !!todayBd;
+  const hasMem = !!(todayMemorials && todayMemorials.length);
+  if (!hasFest && !hasBd && !hasMem) return null;
+
+  const extras = [];
+  let themeClass = 'day-reveal-card--memorial';
+  let icon = '✦';
+  let title = '';
+  let subtitle = '';
+
+  if (hasFest) {
+    const s = todayDnd.special;
+    themeClass = `day-reveal-card--${s.css}`;
+    icon = s.icon;
+    title = s.name;
+    subtitle = s.moon || '';
+    if (hasBd) extras.push(`🎂 ${todayBd.name}`);
+    for (const mem of todayMemorials) {
+      extras.push(isMemorialDeath(mem) ? `🕯 ${mem.title}` : `✦ ${mem.title}`);
+    }
+  } else if (hasBd) {
+    themeClass = 'day-reveal-card--birthday';
+    icon = '🎂';
+    title = `Gelukkige Naamdag, ${todayBd.name}!`;
+    subtitle = harptosLabelForDoy(harptosDoy);
+    for (const mem of todayMemorials) {
+      extras.push(isMemorialDeath(mem) ? `🕯 ${mem.title}` : `✦ ${mem.title}`);
+    }
+  } else if (memorialsHasCelebration(todayMemorials)) {
+    themeClass = 'day-reveal-card--memorial';
+    const cel = todayMemorials.find((m) => !isMemorialDeath(m));
+    icon = '✦';
+    title = cel.title;
+    subtitle = cel.subtitle || harptosLabelForDoy(harptosDoy);
+    for (const mem of todayMemorials) {
+      if (mem === cel) continue;
+      extras.push(isMemorialDeath(mem) ? `🕯 ${mem.title}` : `✦ ${mem.title}`);
+    }
+  } else {
+    themeClass = 'day-reveal-card--mourning';
+    const death = todayMemorials.find((m) => isMemorialDeath(m));
+    icon = '🕯';
+    title = death.title;
+    subtitle = death.subtitle || harptosLabelForDoy(harptosDoy);
+    for (const mem of todayMemorials) {
+      if (mem === death) continue;
+      extras.push(isMemorialDeath(mem) ? `🕯 ${mem.title}` : `✦ ${mem.title}`);
+    }
+  }
+
+  if (extras.length) {
+    subtitle = subtitle ? `${subtitle} · ${extras.join(' · ')}` : extras.join(' · ');
+  }
+
+  const realStr = formatGregorianInDisplayTz(today, { weekday: 'long', day: 'numeric', month: 'long' });
+  subtitle = subtitle ? `${subtitle} · ${realStr}` : realStr;
+
+  return { themeClass, icon, title, subtitle };
+}
+
+function hideDayRevealLayer() {
+  const layer = document.getElementById('day-reveal-layer');
+  if (!layer) return;
+  if (dayRevealHideTimer) {
+    clearTimeout(dayRevealHideTimer);
+    dayRevealHideTimer = null;
+  }
+  layer.classList.remove('is-visible', 'is-hiding');
+  layer.setAttribute('aria-hidden', 'true');
+  layer.hidden = true;
+  dayRevealShowing = false;
+}
+
+function maybeShowDayReveal({ todayDnd, todayBd, todayMemorials, harptosDoy, refYear, today, ui }) {
+  if (ui.enableDayReveal === false) return;
+  if (dayRevealShowing) return;
+
+  const payload = buildDayRevealPayload({ todayDnd, todayBd, todayMemorials, harptosDoy, today });
+  if (!payload) return;
+  if (hasDayRevealBeenShown(refYear, harptosDoy)) return;
+
+  const layer = document.getElementById('day-reveal-layer');
+  const card = layer?.querySelector('.day-reveal-card');
+  const iconEl = layer?.querySelector('.day-reveal-icon');
+  const titleEl = layer?.querySelector('.day-reveal-title');
+  const subEl = layer?.querySelector('.day-reveal-sub');
+  if (!layer || !card || !iconEl || !titleEl || !subEl) return;
+
+  if (prefersReducedMotion()) return;
+
+  DAY_REVEAL_THEME_CLASSES.forEach((c) => card.classList.remove(c));
+  card.classList.add(payload.themeClass);
+  iconEl.textContent = payload.icon;
+  titleEl.textContent = payload.title;
+  subEl.textContent = payload.subtitle;
+
+  layer.hidden = false;
+  layer.setAttribute('aria-hidden', 'false');
+  dayRevealShowing = true;
+  markDayRevealShown(refYear, harptosDoy);
+
+  requestAnimationFrame(() => {
+    layer.classList.add('is-visible');
+  });
+
+  const visibleMs = ui.enableCssAnimations === false ? 1200 : DAY_REVEAL_VISIBLE_MS;
+  const fadeMs = ui.enableCssAnimations === false ? 200 : DAY_REVEAL_FADE_MS;
+
+  dayRevealHideTimer = window.setTimeout(() => {
+    layer.classList.add('is-hiding');
+    dayRevealHideTimer = window.setTimeout(() => {
+      hideDayRevealLayer();
+    }, fadeMs);
+  }, visibleMs);
+}
+
 function renderCalendar() {
   const today = getActiveGregorianDate();
   const refYear = today.getUTCFullYear();
@@ -1513,6 +1676,16 @@ function renderCalendar() {
     else
       stopFestFx();
   }
+
+  maybeShowDayReveal({
+    todayDnd,
+    todayBd,
+    todayMemorials,
+    harptosDoy,
+    refYear,
+    today,
+    ui,
+  });
 }
 
 setupDebugTitleTapToggle();
