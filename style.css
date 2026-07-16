@@ -903,11 +903,15 @@
     color: rgba(150, 150, 162, 0.55);
   }
 
-  /* Twee kaarsjes linksonder/rechtsonder — alleen bij death-thema (niet in splash) */
+  /* Twee kaarsjes linksonder/rechtsonder — binnen .page-kolom, fixed onderin viewport */
   .mourning-corner-candles {
     display: none;
     position: fixed;
-    inset: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(860px, calc(100vw - 40px));
+    bottom: clamp(18px, 4vw, 32px);
+    height: 0;
     pointer-events: none;
     z-index: 4;
   }
@@ -916,13 +920,13 @@
   }
   .mourning-corner-candles__candle {
     position: absolute;
-    bottom: clamp(18px, 4vw, 32px);
+    bottom: 0;
   }
   .mourning-corner-candles__candle--left {
-    left: clamp(16px, 3.5vw, 28px);
+    left: 12px;
   }
   .mourning-corner-candles__candle--right {
-    right: clamp(16px, 3.5vw, 28px);
+    right: 12px;
   }
   .memorial-candle {
     position: absolute;
@@ -1806,6 +1810,9 @@
       padding: 54px 14px 78px;
       padding-left: clamp(14px, 4.2vw, 20px);
       padding-right: clamp(14px, 4.2vw, 20px);
+    }
+    .mourning-corner-candles {
+      width: min(860px, calc(100vw - 2 * clamp(14px, 4.2vw, 20px)));
     }
     .scroll { padding: 26px clamp(12px, 3.6vw, 18px) 40px; }
     /* Eén maand per rij; tenday blijft 10 kolommen (geen 5-koloms override). */
