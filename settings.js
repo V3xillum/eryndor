@@ -52,7 +52,7 @@ export const SETTINGS = Object.freeze({
     { dayOfYear: 312, title: 'Stichting van The Pixie\'s Promise' },
     { dayOfYear: 348, title: 'Draxion', type: 'death', subtitle: '14 december 2025' },
     { gregorian: "4-4", title: "Velkan", type: "death", subtitle: "4 april 2026" },
-    { gregorian: "9-7", title: "Orlin Ashleaf", type: "death", subtitle: "9 juli 2026" },
+    { gregorian: "6-9", title: "Orlin Ashleaf", type: "death", subtitle: "9 juli 2026" },
 
   ],
 });
