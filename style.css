@@ -948,36 +948,61 @@
   }
   .memorial-flame {
     position: absolute;
-    top: -11px;
+    top: -14px;
     left: 50%;
-    width: 10px;
-    height: 13px;
-    margin-left: -5px;
-    border-radius: 50% 50% 45% 45%;
+    width: 12px;
+    height: 16px;
+    margin-left: -6px;
+    border-radius: 50% 50% 42% 42%;
     background:
-      radial-gradient(ellipse 70% 80% at 50% 85%, rgba(255, 220, 80, 0.95) 0%, rgba(255, 150, 40, 0.85) 45%, rgba(255, 90, 20, 0.4) 72%, transparent 100%);
+      radial-gradient(ellipse 75% 85% at 50% 88%, rgba(255, 240, 120, 1) 0%, rgba(255, 165, 45, 0.92) 42%, rgba(255, 75, 15, 0.55) 68%, transparent 100%);
     box-shadow:
-      0 0 8px rgba(255, 180, 60, 0.55),
-      0 0 16px rgba(255, 140, 40, 0.25);
-    transform-origin: 50% 90%;
-    animation: candleFlicker 1.15s ease-in-out infinite alternate;
+      0 0 10px rgba(255, 195, 70, 0.8),
+      0 0 22px rgba(255, 140, 40, 0.5),
+      0 0 36px rgba(255, 90, 20, 0.28);
+    transform-origin: 50% 92%;
+    filter: brightness(1);
+    animation: candleFlicker 0.58s ease-in-out infinite;
   }
-  .memorial-candle:nth-child(2) .memorial-flame {
-    animation-delay: 0.42s;
-    animation-duration: 1.35s;
+  .mourning-corner-candles__candle--right .memorial-flame {
+    animation-delay: 0.31s;
+    animation-duration: 0.74s;
   }
   @keyframes candleFlicker {
     0% {
-      transform: scale(1, 1) rotate(-3deg);
-      opacity: 0.88;
+      transform: scale(1, 1.06) rotate(-7deg) translateX(-0.6px);
+      opacity: 0.78;
+      filter: brightness(0.88);
+    }
+    16% {
+      transform: scale(1.22, 0.82) rotate(5deg) translateX(0.8px);
+      opacity: 1;
+      filter: brightness(1.2);
+    }
+    33% {
+      transform: scale(0.86, 1.14) rotate(-3deg);
+      opacity: 0.72;
+      filter: brightness(0.82);
     }
     50% {
-      transform: scale(1.06, 0.94) rotate(1deg);
-      opacity: 1;
+      transform: scale(1.16, 0.88) rotate(8deg) translateX(-1px);
+      opacity: 0.97;
+      filter: brightness(1.12);
+    }
+    66% {
+      transform: scale(0.9, 1.1) rotate(-6deg) translateX(0.9px);
+      opacity: 0.8;
+      filter: brightness(0.9);
+    }
+    83% {
+      transform: scale(1.1, 0.92) rotate(4deg);
+      opacity: 0.94;
+      filter: brightness(1.05);
     }
     100% {
-      transform: scale(0.94, 1.05) rotate(3deg);
-      opacity: 0.92;
+      transform: scale(0.96, 1.04) rotate(-4deg) translateX(-0.4px);
+      opacity: 0.86;
+      filter: brightness(0.96);
     }
   }
   body.ui-animations-off .memorial-flame {
