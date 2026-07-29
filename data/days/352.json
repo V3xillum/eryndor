@@ -20,11 +20,5 @@
     "emoji": "🌗",
     "isExactFullMoon": false
   },
-  "events": [],
-  "nextFullMoon": {
-    "dayOfYear": 15,
-    "daysUntil": 28,
-    "whenText": "over 28 dagen",
-    "label": "15 Hammer"
-  }
+  "events": []
 }

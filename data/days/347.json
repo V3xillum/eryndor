@@ -25,11 +25,5 @@
       "type": "birthday",
       "name": "Skyrend"
     }
-  ],
-  "nextFullMoon": {
-    "dayOfYear": 15,
-    "daysUntil": 33,
-    "whenText": "over 33 dagen",
-    "label": "15 Hammer"
-  }
+  ]
 }

@@ -9,13 +9,15 @@ Expose two Discord commands (slash or prefix — prefer slash):
 1. **Today** — current Harptos day, moon phase, and events (birthdays, memorials, festivals).
 2. **Next full moon** — next *exact* Full Moon (not Rising/Fading).
 
+These are **separate endpoints**. Day JSON does **not** include next full moon.
+
 User-facing replies should be in **Dutch**.
 
 ## Critical constraints
 
 - The calendar site is **static GitHub Pages**. There is **no live API** that computes “today” on request.
 - JSON files are **pre-generated**. After `settings.js` changes on the calendar repo, someone must run `npm run generate-api-json` and push `data/`.
-- The bot must compute the current Harptos day-of-year (DOY) itself, then fetch the matching file.
+- The bot must compute the current Harptos day-of-year (DOY) itself, then fetch the matching file(s).
 - Cap Gregorian day-of-year at **365** (Harptos has no leap day; 29 Feb is ignored).
 
 ## Base URLs
@@ -38,16 +40,17 @@ Paths are the same under both bases (`/data/...`).
 
 ## Endpoints
 
-### 1. Day payload (use for “today”)
+### 1. Today — day + events
 
 ```
 GET {BASE}/data/days/{doy}.json
 ```
 
 - `{doy}` = `001` … `365` (always **3 digits**, zero-padded).
+- Contains: Harptos date, moon phase, events only.
 - Example: https://v3xillum.github.io/eryndor/data/days/210.json
 
-### 2. Full moons (optional; day JSON already includes `nextFullMoon`)
+### 2. Next full moon
 
 ```
 GET {BASE}/data/full-moons.json
@@ -89,13 +92,7 @@ function dayUrl(base, doy) {
 }
 ```
 
-Fetch flow for **today**:
-
-1. `doy = harptosDoyNow()`
-2. `GET dayUrl(BASE, doy)`
-3. Parse JSON; render Discord message.
-
-## Day JSON schema
+## Day JSON schema (`/vandaag`)
 
 ```json
 {
@@ -120,13 +117,7 @@ Fetch flow for **today**:
     "emoji": "🌑",
     "isExactFullMoon": false
   },
-  "events": [],
-  "nextFullMoon": {
-    "dayOfYear": 225,
-    "daysUntil": 15,
-    "whenText": "over 15 dagen",
-    "label": "12 Eleasis"
-  }
+  "events": []
 }
 ```
 
@@ -138,7 +129,6 @@ Fetch flow for **today**:
 | `harptos.special` | Festival name or `null` |
 | `moon.isExactFullMoon` | `true` only on exact `"Full Moon"` (not Rising/Fading) |
 | `events[]` | Zero or more events for that day |
-| `nextFullMoon` | Next exact Full Moon from this DOY (incl. today if exact) |
 | `leapYearNote` | Non-null string in Gregorian leap years |
 
 ### Event object types
@@ -168,18 +158,28 @@ Fetch flow for **today**:
 
 `memorialType`: `"festive"` | `"death"` | `"memorial"` (subdued / default).
 
+## Full moons JSON (`/vollemaan`)
+
+```js
+const doy = harptosDoyNow();
+const moons = await (await fetch(`${BASE}/data/full-moons.json`)).json();
+const next = moons.nextByFromDoy[String(doy)];
+// next: { dayOfYear, daysUntil, whenText, label }
+```
+
+`nextByFromDoy` values use **exact** Full Moon only (not Rising/Fading).
+
 ## Suggested Discord commands
 
 ### `/vandaag` (or `/today`)
 
-1. Fetch day JSON for current DOY.
+1. Fetch **only** day JSON for current DOY.
 2. Reply with an embed (or plain text), Dutch, e.g.:
 
 - **Titel:** Vandaag — `{harptos.label}`
 - Gregoriaans: `{gregorian.iso}` (or formatted)
 - Maan: `{moon.emoji} {moon.phase}`
 - Events: list or “Geen events vandaag”
-- Optional footer: volgende Full Moon from `nextFullMoon`
 
 Event line ideas:
 
@@ -191,9 +191,9 @@ Event line ideas:
 
 ### `/vollemaan` (or `/fullmoon`)
 
-Simplest: reuse today JSON → `nextFullMoon`.
-
-Or: `GET /data/full-moons.json` → `nextByFromDoy[String(doy)]`.
+1. Compute DOY.
+2. Fetch **`/data/full-moons.json`** (not the day file).
+3. Read `nextByFromDoy[String(doy)]`.
 
 Reply e.g.:
 
@@ -211,7 +211,8 @@ Reply e.g.:
 
 - Do not scrape the HTML calendar page for data.
 - Do not invent Harptos dates or moon phases; trust the JSON.
-- Do not treat `"Full Moon (Rising)"` / `"Full Moon (Fading)"` as exact full moon for `/vollemaan` (JSON `nextFullMoon` already uses exact only).
+- Do not expect `nextFullMoon` on day JSON — use `full-moons.json` only.
+- Do not treat `"Full Moon (Rising)"` / `"Full Moon (Fading)"` as exact full moon (`nextByFromDoy` already uses exact only).
 - Do not assume `events` is non-empty.
 
 ## Source of truth (calendar repo)
@@ -221,8 +222,8 @@ Reply e.g.:
 | `settings.js` | Birthdays & memorials (edit here) |
 | `calendar-core.js` | Shared Harptos / moon logic |
 | `scripts/generate-api-json.mjs` | Regenerates `data/` |
-| `data/days/*.json` | Per-day API files |
-| `data/full-moons.json` | Full moon index |
+| `data/days/*.json` | Per-day API (today only) |
+| `data/full-moons.json` | Full moon index / next lookup |
 | `data/meta.json` | Generation metadata |
 
 Regenerate after settings changes:
@@ -236,8 +237,9 @@ Then commit and push `data/`.
 
 ## Quick test checklist
 
-- [ ] `GET …/data/days/210.json` returns JSON (not HTML 404)
+- [ ] `GET …/data/days/210.json` returns JSON without `nextFullMoon`
+- [ ] `GET …/data/full-moons.json` has `nextByFromDoy`
 - [ ] `harptosDoyNow()` in Amsterdam matches calendar “vandaag”
-- [ ] `/vandaag` shows label + moon + events
-- [ ] `/vollemaan` uses `nextFullMoon` / exact Full Moon only
+- [ ] `/vandaag` shows label + moon + events only
+- [ ] `/vollemaan` uses `full-moons.json` only
 - [ ] Empty `events` still produces a valid reply

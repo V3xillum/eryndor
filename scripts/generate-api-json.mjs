@@ -6,7 +6,7 @@
  *   node scripts/generate-api-json.mjs --year=2026
  *
  * Output:
- *   data/days/001.json … 365.json  — dag + events + nextFullMoon
+ *   data/days/001.json … 365.json  — dag + maan + events (geen nextFullMoon)
  *   data/full-moons.json            — alle exacte Full Moon DOYs + lookup per fromDoy
  *   data/meta.json                  — refYear, timezone, hoe te gebruiken
  *
@@ -16,7 +16,6 @@
  *
  * Discord-bot (volgende volle maan):
  *   GET …/data/full-moons.json  → nextByFromDoy[String(doy)]
- *   of gebruik nextFullMoon uit het day-bestand
  */
 
 import { mkdir, writeFile, rm } from 'node:fs/promises';
@@ -110,8 +109,8 @@ async function main() {
         examplePath: `data/days/${String(todayDoy).padStart(3, '0')}.json`,
       },
       nextFullMoon: {
-        optionA: 'Lees nextFullMoon uit het day-JSON-bestand',
-        optionB: 'GET data/full-moons.json → nextByFromDoy[String(doy)]',
+        step1: `Bepaal day-of-year in ${timezone} (max 365)`,
+        step2: 'GET data/full-moons.json → nextByFromDoy[String(doy)]',
       },
     },
   };

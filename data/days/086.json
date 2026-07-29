@@ -25,11 +25,5 @@
       "type": "birthday",
       "name": "Nootje"
     }
-  ],
-  "nextFullMoon": {
-    "dayOfYear": 105,
-    "daysUntil": 19,
-    "whenText": "over 19 dagen",
-    "label": "14 Tarsakh"
-  }
+  ]
 }

@@ -20,11 +20,5 @@
     "emoji": "🌕",
     "isExactFullMoon": false
   },
-  "events": [],
-  "nextFullMoon": {
-    "dayOfYear": 165,
-    "daysUntil": 1,
-    "whenText": "morgen",
-    "label": "13 Kythorn"
-  }
+  "events": []
 }

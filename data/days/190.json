@@ -27,11 +27,5 @@
       "memorialType": "death",
       "subtitle": "9 juli 2026"
     }
-  ],
-  "nextFullMoon": {
-    "dayOfYear": 195,
-    "daysUntil": 5,
-    "whenText": "over 5 dagen",
-    "label": "13 Flamerule"
-  }
+  ]
 }

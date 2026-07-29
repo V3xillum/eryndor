@@ -20,11 +20,5 @@
     "emoji": "🌕",
     "isExactFullMoon": true
   },
-  "events": [],
-  "nextFullMoon": {
-    "dayOfYear": 285,
-    "daysUntil": 0,
-    "whenText": "vandaag",
-    "label": "11 Marpenoth"
-  }
+  "events": []
 }

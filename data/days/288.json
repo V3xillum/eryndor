@@ -25,11 +25,5 @@
       "type": "birthday",
       "name": "Orlin Ashleaf"
     }
-  ],
-  "nextFullMoon": {
-    "dayOfYear": 315,
-    "daysUntil": 27,
-    "whenText": "over 27 dagen",
-    "label": "11 Uktar"
-  }
+  ]
 }

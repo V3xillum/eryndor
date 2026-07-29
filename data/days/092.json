@@ -20,11 +20,5 @@
     "emoji": "🌑",
     "isExactFullMoon": false
   },
-  "events": [],
-  "nextFullMoon": {
-    "dayOfYear": 105,
-    "daysUntil": 13,
-    "whenText": "over 13 dagen",
-    "label": "14 Tarsakh"
-  }
+  "events": []
 }

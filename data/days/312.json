@@ -27,11 +27,5 @@
       "memorialType": "festive",
       "subtitle": null
     }
-  ],
-  "nextFullMoon": {
-    "dayOfYear": 315,
-    "daysUntil": 3,
-    "whenText": "over 3 dagen",
-    "label": "11 Uktar"
-  }
+  ]
 }

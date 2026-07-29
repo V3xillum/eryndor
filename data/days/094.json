@@ -27,11 +27,5 @@
       "memorialType": "death",
       "subtitle": "4 april 2026"
     }
-  ],
-  "nextFullMoon": {
-    "dayOfYear": 105,
-    "daysUntil": 11,
-    "whenText": "over 11 dagen",
-    "label": "14 Tarsakh"
-  }
+  ]
 }

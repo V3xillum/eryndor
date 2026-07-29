@@ -25,11 +25,5 @@
       "type": "birthday",
       "name": "Kezra"
     }
-  ],
-  "nextFullMoon": {
-    "dayOfYear": 135,
-    "daysUntil": 5,
-    "whenText": "over 5 dagen",
-    "label": "13 Mirtul"
-  }
+  ]
 }

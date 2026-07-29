@@ -20,11 +20,5 @@
     "emoji": "🌗",
     "isExactFullMoon": false
   },
-  "events": [],
-  "nextFullMoon": {
-    "dayOfYear": 195,
-    "daysUntil": 22,
-    "whenText": "over 22 dagen",
-    "label": "13 Flamerule"
-  }
+  "events": []
 }

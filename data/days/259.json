@@ -20,11 +20,5 @@
     "emoji": "🌖",
     "isExactFullMoon": false
   },
-  "events": [],
-  "nextFullMoon": {
-    "dayOfYear": 285,
-    "daysUntil": 26,
-    "whenText": "over 26 dagen",
-    "label": "11 Marpenoth"
-  }
+  "events": []
 }

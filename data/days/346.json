@@ -25,11 +25,5 @@
       "type": "birthday",
       "name": "Barry"
     }
-  ],
-  "nextFullMoon": {
-    "dayOfYear": 15,
-    "daysUntil": 34,
-    "whenText": "over 34 dagen",
-    "label": "15 Hammer"
-  }
+  ]
 }

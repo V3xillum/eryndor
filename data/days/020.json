@@ -20,11 +20,5 @@
     "emoji": "🌖",
     "isExactFullMoon": false
   },
-  "events": [],
-  "nextFullMoon": {
-    "dayOfYear": 45,
-    "daysUntil": 25,
-    "whenText": "over 25 dagen",
-    "label": "14 Alturiak"
-  }
+  "events": []
 }

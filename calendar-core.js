@@ -240,8 +240,6 @@ export function buildDayPayload({ doy, refYear, timezone, birthdays, memorialDay
       }
     : null;
 
-  const nextFullMoon = findNextExactMoonPhase(doy, 'full moon');
-
   return {
     dayOfYear: doy,
     refYear,
@@ -278,7 +276,6 @@ export function buildDayPayload({ doy, refYear, timezone, birthdays, memorialDay
       ...birthdaysToday,
       ...memorialsToday,
     ],
-    nextFullMoon,
   };
 }
 

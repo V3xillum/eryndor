@@ -27,11 +27,5 @@
       "icon": "🌾",
       "css": "highharvestide"
     }
-  ],
-  "nextFullMoon": {
-    "dayOfYear": 285,
-    "daysUntil": 11,
-    "whenText": "over 11 dagen",
-    "label": "11 Marpenoth"
-  }
+  ]
 }

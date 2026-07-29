@@ -15,7 +15,7 @@ node scripts/generate-api-json.mjs --year=2026
 
 Output onder `data/`:
 
-- `data/days/001.json` … `365.json` — Harptos-dag, maan, events, `nextFullMoon`
+- `data/days/001.json` … `365.json` — Harptos-dag, maan, events
 - `data/full-moons.json` — alle exacte Full Moons + `nextByFromDoy`
 - `data/meta.json` — metadata / gebruiksinfo
 

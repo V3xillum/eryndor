@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-29T14:39:09.928Z",
+  "generatedAt": "2026-07-29T15:54:04.776Z",
   "refYear": 2026,
   "timezone": "Europe/Amsterdam",
   "note": "Statische JSON: niet live bij request. Na wijzigingen in settings.js opnieuw genereren. Gregoriaanse entries hangen af van refYear (schrikkeljaren).",
@@ -11,8 +11,8 @@
       "examplePath": "data/days/210.json"
     },
     "nextFullMoon": {
-      "optionA": "Lees nextFullMoon uit het day-JSON-bestand",
-      "optionB": "GET data/full-moons.json → nextByFromDoy[String(doy)]"
+      "step1": "Bepaal day-of-year in Europe/Amsterdam (max 365)",
+      "step2": "GET data/full-moons.json → nextByFromDoy[String(doy)]"
     }
   }
 }

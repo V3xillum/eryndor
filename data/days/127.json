@@ -20,11 +20,5 @@
     "emoji": "🌓",
     "isExactFullMoon": false
   },
-  "events": [],
-  "nextFullMoon": {
-    "dayOfYear": 135,
-    "daysUntil": 8,
-    "whenText": "over 8 dagen",
-    "label": "13 Mirtul"
-  }
+  "events": []
 }

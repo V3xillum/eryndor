@@ -27,11 +27,5 @@
       "icon": "❄️",
       "css": "midwinter"
     }
-  ],
-  "nextFullMoon": {
-    "dayOfYear": 45,
-    "daysUntil": 14,
-    "whenText": "over 14 dagen",
-    "label": "14 Alturiak"
-  }
+  ]
 }

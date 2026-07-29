@@ -20,11 +20,5 @@
     "emoji": "🌗",
     "isExactFullMoon": false
   },
-  "events": [],
-  "nextFullMoon": {
-    "dayOfYear": 315,
-    "daysUntil": 23,
-    "whenText": "over 23 dagen",
-    "label": "11 Uktar"
-  }
+  "events": []
 }

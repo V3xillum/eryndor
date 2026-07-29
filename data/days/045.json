@@ -25,11 +25,5 @@
       "type": "birthday",
       "name": "Nox"
     }
-  ],
-  "nextFullMoon": {
-    "dayOfYear": 45,
-    "daysUntil": 0,
-    "whenText": "vandaag",
-    "label": "14 Alturiak"
-  }
+  ]
 }

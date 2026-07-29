@@ -25,11 +25,5 @@
       "type": "birthday",
       "name": "Fireheart"
     }
-  ],
-  "nextFullMoon": {
-    "dayOfYear": 225,
-    "daysUntil": 14,
-    "whenText": "over 14 dagen",
-    "label": "12 Eleasis"
-  }
+  ]
 }

@@ -27,11 +27,5 @@
       "memorialType": "death",
       "subtitle": "14 december 2025"
     }
-  ],
-  "nextFullMoon": {
-    "dayOfYear": 15,
-    "daysUntil": 32,
-    "whenText": "over 32 dagen",
-    "label": "15 Hammer"
-  }
+  ]
 }

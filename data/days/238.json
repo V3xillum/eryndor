@@ -20,11 +20,5 @@
     "emoji": "🌑",
     "isExactFullMoon": false
   },
-  "events": [],
-  "nextFullMoon": {
-    "dayOfYear": 255,
-    "daysUntil": 17,
-    "whenText": "over 17 dagen",
-    "label": "12 Eleint"
-  }
+  "events": []
 }

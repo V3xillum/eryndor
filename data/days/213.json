@@ -27,11 +27,5 @@
       "icon": "🌞",
       "css": "midsummer"
     }
-  ],
-  "nextFullMoon": {
-    "dayOfYear": 225,
-    "daysUntil": 12,
-    "whenText": "over 12 dagen",
-    "label": "12 Eleasis"
-  }
+  ]
 }
