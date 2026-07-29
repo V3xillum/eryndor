@@ -1,0 +1,35 @@
+{
+  "dayOfYear": 288,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "14 Marpenoth",
+    "month": "Marpenoth",
+    "day": 14,
+    "special": null
+  },
+  "gregorian": {
+    "iso": "2026-10-15",
+    "year": 2026,
+    "month": 10,
+    "day": 15
+  },
+  "moon": {
+    "phase": "Waning Gibbous",
+    "emoji": "🌖",
+    "isExactFullMoon": false
+  },
+  "events": [
+    {
+      "type": "birthday",
+      "name": "Orlin Ashleaf"
+    }
+  ],
+  "nextFullMoon": {
+    "dayOfYear": 315,
+    "daysUntil": 27,
+    "whenText": "over 27 dagen",
+    "label": "11 Uktar"
+  }
+}

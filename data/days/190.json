@@ -1,0 +1,37 @@
+{
+  "dayOfYear": 190,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "8 Flamerule",
+    "month": "Flamerule",
+    "day": 8,
+    "special": null
+  },
+  "gregorian": {
+    "iso": "2026-07-09",
+    "year": 2026,
+    "month": 7,
+    "day": 9
+  },
+  "moon": {
+    "phase": "Waxing Gibbous (Rising)",
+    "emoji": "🌔",
+    "isExactFullMoon": false
+  },
+  "events": [
+    {
+      "type": "memorial",
+      "title": "Orlin Ashleaf",
+      "memorialType": "death",
+      "subtitle": "9 juli 2026"
+    }
+  ],
+  "nextFullMoon": {
+    "dayOfYear": 195,
+    "daysUntil": 5,
+    "whenText": "over 5 dagen",
+    "label": "13 Flamerule"
+  }
+}

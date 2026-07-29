@@ -1,0 +1,37 @@
+{
+  "dayOfYear": 274,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "Highharvestide",
+    "month": null,
+    "day": null,
+    "special": "Highharvestide"
+  },
+  "gregorian": {
+    "iso": "2026-10-01",
+    "year": 2026,
+    "month": 10,
+    "day": 1
+  },
+  "moon": {
+    "phase": "Waxing Crescent",
+    "emoji": "🌒",
+    "isExactFullMoon": false
+  },
+  "events": [
+    {
+      "type": "festival",
+      "name": "Highharvestide",
+      "icon": "🌾",
+      "css": "highharvestide"
+    }
+  ],
+  "nextFullMoon": {
+    "dayOfYear": 285,
+    "daysUntil": 11,
+    "whenText": "over 11 dagen",
+    "label": "11 Marpenoth"
+  }
+}

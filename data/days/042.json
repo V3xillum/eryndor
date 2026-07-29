@@ -1,0 +1,30 @@
+{
+  "dayOfYear": 42,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "11 Alturiak",
+    "month": "Alturiak",
+    "day": 11,
+    "special": null
+  },
+  "gregorian": {
+    "iso": "2026-02-11",
+    "year": 2026,
+    "month": 2,
+    "day": 11
+  },
+  "moon": {
+    "phase": "Waxing Gibbous",
+    "emoji": "🌔",
+    "isExactFullMoon": false
+  },
+  "events": [],
+  "nextFullMoon": {
+    "dayOfYear": 45,
+    "daysUntil": 3,
+    "whenText": "over 3 dagen",
+    "label": "14 Alturiak"
+  }
+}

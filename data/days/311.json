@@ -1,0 +1,37 @@
+{
+  "dayOfYear": 311,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "7 Uktar",
+    "month": "Uktar",
+    "day": 7,
+    "special": null
+  },
+  "gregorian": {
+    "iso": "2026-11-07",
+    "year": 2026,
+    "month": 11,
+    "day": 7
+  },
+  "moon": {
+    "phase": "Waxing Gibbous",
+    "emoji": "🌔",
+    "isExactFullMoon": false
+  },
+  "events": [
+    {
+      "type": "memorial",
+      "title": "Eerste stap op Eryndor",
+      "memorialType": "festive",
+      "subtitle": null
+    }
+  ],
+  "nextFullMoon": {
+    "dayOfYear": 315,
+    "daysUntil": 4,
+    "whenText": "over 4 dagen",
+    "label": "11 Uktar"
+  }
+}

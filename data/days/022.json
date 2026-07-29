@@ -1,0 +1,35 @@
+{
+  "dayOfYear": 22,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "22 Hammer",
+    "month": "Hammer",
+    "day": 22,
+    "special": null
+  },
+  "gregorian": {
+    "iso": "2026-01-22",
+    "year": 2026,
+    "month": 1,
+    "day": 22
+  },
+  "moon": {
+    "phase": "Last Quarter",
+    "emoji": "🌗",
+    "isExactFullMoon": false
+  },
+  "events": [
+    {
+      "type": "birthday",
+      "name": "Tony"
+    }
+  ],
+  "nextFullMoon": {
+    "dayOfYear": 45,
+    "daysUntil": 23,
+    "whenText": "over 23 dagen",
+    "label": "14 Alturiak"
+  }
+}

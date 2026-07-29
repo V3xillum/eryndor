@@ -1,0 +1,30 @@
+{
+  "dayOfYear": 255,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "12 Eleint",
+    "month": "Eleint",
+    "day": 12,
+    "special": null
+  },
+  "gregorian": {
+    "iso": "2026-09-12",
+    "year": 2026,
+    "month": 9,
+    "day": 12
+  },
+  "moon": {
+    "phase": "Full Moon",
+    "emoji": "🌕",
+    "isExactFullMoon": true
+  },
+  "events": [],
+  "nextFullMoon": {
+    "dayOfYear": 255,
+    "daysUntil": 0,
+    "whenText": "vandaag",
+    "label": "12 Eleint"
+  }
+}

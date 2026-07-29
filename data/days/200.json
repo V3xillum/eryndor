@@ -1,0 +1,30 @@
+{
+  "dayOfYear": 200,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "18 Flamerule",
+    "month": "Flamerule",
+    "day": 18,
+    "special": null
+  },
+  "gregorian": {
+    "iso": "2026-07-19",
+    "year": 2026,
+    "month": 7,
+    "day": 19
+  },
+  "moon": {
+    "phase": "Waning Gibbous (Fading)",
+    "emoji": "🌖",
+    "isExactFullMoon": false
+  },
+  "events": [],
+  "nextFullMoon": {
+    "dayOfYear": 225,
+    "daysUntil": 25,
+    "whenText": "over 25 dagen",
+    "label": "12 Eleasis"
+  }
+}

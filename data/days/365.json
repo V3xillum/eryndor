@@ -1,0 +1,30 @@
+{
+  "dayOfYear": 365,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "30 Nightal",
+    "month": "Nightal",
+    "day": 30,
+    "special": null
+  },
+  "gregorian": {
+    "iso": "2026-12-31",
+    "year": 2026,
+    "month": 12,
+    "day": 31
+  },
+  "moon": {
+    "phase": "Waxing Crescent",
+    "emoji": "🌒",
+    "isExactFullMoon": false
+  },
+  "events": [],
+  "nextFullMoon": {
+    "dayOfYear": 15,
+    "daysUntil": 15,
+    "whenText": "over 15 dagen",
+    "label": "15 Hammer"
+  }
+}

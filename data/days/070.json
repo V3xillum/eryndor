@@ -1,0 +1,30 @@
+{
+  "dayOfYear": 70,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "9 Ches",
+    "month": "Ches",
+    "day": 9,
+    "special": null
+  },
+  "gregorian": {
+    "iso": "2026-03-11",
+    "year": 2026,
+    "month": 3,
+    "day": 11
+  },
+  "moon": {
+    "phase": "Waxing Gibbous (Rising)",
+    "emoji": "🌔",
+    "isExactFullMoon": false
+  },
+  "events": [],
+  "nextFullMoon": {
+    "dayOfYear": 75,
+    "daysUntil": 5,
+    "whenText": "over 5 dagen",
+    "label": "14 Ches"
+  }
+}

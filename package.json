@@ -1,0 +1,8 @@
+{
+  "name": "eryndor-calander",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate-api-json": "node scripts/generate-api-json.mjs"
+  }
+}

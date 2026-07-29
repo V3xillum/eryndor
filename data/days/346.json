@@ -1,0 +1,35 @@
+{
+  "dayOfYear": 346,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "11 Nightal",
+    "month": "Nightal",
+    "day": 11,
+    "special": null
+  },
+  "gregorian": {
+    "iso": "2026-12-12",
+    "year": 2026,
+    "month": 12,
+    "day": 12
+  },
+  "moon": {
+    "phase": "Full Moon (Fading)",
+    "emoji": "🌕",
+    "isExactFullMoon": false
+  },
+  "events": [
+    {
+      "type": "birthday",
+      "name": "Barry"
+    }
+  ],
+  "nextFullMoon": {
+    "dayOfYear": 15,
+    "daysUntil": 34,
+    "whenText": "over 34 dagen",
+    "label": "15 Hammer"
+  }
+}

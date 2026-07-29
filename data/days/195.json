@@ -1,0 +1,30 @@
+{
+  "dayOfYear": 195,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "13 Flamerule",
+    "month": "Flamerule",
+    "day": 13,
+    "special": null
+  },
+  "gregorian": {
+    "iso": "2026-07-14",
+    "year": 2026,
+    "month": 7,
+    "day": 14
+  },
+  "moon": {
+    "phase": "Full Moon",
+    "emoji": "🌕",
+    "isExactFullMoon": true
+  },
+  "events": [],
+  "nextFullMoon": {
+    "dayOfYear": 195,
+    "daysUntil": 0,
+    "whenText": "vandaag",
+    "label": "13 Flamerule"
+  }
+}

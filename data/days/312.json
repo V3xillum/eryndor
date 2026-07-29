@@ -1,0 +1,37 @@
+{
+  "dayOfYear": 312,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "8 Uktar",
+    "month": "Uktar",
+    "day": 8,
+    "special": null
+  },
+  "gregorian": {
+    "iso": "2026-11-08",
+    "year": 2026,
+    "month": 11,
+    "day": 8
+  },
+  "moon": {
+    "phase": "Waxing Gibbous",
+    "emoji": "🌔",
+    "isExactFullMoon": false
+  },
+  "events": [
+    {
+      "type": "memorial",
+      "title": "Stichting van The Pixie's Promise",
+      "memorialType": "festive",
+      "subtitle": null
+    }
+  ],
+  "nextFullMoon": {
+    "dayOfYear": 315,
+    "daysUntil": 3,
+    "whenText": "over 3 dagen",
+    "label": "11 Uktar"
+  }
+}

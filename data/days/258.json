@@ -1,0 +1,30 @@
+{
+  "dayOfYear": 258,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "15 Eleint",
+    "month": "Eleint",
+    "day": 15,
+    "special": null
+  },
+  "gregorian": {
+    "iso": "2026-09-15",
+    "year": 2026,
+    "month": 9,
+    "day": 15
+  },
+  "moon": {
+    "phase": "Waning Gibbous",
+    "emoji": "🌖",
+    "isExactFullMoon": false
+  },
+  "events": [],
+  "nextFullMoon": {
+    "dayOfYear": 285,
+    "daysUntil": 27,
+    "whenText": "over 27 dagen",
+    "label": "11 Marpenoth"
+  }
+}

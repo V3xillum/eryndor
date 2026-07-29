@@ -1,0 +1,30 @@
+{
+  "dayOfYear": 162,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "10 Kythorn",
+    "month": "Kythorn",
+    "day": 10,
+    "special": null
+  },
+  "gregorian": {
+    "iso": "2026-06-11",
+    "year": 2026,
+    "month": 6,
+    "day": 11
+  },
+  "moon": {
+    "phase": "Waxing Gibbous",
+    "emoji": "🌔",
+    "isExactFullMoon": false
+  },
+  "events": [],
+  "nextFullMoon": {
+    "dayOfYear": 165,
+    "daysUntil": 3,
+    "whenText": "over 3 dagen",
+    "label": "13 Kythorn"
+  }
+}

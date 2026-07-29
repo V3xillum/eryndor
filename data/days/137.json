@@ -1,0 +1,35 @@
+{
+  "dayOfYear": 137,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "15 Mirtul",
+    "month": "Mirtul",
+    "day": 15,
+    "special": null
+  },
+  "gregorian": {
+    "iso": "2026-05-17",
+    "year": 2026,
+    "month": 5,
+    "day": 17
+  },
+  "moon": {
+    "phase": "Waning Gibbous (Rising)",
+    "emoji": "🌖",
+    "isExactFullMoon": false
+  },
+  "events": [
+    {
+      "type": "birthday",
+      "name": "Nixy Fernlore"
+    }
+  ],
+  "nextFullMoon": {
+    "dayOfYear": 165,
+    "daysUntil": 28,
+    "whenText": "over 28 dagen",
+    "label": "13 Kythorn"
+  }
+}

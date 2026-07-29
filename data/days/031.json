@@ -1,0 +1,37 @@
+{
+  "dayOfYear": 31,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "Midwinter",
+    "month": null,
+    "day": null,
+    "special": "Midwinter"
+  },
+  "gregorian": {
+    "iso": "2026-01-31",
+    "year": 2026,
+    "month": 1,
+    "day": 31
+  },
+  "moon": {
+    "phase": "New Moon",
+    "emoji": "🌑",
+    "isExactFullMoon": false
+  },
+  "events": [
+    {
+      "type": "festival",
+      "name": "Midwinter",
+      "icon": "❄️",
+      "css": "midwinter"
+    }
+  ],
+  "nextFullMoon": {
+    "dayOfYear": 45,
+    "daysUntil": 14,
+    "whenText": "over 14 dagen",
+    "label": "14 Alturiak"
+  }
+}

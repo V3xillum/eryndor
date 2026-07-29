@@ -1,0 +1,30 @@
+{
+  "dayOfYear": 292,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "18 Marpenoth",
+    "month": "Marpenoth",
+    "day": 18,
+    "special": null
+  },
+  "gregorian": {
+    "iso": "2026-10-19",
+    "year": 2026,
+    "month": 10,
+    "day": 19
+  },
+  "moon": {
+    "phase": "Last Quarter",
+    "emoji": "🌗",
+    "isExactFullMoon": false
+  },
+  "events": [],
+  "nextFullMoon": {
+    "dayOfYear": 315,
+    "daysUntil": 23,
+    "whenText": "over 23 dagen",
+    "label": "11 Uktar"
+  }
+}

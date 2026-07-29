@@ -1,0 +1,30 @@
+{
+  "dayOfYear": 322,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "18 Uktar",
+    "month": "Uktar",
+    "day": 18,
+    "special": null
+  },
+  "gregorian": {
+    "iso": "2026-11-18",
+    "year": 2026,
+    "month": 11,
+    "day": 18
+  },
+  "moon": {
+    "phase": "Last Quarter",
+    "emoji": "🌗",
+    "isExactFullMoon": false
+  },
+  "events": [],
+  "nextFullMoon": {
+    "dayOfYear": 345,
+    "daysUntil": 23,
+    "whenText": "over 23 dagen",
+    "label": "10 Nightal"
+  }
+}

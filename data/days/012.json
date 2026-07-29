@@ -1,0 +1,30 @@
+{
+  "dayOfYear": 12,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "12 Hammer",
+    "month": "Hammer",
+    "day": 12,
+    "special": null
+  },
+  "gregorian": {
+    "iso": "2026-01-12",
+    "year": 2026,
+    "month": 1,
+    "day": 12
+  },
+  "moon": {
+    "phase": "Waxing Gibbous",
+    "emoji": "🌔",
+    "isExactFullMoon": false
+  },
+  "events": [],
+  "nextFullMoon": {
+    "dayOfYear": 15,
+    "daysUntil": 3,
+    "whenText": "over 3 dagen",
+    "label": "15 Hammer"
+  }
+}

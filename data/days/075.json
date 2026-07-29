@@ -1,0 +1,30 @@
+{
+  "dayOfYear": 75,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "14 Ches",
+    "month": "Ches",
+    "day": 14,
+    "special": null
+  },
+  "gregorian": {
+    "iso": "2026-03-16",
+    "year": 2026,
+    "month": 3,
+    "day": 16
+  },
+  "moon": {
+    "phase": "Full Moon",
+    "emoji": "🌕",
+    "isExactFullMoon": true
+  },
+  "events": [],
+  "nextFullMoon": {
+    "dayOfYear": 75,
+    "daysUntil": 0,
+    "whenText": "vandaag",
+    "label": "14 Ches"
+  }
+}

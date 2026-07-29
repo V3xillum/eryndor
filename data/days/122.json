@@ -1,0 +1,37 @@
+{
+  "dayOfYear": 122,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "Greengrass",
+    "month": null,
+    "day": null,
+    "special": "Greengrass"
+  },
+  "gregorian": {
+    "iso": "2026-05-02",
+    "year": 2026,
+    "month": 5,
+    "day": 2
+  },
+  "moon": {
+    "phase": "New Moon (Fading)",
+    "emoji": "🌑",
+    "isExactFullMoon": false
+  },
+  "events": [
+    {
+      "type": "festival",
+      "name": "Greengrass",
+      "icon": "🌿",
+      "css": "greengrass"
+    }
+  ],
+  "nextFullMoon": {
+    "dayOfYear": 135,
+    "daysUntil": 13,
+    "whenText": "over 13 dagen",
+    "label": "13 Mirtul"
+  }
+}

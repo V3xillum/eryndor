@@ -1,0 +1,30 @@
+{
+  "dayOfYear": 132,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "10 Mirtul",
+    "month": "Mirtul",
+    "day": 10,
+    "special": null
+  },
+  "gregorian": {
+    "iso": "2026-05-12",
+    "year": 2026,
+    "month": 5,
+    "day": 12
+  },
+  "moon": {
+    "phase": "Waxing Gibbous",
+    "emoji": "🌔",
+    "isExactFullMoon": false
+  },
+  "events": [],
+  "nextFullMoon": {
+    "dayOfYear": 135,
+    "daysUntil": 3,
+    "whenText": "over 3 dagen",
+    "label": "13 Mirtul"
+  }
+}

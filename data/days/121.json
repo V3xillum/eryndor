@@ -1,0 +1,30 @@
+{
+  "dayOfYear": 121,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "30 Tarsakh",
+    "month": "Tarsakh",
+    "day": 30,
+    "special": null
+  },
+  "gregorian": {
+    "iso": "2026-05-01",
+    "year": 2026,
+    "month": 5,
+    "day": 1
+  },
+  "moon": {
+    "phase": "New Moon",
+    "emoji": "🌑",
+    "isExactFullMoon": false
+  },
+  "events": [],
+  "nextFullMoon": {
+    "dayOfYear": 135,
+    "daysUntil": 14,
+    "whenText": "over 14 dagen",
+    "label": "13 Mirtul"
+  }
+}

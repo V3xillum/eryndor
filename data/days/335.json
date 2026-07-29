@@ -1,0 +1,37 @@
+{
+  "dayOfYear": 335,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "Feast of the Moon",
+    "month": null,
+    "day": null,
+    "special": "Feast of the Moon"
+  },
+  "gregorian": {
+    "iso": "2026-12-01",
+    "year": 2026,
+    "month": 12,
+    "day": 1
+  },
+  "moon": {
+    "phase": "Waxing Crescent",
+    "emoji": "🌒",
+    "isExactFullMoon": false
+  },
+  "events": [
+    {
+      "type": "festival",
+      "name": "Feast of the Moon",
+      "icon": "🌕",
+      "css": "feastofthemoon"
+    }
+  ],
+  "nextFullMoon": {
+    "dayOfYear": 345,
+    "daysUntil": 10,
+    "whenText": "over 10 dagen",
+    "label": "10 Nightal"
+  }
+}

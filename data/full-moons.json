@@ -1,0 +1,2260 @@
+{
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "exactFullMoonDayOfYear": [
+    15,
+    45,
+    75,
+    105,
+    135,
+    165,
+    195,
+    225,
+    255,
+    285,
+    315,
+    345
+  ],
+  "exactFullMoons": [
+    {
+      "dayOfYear": 15,
+      "label": "15 Hammer"
+    },
+    {
+      "dayOfYear": 45,
+      "label": "14 Alturiak"
+    },
+    {
+      "dayOfYear": 75,
+      "label": "14 Ches"
+    },
+    {
+      "dayOfYear": 105,
+      "label": "14 Tarsakh"
+    },
+    {
+      "dayOfYear": 135,
+      "label": "13 Mirtul"
+    },
+    {
+      "dayOfYear": 165,
+      "label": "13 Kythorn"
+    },
+    {
+      "dayOfYear": 195,
+      "label": "13 Flamerule"
+    },
+    {
+      "dayOfYear": 225,
+      "label": "12 Eleasis"
+    },
+    {
+      "dayOfYear": 255,
+      "label": "12 Eleint"
+    },
+    {
+      "dayOfYear": 285,
+      "label": "11 Marpenoth"
+    },
+    {
+      "dayOfYear": 315,
+      "label": "11 Uktar"
+    },
+    {
+      "dayOfYear": 345,
+      "label": "10 Nightal"
+    }
+  ],
+  "nextByFromDoy": {
+    "1": {
+      "dayOfYear": 15,
+      "daysUntil": 14,
+      "whenText": "over 14 dagen",
+      "label": "15 Hammer"
+    },
+    "2": {
+      "dayOfYear": 15,
+      "daysUntil": 13,
+      "whenText": "over 13 dagen",
+      "label": "15 Hammer"
+    },
+    "3": {
+      "dayOfYear": 15,
+      "daysUntil": 12,
+      "whenText": "over 12 dagen",
+      "label": "15 Hammer"
+    },
+    "4": {
+      "dayOfYear": 15,
+      "daysUntil": 11,
+      "whenText": "over 11 dagen",
+      "label": "15 Hammer"
+    },
+    "5": {
+      "dayOfYear": 15,
+      "daysUntil": 10,
+      "whenText": "over 10 dagen",
+      "label": "15 Hammer"
+    },
+    "6": {
+      "dayOfYear": 15,
+      "daysUntil": 9,
+      "whenText": "over 9 dagen",
+      "label": "15 Hammer"
+    },
+    "7": {
+      "dayOfYear": 15,
+      "daysUntil": 8,
+      "whenText": "over 8 dagen",
+      "label": "15 Hammer"
+    },
+    "8": {
+      "dayOfYear": 15,
+      "daysUntil": 7,
+      "whenText": "over 7 dagen",
+      "label": "15 Hammer"
+    },
+    "9": {
+      "dayOfYear": 15,
+      "daysUntil": 6,
+      "whenText": "over 6 dagen",
+      "label": "15 Hammer"
+    },
+    "10": {
+      "dayOfYear": 15,
+      "daysUntil": 5,
+      "whenText": "over 5 dagen",
+      "label": "15 Hammer"
+    },
+    "11": {
+      "dayOfYear": 15,
+      "daysUntil": 4,
+      "whenText": "over 4 dagen",
+      "label": "15 Hammer"
+    },
+    "12": {
+      "dayOfYear": 15,
+      "daysUntil": 3,
+      "whenText": "over 3 dagen",
+      "label": "15 Hammer"
+    },
+    "13": {
+      "dayOfYear": 15,
+      "daysUntil": 2,
+      "whenText": "over 2 dagen",
+      "label": "15 Hammer"
+    },
+    "14": {
+      "dayOfYear": 15,
+      "daysUntil": 1,
+      "whenText": "morgen",
+      "label": "15 Hammer"
+    },
+    "15": {
+      "dayOfYear": 15,
+      "daysUntil": 0,
+      "whenText": "vandaag",
+      "label": "15 Hammer"
+    },
+    "16": {
+      "dayOfYear": 45,
+      "daysUntil": 29,
+      "whenText": "over 29 dagen",
+      "label": "14 Alturiak"
+    },
+    "17": {
+      "dayOfYear": 45,
+      "daysUntil": 28,
+      "whenText": "over 28 dagen",
+      "label": "14 Alturiak"
+    },
+    "18": {
+      "dayOfYear": 45,
+      "daysUntil": 27,
+      "whenText": "over 27 dagen",
+      "label": "14 Alturiak"
+    },
+    "19": {
+      "dayOfYear": 45,
+      "daysUntil": 26,
+      "whenText": "over 26 dagen",
+      "label": "14 Alturiak"
+    },
+    "20": {
+      "dayOfYear": 45,
+      "daysUntil": 25,
+      "whenText": "over 25 dagen",
+      "label": "14 Alturiak"
+    },
+    "21": {
+      "dayOfYear": 45,
+      "daysUntil": 24,
+      "whenText": "over 24 dagen",
+      "label": "14 Alturiak"
+    },
+    "22": {
+      "dayOfYear": 45,
+      "daysUntil": 23,
+      "whenText": "over 23 dagen",
+      "label": "14 Alturiak"
+    },
+    "23": {
+      "dayOfYear": 45,
+      "daysUntil": 22,
+      "whenText": "over 22 dagen",
+      "label": "14 Alturiak"
+    },
+    "24": {
+      "dayOfYear": 45,
+      "daysUntil": 21,
+      "whenText": "over 21 dagen",
+      "label": "14 Alturiak"
+    },
+    "25": {
+      "dayOfYear": 45,
+      "daysUntil": 20,
+      "whenText": "over 20 dagen",
+      "label": "14 Alturiak"
+    },
+    "26": {
+      "dayOfYear": 45,
+      "daysUntil": 19,
+      "whenText": "over 19 dagen",
+      "label": "14 Alturiak"
+    },
+    "27": {
+      "dayOfYear": 45,
+      "daysUntil": 18,
+      "whenText": "over 18 dagen",
+      "label": "14 Alturiak"
+    },
+    "28": {
+      "dayOfYear": 45,
+      "daysUntil": 17,
+      "whenText": "over 17 dagen",
+      "label": "14 Alturiak"
+    },
+    "29": {
+      "dayOfYear": 45,
+      "daysUntil": 16,
+      "whenText": "over 16 dagen",
+      "label": "14 Alturiak"
+    },
+    "30": {
+      "dayOfYear": 45,
+      "daysUntil": 15,
+      "whenText": "over 15 dagen",
+      "label": "14 Alturiak"
+    },
+    "31": {
+      "dayOfYear": 45,
+      "daysUntil": 14,
+      "whenText": "over 14 dagen",
+      "label": "14 Alturiak"
+    },
+    "32": {
+      "dayOfYear": 45,
+      "daysUntil": 13,
+      "whenText": "over 13 dagen",
+      "label": "14 Alturiak"
+    },
+    "33": {
+      "dayOfYear": 45,
+      "daysUntil": 12,
+      "whenText": "over 12 dagen",
+      "label": "14 Alturiak"
+    },
+    "34": {
+      "dayOfYear": 45,
+      "daysUntil": 11,
+      "whenText": "over 11 dagen",
+      "label": "14 Alturiak"
+    },
+    "35": {
+      "dayOfYear": 45,
+      "daysUntil": 10,
+      "whenText": "over 10 dagen",
+      "label": "14 Alturiak"
+    },
+    "36": {
+      "dayOfYear": 45,
+      "daysUntil": 9,
+      "whenText": "over 9 dagen",
+      "label": "14 Alturiak"
+    },
+    "37": {
+      "dayOfYear": 45,
+      "daysUntil": 8,
+      "whenText": "over 8 dagen",
+      "label": "14 Alturiak"
+    },
+    "38": {
+      "dayOfYear": 45,
+      "daysUntil": 7,
+      "whenText": "over 7 dagen",
+      "label": "14 Alturiak"
+    },
+    "39": {
+      "dayOfYear": 45,
+      "daysUntil": 6,
+      "whenText": "over 6 dagen",
+      "label": "14 Alturiak"
+    },
+    "40": {
+      "dayOfYear": 45,
+      "daysUntil": 5,
+      "whenText": "over 5 dagen",
+      "label": "14 Alturiak"
+    },
+    "41": {
+      "dayOfYear": 45,
+      "daysUntil": 4,
+      "whenText": "over 4 dagen",
+      "label": "14 Alturiak"
+    },
+    "42": {
+      "dayOfYear": 45,
+      "daysUntil": 3,
+      "whenText": "over 3 dagen",
+      "label": "14 Alturiak"
+    },
+    "43": {
+      "dayOfYear": 45,
+      "daysUntil": 2,
+      "whenText": "over 2 dagen",
+      "label": "14 Alturiak"
+    },
+    "44": {
+      "dayOfYear": 45,
+      "daysUntil": 1,
+      "whenText": "morgen",
+      "label": "14 Alturiak"
+    },
+    "45": {
+      "dayOfYear": 45,
+      "daysUntil": 0,
+      "whenText": "vandaag",
+      "label": "14 Alturiak"
+    },
+    "46": {
+      "dayOfYear": 75,
+      "daysUntil": 29,
+      "whenText": "over 29 dagen",
+      "label": "14 Ches"
+    },
+    "47": {
+      "dayOfYear": 75,
+      "daysUntil": 28,
+      "whenText": "over 28 dagen",
+      "label": "14 Ches"
+    },
+    "48": {
+      "dayOfYear": 75,
+      "daysUntil": 27,
+      "whenText": "over 27 dagen",
+      "label": "14 Ches"
+    },
+    "49": {
+      "dayOfYear": 75,
+      "daysUntil": 26,
+      "whenText": "over 26 dagen",
+      "label": "14 Ches"
+    },
+    "50": {
+      "dayOfYear": 75,
+      "daysUntil": 25,
+      "whenText": "over 25 dagen",
+      "label": "14 Ches"
+    },
+    "51": {
+      "dayOfYear": 75,
+      "daysUntil": 24,
+      "whenText": "over 24 dagen",
+      "label": "14 Ches"
+    },
+    "52": {
+      "dayOfYear": 75,
+      "daysUntil": 23,
+      "whenText": "over 23 dagen",
+      "label": "14 Ches"
+    },
+    "53": {
+      "dayOfYear": 75,
+      "daysUntil": 22,
+      "whenText": "over 22 dagen",
+      "label": "14 Ches"
+    },
+    "54": {
+      "dayOfYear": 75,
+      "daysUntil": 21,
+      "whenText": "over 21 dagen",
+      "label": "14 Ches"
+    },
+    "55": {
+      "dayOfYear": 75,
+      "daysUntil": 20,
+      "whenText": "over 20 dagen",
+      "label": "14 Ches"
+    },
+    "56": {
+      "dayOfYear": 75,
+      "daysUntil": 19,
+      "whenText": "over 19 dagen",
+      "label": "14 Ches"
+    },
+    "57": {
+      "dayOfYear": 75,
+      "daysUntil": 18,
+      "whenText": "over 18 dagen",
+      "label": "14 Ches"
+    },
+    "58": {
+      "dayOfYear": 75,
+      "daysUntil": 17,
+      "whenText": "over 17 dagen",
+      "label": "14 Ches"
+    },
+    "59": {
+      "dayOfYear": 75,
+      "daysUntil": 16,
+      "whenText": "over 16 dagen",
+      "label": "14 Ches"
+    },
+    "60": {
+      "dayOfYear": 75,
+      "daysUntil": 15,
+      "whenText": "over 15 dagen",
+      "label": "14 Ches"
+    },
+    "61": {
+      "dayOfYear": 75,
+      "daysUntil": 14,
+      "whenText": "over 14 dagen",
+      "label": "14 Ches"
+    },
+    "62": {
+      "dayOfYear": 75,
+      "daysUntil": 13,
+      "whenText": "over 13 dagen",
+      "label": "14 Ches"
+    },
+    "63": {
+      "dayOfYear": 75,
+      "daysUntil": 12,
+      "whenText": "over 12 dagen",
+      "label": "14 Ches"
+    },
+    "64": {
+      "dayOfYear": 75,
+      "daysUntil": 11,
+      "whenText": "over 11 dagen",
+      "label": "14 Ches"
+    },
+    "65": {
+      "dayOfYear": 75,
+      "daysUntil": 10,
+      "whenText": "over 10 dagen",
+      "label": "14 Ches"
+    },
+    "66": {
+      "dayOfYear": 75,
+      "daysUntil": 9,
+      "whenText": "over 9 dagen",
+      "label": "14 Ches"
+    },
+    "67": {
+      "dayOfYear": 75,
+      "daysUntil": 8,
+      "whenText": "over 8 dagen",
+      "label": "14 Ches"
+    },
+    "68": {
+      "dayOfYear": 75,
+      "daysUntil": 7,
+      "whenText": "over 7 dagen",
+      "label": "14 Ches"
+    },
+    "69": {
+      "dayOfYear": 75,
+      "daysUntil": 6,
+      "whenText": "over 6 dagen",
+      "label": "14 Ches"
+    },
+    "70": {
+      "dayOfYear": 75,
+      "daysUntil": 5,
+      "whenText": "over 5 dagen",
+      "label": "14 Ches"
+    },
+    "71": {
+      "dayOfYear": 75,
+      "daysUntil": 4,
+      "whenText": "over 4 dagen",
+      "label": "14 Ches"
+    },
+    "72": {
+      "dayOfYear": 75,
+      "daysUntil": 3,
+      "whenText": "over 3 dagen",
+      "label": "14 Ches"
+    },
+    "73": {
+      "dayOfYear": 75,
+      "daysUntil": 2,
+      "whenText": "over 2 dagen",
+      "label": "14 Ches"
+    },
+    "74": {
+      "dayOfYear": 75,
+      "daysUntil": 1,
+      "whenText": "morgen",
+      "label": "14 Ches"
+    },
+    "75": {
+      "dayOfYear": 75,
+      "daysUntil": 0,
+      "whenText": "vandaag",
+      "label": "14 Ches"
+    },
+    "76": {
+      "dayOfYear": 105,
+      "daysUntil": 29,
+      "whenText": "over 29 dagen",
+      "label": "14 Tarsakh"
+    },
+    "77": {
+      "dayOfYear": 105,
+      "daysUntil": 28,
+      "whenText": "over 28 dagen",
+      "label": "14 Tarsakh"
+    },
+    "78": {
+      "dayOfYear": 105,
+      "daysUntil": 27,
+      "whenText": "over 27 dagen",
+      "label": "14 Tarsakh"
+    },
+    "79": {
+      "dayOfYear": 105,
+      "daysUntil": 26,
+      "whenText": "over 26 dagen",
+      "label": "14 Tarsakh"
+    },
+    "80": {
+      "dayOfYear": 105,
+      "daysUntil": 25,
+      "whenText": "over 25 dagen",
+      "label": "14 Tarsakh"
+    },
+    "81": {
+      "dayOfYear": 105,
+      "daysUntil": 24,
+      "whenText": "over 24 dagen",
+      "label": "14 Tarsakh"
+    },
+    "82": {
+      "dayOfYear": 105,
+      "daysUntil": 23,
+      "whenText": "over 23 dagen",
+      "label": "14 Tarsakh"
+    },
+    "83": {
+      "dayOfYear": 105,
+      "daysUntil": 22,
+      "whenText": "over 22 dagen",
+      "label": "14 Tarsakh"
+    },
+    "84": {
+      "dayOfYear": 105,
+      "daysUntil": 21,
+      "whenText": "over 21 dagen",
+      "label": "14 Tarsakh"
+    },
+    "85": {
+      "dayOfYear": 105,
+      "daysUntil": 20,
+      "whenText": "over 20 dagen",
+      "label": "14 Tarsakh"
+    },
+    "86": {
+      "dayOfYear": 105,
+      "daysUntil": 19,
+      "whenText": "over 19 dagen",
+      "label": "14 Tarsakh"
+    },
+    "87": {
+      "dayOfYear": 105,
+      "daysUntil": 18,
+      "whenText": "over 18 dagen",
+      "label": "14 Tarsakh"
+    },
+    "88": {
+      "dayOfYear": 105,
+      "daysUntil": 17,
+      "whenText": "over 17 dagen",
+      "label": "14 Tarsakh"
+    },
+    "89": {
+      "dayOfYear": 105,
+      "daysUntil": 16,
+      "whenText": "over 16 dagen",
+      "label": "14 Tarsakh"
+    },
+    "90": {
+      "dayOfYear": 105,
+      "daysUntil": 15,
+      "whenText": "over 15 dagen",
+      "label": "14 Tarsakh"
+    },
+    "91": {
+      "dayOfYear": 105,
+      "daysUntil": 14,
+      "whenText": "over 14 dagen",
+      "label": "14 Tarsakh"
+    },
+    "92": {
+      "dayOfYear": 105,
+      "daysUntil": 13,
+      "whenText": "over 13 dagen",
+      "label": "14 Tarsakh"
+    },
+    "93": {
+      "dayOfYear": 105,
+      "daysUntil": 12,
+      "whenText": "over 12 dagen",
+      "label": "14 Tarsakh"
+    },
+    "94": {
+      "dayOfYear": 105,
+      "daysUntil": 11,
+      "whenText": "over 11 dagen",
+      "label": "14 Tarsakh"
+    },
+    "95": {
+      "dayOfYear": 105,
+      "daysUntil": 10,
+      "whenText": "over 10 dagen",
+      "label": "14 Tarsakh"
+    },
+    "96": {
+      "dayOfYear": 105,
+      "daysUntil": 9,
+      "whenText": "over 9 dagen",
+      "label": "14 Tarsakh"
+    },
+    "97": {
+      "dayOfYear": 105,
+      "daysUntil": 8,
+      "whenText": "over 8 dagen",
+      "label": "14 Tarsakh"
+    },
+    "98": {
+      "dayOfYear": 105,
+      "daysUntil": 7,
+      "whenText": "over 7 dagen",
+      "label": "14 Tarsakh"
+    },
+    "99": {
+      "dayOfYear": 105,
+      "daysUntil": 6,
+      "whenText": "over 6 dagen",
+      "label": "14 Tarsakh"
+    },
+    "100": {
+      "dayOfYear": 105,
+      "daysUntil": 5,
+      "whenText": "over 5 dagen",
+      "label": "14 Tarsakh"
+    },
+    "101": {
+      "dayOfYear": 105,
+      "daysUntil": 4,
+      "whenText": "over 4 dagen",
+      "label": "14 Tarsakh"
+    },
+    "102": {
+      "dayOfYear": 105,
+      "daysUntil": 3,
+      "whenText": "over 3 dagen",
+      "label": "14 Tarsakh"
+    },
+    "103": {
+      "dayOfYear": 105,
+      "daysUntil": 2,
+      "whenText": "over 2 dagen",
+      "label": "14 Tarsakh"
+    },
+    "104": {
+      "dayOfYear": 105,
+      "daysUntil": 1,
+      "whenText": "morgen",
+      "label": "14 Tarsakh"
+    },
+    "105": {
+      "dayOfYear": 105,
+      "daysUntil": 0,
+      "whenText": "vandaag",
+      "label": "14 Tarsakh"
+    },
+    "106": {
+      "dayOfYear": 135,
+      "daysUntil": 29,
+      "whenText": "over 29 dagen",
+      "label": "13 Mirtul"
+    },
+    "107": {
+      "dayOfYear": 135,
+      "daysUntil": 28,
+      "whenText": "over 28 dagen",
+      "label": "13 Mirtul"
+    },
+    "108": {
+      "dayOfYear": 135,
+      "daysUntil": 27,
+      "whenText": "over 27 dagen",
+      "label": "13 Mirtul"
+    },
+    "109": {
+      "dayOfYear": 135,
+      "daysUntil": 26,
+      "whenText": "over 26 dagen",
+      "label": "13 Mirtul"
+    },
+    "110": {
+      "dayOfYear": 135,
+      "daysUntil": 25,
+      "whenText": "over 25 dagen",
+      "label": "13 Mirtul"
+    },
+    "111": {
+      "dayOfYear": 135,
+      "daysUntil": 24,
+      "whenText": "over 24 dagen",
+      "label": "13 Mirtul"
+    },
+    "112": {
+      "dayOfYear": 135,
+      "daysUntil": 23,
+      "whenText": "over 23 dagen",
+      "label": "13 Mirtul"
+    },
+    "113": {
+      "dayOfYear": 135,
+      "daysUntil": 22,
+      "whenText": "over 22 dagen",
+      "label": "13 Mirtul"
+    },
+    "114": {
+      "dayOfYear": 135,
+      "daysUntil": 21,
+      "whenText": "over 21 dagen",
+      "label": "13 Mirtul"
+    },
+    "115": {
+      "dayOfYear": 135,
+      "daysUntil": 20,
+      "whenText": "over 20 dagen",
+      "label": "13 Mirtul"
+    },
+    "116": {
+      "dayOfYear": 135,
+      "daysUntil": 19,
+      "whenText": "over 19 dagen",
+      "label": "13 Mirtul"
+    },
+    "117": {
+      "dayOfYear": 135,
+      "daysUntil": 18,
+      "whenText": "over 18 dagen",
+      "label": "13 Mirtul"
+    },
+    "118": {
+      "dayOfYear": 135,
+      "daysUntil": 17,
+      "whenText": "over 17 dagen",
+      "label": "13 Mirtul"
+    },
+    "119": {
+      "dayOfYear": 135,
+      "daysUntil": 16,
+      "whenText": "over 16 dagen",
+      "label": "13 Mirtul"
+    },
+    "120": {
+      "dayOfYear": 135,
+      "daysUntil": 15,
+      "whenText": "over 15 dagen",
+      "label": "13 Mirtul"
+    },
+    "121": {
+      "dayOfYear": 135,
+      "daysUntil": 14,
+      "whenText": "over 14 dagen",
+      "label": "13 Mirtul"
+    },
+    "122": {
+      "dayOfYear": 135,
+      "daysUntil": 13,
+      "whenText": "over 13 dagen",
+      "label": "13 Mirtul"
+    },
+    "123": {
+      "dayOfYear": 135,
+      "daysUntil": 12,
+      "whenText": "over 12 dagen",
+      "label": "13 Mirtul"
+    },
+    "124": {
+      "dayOfYear": 135,
+      "daysUntil": 11,
+      "whenText": "over 11 dagen",
+      "label": "13 Mirtul"
+    },
+    "125": {
+      "dayOfYear": 135,
+      "daysUntil": 10,
+      "whenText": "over 10 dagen",
+      "label": "13 Mirtul"
+    },
+    "126": {
+      "dayOfYear": 135,
+      "daysUntil": 9,
+      "whenText": "over 9 dagen",
+      "label": "13 Mirtul"
+    },
+    "127": {
+      "dayOfYear": 135,
+      "daysUntil": 8,
+      "whenText": "over 8 dagen",
+      "label": "13 Mirtul"
+    },
+    "128": {
+      "dayOfYear": 135,
+      "daysUntil": 7,
+      "whenText": "over 7 dagen",
+      "label": "13 Mirtul"
+    },
+    "129": {
+      "dayOfYear": 135,
+      "daysUntil": 6,
+      "whenText": "over 6 dagen",
+      "label": "13 Mirtul"
+    },
+    "130": {
+      "dayOfYear": 135,
+      "daysUntil": 5,
+      "whenText": "over 5 dagen",
+      "label": "13 Mirtul"
+    },
+    "131": {
+      "dayOfYear": 135,
+      "daysUntil": 4,
+      "whenText": "over 4 dagen",
+      "label": "13 Mirtul"
+    },
+    "132": {
+      "dayOfYear": 135,
+      "daysUntil": 3,
+      "whenText": "over 3 dagen",
+      "label": "13 Mirtul"
+    },
+    "133": {
+      "dayOfYear": 135,
+      "daysUntil": 2,
+      "whenText": "over 2 dagen",
+      "label": "13 Mirtul"
+    },
+    "134": {
+      "dayOfYear": 135,
+      "daysUntil": 1,
+      "whenText": "morgen",
+      "label": "13 Mirtul"
+    },
+    "135": {
+      "dayOfYear": 135,
+      "daysUntil": 0,
+      "whenText": "vandaag",
+      "label": "13 Mirtul"
+    },
+    "136": {
+      "dayOfYear": 165,
+      "daysUntil": 29,
+      "whenText": "over 29 dagen",
+      "label": "13 Kythorn"
+    },
+    "137": {
+      "dayOfYear": 165,
+      "daysUntil": 28,
+      "whenText": "over 28 dagen",
+      "label": "13 Kythorn"
+    },
+    "138": {
+      "dayOfYear": 165,
+      "daysUntil": 27,
+      "whenText": "over 27 dagen",
+      "label": "13 Kythorn"
+    },
+    "139": {
+      "dayOfYear": 165,
+      "daysUntil": 26,
+      "whenText": "over 26 dagen",
+      "label": "13 Kythorn"
+    },
+    "140": {
+      "dayOfYear": 165,
+      "daysUntil": 25,
+      "whenText": "over 25 dagen",
+      "label": "13 Kythorn"
+    },
+    "141": {
+      "dayOfYear": 165,
+      "daysUntil": 24,
+      "whenText": "over 24 dagen",
+      "label": "13 Kythorn"
+    },
+    "142": {
+      "dayOfYear": 165,
+      "daysUntil": 23,
+      "whenText": "over 23 dagen",
+      "label": "13 Kythorn"
+    },
+    "143": {
+      "dayOfYear": 165,
+      "daysUntil": 22,
+      "whenText": "over 22 dagen",
+      "label": "13 Kythorn"
+    },
+    "144": {
+      "dayOfYear": 165,
+      "daysUntil": 21,
+      "whenText": "over 21 dagen",
+      "label": "13 Kythorn"
+    },
+    "145": {
+      "dayOfYear": 165,
+      "daysUntil": 20,
+      "whenText": "over 20 dagen",
+      "label": "13 Kythorn"
+    },
+    "146": {
+      "dayOfYear": 165,
+      "daysUntil": 19,
+      "whenText": "over 19 dagen",
+      "label": "13 Kythorn"
+    },
+    "147": {
+      "dayOfYear": 165,
+      "daysUntil": 18,
+      "whenText": "over 18 dagen",
+      "label": "13 Kythorn"
+    },
+    "148": {
+      "dayOfYear": 165,
+      "daysUntil": 17,
+      "whenText": "over 17 dagen",
+      "label": "13 Kythorn"
+    },
+    "149": {
+      "dayOfYear": 165,
+      "daysUntil": 16,
+      "whenText": "over 16 dagen",
+      "label": "13 Kythorn"
+    },
+    "150": {
+      "dayOfYear": 165,
+      "daysUntil": 15,
+      "whenText": "over 15 dagen",
+      "label": "13 Kythorn"
+    },
+    "151": {
+      "dayOfYear": 165,
+      "daysUntil": 14,
+      "whenText": "over 14 dagen",
+      "label": "13 Kythorn"
+    },
+    "152": {
+      "dayOfYear": 165,
+      "daysUntil": 13,
+      "whenText": "over 13 dagen",
+      "label": "13 Kythorn"
+    },
+    "153": {
+      "dayOfYear": 165,
+      "daysUntil": 12,
+      "whenText": "over 12 dagen",
+      "label": "13 Kythorn"
+    },
+    "154": {
+      "dayOfYear": 165,
+      "daysUntil": 11,
+      "whenText": "over 11 dagen",
+      "label": "13 Kythorn"
+    },
+    "155": {
+      "dayOfYear": 165,
+      "daysUntil": 10,
+      "whenText": "over 10 dagen",
+      "label": "13 Kythorn"
+    },
+    "156": {
+      "dayOfYear": 165,
+      "daysUntil": 9,
+      "whenText": "over 9 dagen",
+      "label": "13 Kythorn"
+    },
+    "157": {
+      "dayOfYear": 165,
+      "daysUntil": 8,
+      "whenText": "over 8 dagen",
+      "label": "13 Kythorn"
+    },
+    "158": {
+      "dayOfYear": 165,
+      "daysUntil": 7,
+      "whenText": "over 7 dagen",
+      "label": "13 Kythorn"
+    },
+    "159": {
+      "dayOfYear": 165,
+      "daysUntil": 6,
+      "whenText": "over 6 dagen",
+      "label": "13 Kythorn"
+    },
+    "160": {
+      "dayOfYear": 165,
+      "daysUntil": 5,
+      "whenText": "over 5 dagen",
+      "label": "13 Kythorn"
+    },
+    "161": {
+      "dayOfYear": 165,
+      "daysUntil": 4,
+      "whenText": "over 4 dagen",
+      "label": "13 Kythorn"
+    },
+    "162": {
+      "dayOfYear": 165,
+      "daysUntil": 3,
+      "whenText": "over 3 dagen",
+      "label": "13 Kythorn"
+    },
+    "163": {
+      "dayOfYear": 165,
+      "daysUntil": 2,
+      "whenText": "over 2 dagen",
+      "label": "13 Kythorn"
+    },
+    "164": {
+      "dayOfYear": 165,
+      "daysUntil": 1,
+      "whenText": "morgen",
+      "label": "13 Kythorn"
+    },
+    "165": {
+      "dayOfYear": 165,
+      "daysUntil": 0,
+      "whenText": "vandaag",
+      "label": "13 Kythorn"
+    },
+    "166": {
+      "dayOfYear": 195,
+      "daysUntil": 29,
+      "whenText": "over 29 dagen",
+      "label": "13 Flamerule"
+    },
+    "167": {
+      "dayOfYear": 195,
+      "daysUntil": 28,
+      "whenText": "over 28 dagen",
+      "label": "13 Flamerule"
+    },
+    "168": {
+      "dayOfYear": 195,
+      "daysUntil": 27,
+      "whenText": "over 27 dagen",
+      "label": "13 Flamerule"
+    },
+    "169": {
+      "dayOfYear": 195,
+      "daysUntil": 26,
+      "whenText": "over 26 dagen",
+      "label": "13 Flamerule"
+    },
+    "170": {
+      "dayOfYear": 195,
+      "daysUntil": 25,
+      "whenText": "over 25 dagen",
+      "label": "13 Flamerule"
+    },
+    "171": {
+      "dayOfYear": 195,
+      "daysUntil": 24,
+      "whenText": "over 24 dagen",
+      "label": "13 Flamerule"
+    },
+    "172": {
+      "dayOfYear": 195,
+      "daysUntil": 23,
+      "whenText": "over 23 dagen",
+      "label": "13 Flamerule"
+    },
+    "173": {
+      "dayOfYear": 195,
+      "daysUntil": 22,
+      "whenText": "over 22 dagen",
+      "label": "13 Flamerule"
+    },
+    "174": {
+      "dayOfYear": 195,
+      "daysUntil": 21,
+      "whenText": "over 21 dagen",
+      "label": "13 Flamerule"
+    },
+    "175": {
+      "dayOfYear": 195,
+      "daysUntil": 20,
+      "whenText": "over 20 dagen",
+      "label": "13 Flamerule"
+    },
+    "176": {
+      "dayOfYear": 195,
+      "daysUntil": 19,
+      "whenText": "over 19 dagen",
+      "label": "13 Flamerule"
+    },
+    "177": {
+      "dayOfYear": 195,
+      "daysUntil": 18,
+      "whenText": "over 18 dagen",
+      "label": "13 Flamerule"
+    },
+    "178": {
+      "dayOfYear": 195,
+      "daysUntil": 17,
+      "whenText": "over 17 dagen",
+      "label": "13 Flamerule"
+    },
+    "179": {
+      "dayOfYear": 195,
+      "daysUntil": 16,
+      "whenText": "over 16 dagen",
+      "label": "13 Flamerule"
+    },
+    "180": {
+      "dayOfYear": 195,
+      "daysUntil": 15,
+      "whenText": "over 15 dagen",
+      "label": "13 Flamerule"
+    },
+    "181": {
+      "dayOfYear": 195,
+      "daysUntil": 14,
+      "whenText": "over 14 dagen",
+      "label": "13 Flamerule"
+    },
+    "182": {
+      "dayOfYear": 195,
+      "daysUntil": 13,
+      "whenText": "over 13 dagen",
+      "label": "13 Flamerule"
+    },
+    "183": {
+      "dayOfYear": 195,
+      "daysUntil": 12,
+      "whenText": "over 12 dagen",
+      "label": "13 Flamerule"
+    },
+    "184": {
+      "dayOfYear": 195,
+      "daysUntil": 11,
+      "whenText": "over 11 dagen",
+      "label": "13 Flamerule"
+    },
+    "185": {
+      "dayOfYear": 195,
+      "daysUntil": 10,
+      "whenText": "over 10 dagen",
+      "label": "13 Flamerule"
+    },
+    "186": {
+      "dayOfYear": 195,
+      "daysUntil": 9,
+      "whenText": "over 9 dagen",
+      "label": "13 Flamerule"
+    },
+    "187": {
+      "dayOfYear": 195,
+      "daysUntil": 8,
+      "whenText": "over 8 dagen",
+      "label": "13 Flamerule"
+    },
+    "188": {
+      "dayOfYear": 195,
+      "daysUntil": 7,
+      "whenText": "over 7 dagen",
+      "label": "13 Flamerule"
+    },
+    "189": {
+      "dayOfYear": 195,
+      "daysUntil": 6,
+      "whenText": "over 6 dagen",
+      "label": "13 Flamerule"
+    },
+    "190": {
+      "dayOfYear": 195,
+      "daysUntil": 5,
+      "whenText": "over 5 dagen",
+      "label": "13 Flamerule"
+    },
+    "191": {
+      "dayOfYear": 195,
+      "daysUntil": 4,
+      "whenText": "over 4 dagen",
+      "label": "13 Flamerule"
+    },
+    "192": {
+      "dayOfYear": 195,
+      "daysUntil": 3,
+      "whenText": "over 3 dagen",
+      "label": "13 Flamerule"
+    },
+    "193": {
+      "dayOfYear": 195,
+      "daysUntil": 2,
+      "whenText": "over 2 dagen",
+      "label": "13 Flamerule"
+    },
+    "194": {
+      "dayOfYear": 195,
+      "daysUntil": 1,
+      "whenText": "morgen",
+      "label": "13 Flamerule"
+    },
+    "195": {
+      "dayOfYear": 195,
+      "daysUntil": 0,
+      "whenText": "vandaag",
+      "label": "13 Flamerule"
+    },
+    "196": {
+      "dayOfYear": 225,
+      "daysUntil": 29,
+      "whenText": "over 29 dagen",
+      "label": "12 Eleasis"
+    },
+    "197": {
+      "dayOfYear": 225,
+      "daysUntil": 28,
+      "whenText": "over 28 dagen",
+      "label": "12 Eleasis"
+    },
+    "198": {
+      "dayOfYear": 225,
+      "daysUntil": 27,
+      "whenText": "over 27 dagen",
+      "label": "12 Eleasis"
+    },
+    "199": {
+      "dayOfYear": 225,
+      "daysUntil": 26,
+      "whenText": "over 26 dagen",
+      "label": "12 Eleasis"
+    },
+    "200": {
+      "dayOfYear": 225,
+      "daysUntil": 25,
+      "whenText": "over 25 dagen",
+      "label": "12 Eleasis"
+    },
+    "201": {
+      "dayOfYear": 225,
+      "daysUntil": 24,
+      "whenText": "over 24 dagen",
+      "label": "12 Eleasis"
+    },
+    "202": {
+      "dayOfYear": 225,
+      "daysUntil": 23,
+      "whenText": "over 23 dagen",
+      "label": "12 Eleasis"
+    },
+    "203": {
+      "dayOfYear": 225,
+      "daysUntil": 22,
+      "whenText": "over 22 dagen",
+      "label": "12 Eleasis"
+    },
+    "204": {
+      "dayOfYear": 225,
+      "daysUntil": 21,
+      "whenText": "over 21 dagen",
+      "label": "12 Eleasis"
+    },
+    "205": {
+      "dayOfYear": 225,
+      "daysUntil": 20,
+      "whenText": "over 20 dagen",
+      "label": "12 Eleasis"
+    },
+    "206": {
+      "dayOfYear": 225,
+      "daysUntil": 19,
+      "whenText": "over 19 dagen",
+      "label": "12 Eleasis"
+    },
+    "207": {
+      "dayOfYear": 225,
+      "daysUntil": 18,
+      "whenText": "over 18 dagen",
+      "label": "12 Eleasis"
+    },
+    "208": {
+      "dayOfYear": 225,
+      "daysUntil": 17,
+      "whenText": "over 17 dagen",
+      "label": "12 Eleasis"
+    },
+    "209": {
+      "dayOfYear": 225,
+      "daysUntil": 16,
+      "whenText": "over 16 dagen",
+      "label": "12 Eleasis"
+    },
+    "210": {
+      "dayOfYear": 225,
+      "daysUntil": 15,
+      "whenText": "over 15 dagen",
+      "label": "12 Eleasis"
+    },
+    "211": {
+      "dayOfYear": 225,
+      "daysUntil": 14,
+      "whenText": "over 14 dagen",
+      "label": "12 Eleasis"
+    },
+    "212": {
+      "dayOfYear": 225,
+      "daysUntil": 13,
+      "whenText": "over 13 dagen",
+      "label": "12 Eleasis"
+    },
+    "213": {
+      "dayOfYear": 225,
+      "daysUntil": 12,
+      "whenText": "over 12 dagen",
+      "label": "12 Eleasis"
+    },
+    "214": {
+      "dayOfYear": 225,
+      "daysUntil": 11,
+      "whenText": "over 11 dagen",
+      "label": "12 Eleasis"
+    },
+    "215": {
+      "dayOfYear": 225,
+      "daysUntil": 10,
+      "whenText": "over 10 dagen",
+      "label": "12 Eleasis"
+    },
+    "216": {
+      "dayOfYear": 225,
+      "daysUntil": 9,
+      "whenText": "over 9 dagen",
+      "label": "12 Eleasis"
+    },
+    "217": {
+      "dayOfYear": 225,
+      "daysUntil": 8,
+      "whenText": "over 8 dagen",
+      "label": "12 Eleasis"
+    },
+    "218": {
+      "dayOfYear": 225,
+      "daysUntil": 7,
+      "whenText": "over 7 dagen",
+      "label": "12 Eleasis"
+    },
+    "219": {
+      "dayOfYear": 225,
+      "daysUntil": 6,
+      "whenText": "over 6 dagen",
+      "label": "12 Eleasis"
+    },
+    "220": {
+      "dayOfYear": 225,
+      "daysUntil": 5,
+      "whenText": "over 5 dagen",
+      "label": "12 Eleasis"
+    },
+    "221": {
+      "dayOfYear": 225,
+      "daysUntil": 4,
+      "whenText": "over 4 dagen",
+      "label": "12 Eleasis"
+    },
+    "222": {
+      "dayOfYear": 225,
+      "daysUntil": 3,
+      "whenText": "over 3 dagen",
+      "label": "12 Eleasis"
+    },
+    "223": {
+      "dayOfYear": 225,
+      "daysUntil": 2,
+      "whenText": "over 2 dagen",
+      "label": "12 Eleasis"
+    },
+    "224": {
+      "dayOfYear": 225,
+      "daysUntil": 1,
+      "whenText": "morgen",
+      "label": "12 Eleasis"
+    },
+    "225": {
+      "dayOfYear": 225,
+      "daysUntil": 0,
+      "whenText": "vandaag",
+      "label": "12 Eleasis"
+    },
+    "226": {
+      "dayOfYear": 255,
+      "daysUntil": 29,
+      "whenText": "over 29 dagen",
+      "label": "12 Eleint"
+    },
+    "227": {
+      "dayOfYear": 255,
+      "daysUntil": 28,
+      "whenText": "over 28 dagen",
+      "label": "12 Eleint"
+    },
+    "228": {
+      "dayOfYear": 255,
+      "daysUntil": 27,
+      "whenText": "over 27 dagen",
+      "label": "12 Eleint"
+    },
+    "229": {
+      "dayOfYear": 255,
+      "daysUntil": 26,
+      "whenText": "over 26 dagen",
+      "label": "12 Eleint"
+    },
+    "230": {
+      "dayOfYear": 255,
+      "daysUntil": 25,
+      "whenText": "over 25 dagen",
+      "label": "12 Eleint"
+    },
+    "231": {
+      "dayOfYear": 255,
+      "daysUntil": 24,
+      "whenText": "over 24 dagen",
+      "label": "12 Eleint"
+    },
+    "232": {
+      "dayOfYear": 255,
+      "daysUntil": 23,
+      "whenText": "over 23 dagen",
+      "label": "12 Eleint"
+    },
+    "233": {
+      "dayOfYear": 255,
+      "daysUntil": 22,
+      "whenText": "over 22 dagen",
+      "label": "12 Eleint"
+    },
+    "234": {
+      "dayOfYear": 255,
+      "daysUntil": 21,
+      "whenText": "over 21 dagen",
+      "label": "12 Eleint"
+    },
+    "235": {
+      "dayOfYear": 255,
+      "daysUntil": 20,
+      "whenText": "over 20 dagen",
+      "label": "12 Eleint"
+    },
+    "236": {
+      "dayOfYear": 255,
+      "daysUntil": 19,
+      "whenText": "over 19 dagen",
+      "label": "12 Eleint"
+    },
+    "237": {
+      "dayOfYear": 255,
+      "daysUntil": 18,
+      "whenText": "over 18 dagen",
+      "label": "12 Eleint"
+    },
+    "238": {
+      "dayOfYear": 255,
+      "daysUntil": 17,
+      "whenText": "over 17 dagen",
+      "label": "12 Eleint"
+    },
+    "239": {
+      "dayOfYear": 255,
+      "daysUntil": 16,
+      "whenText": "over 16 dagen",
+      "label": "12 Eleint"
+    },
+    "240": {
+      "dayOfYear": 255,
+      "daysUntil": 15,
+      "whenText": "over 15 dagen",
+      "label": "12 Eleint"
+    },
+    "241": {
+      "dayOfYear": 255,
+      "daysUntil": 14,
+      "whenText": "over 14 dagen",
+      "label": "12 Eleint"
+    },
+    "242": {
+      "dayOfYear": 255,
+      "daysUntil": 13,
+      "whenText": "over 13 dagen",
+      "label": "12 Eleint"
+    },
+    "243": {
+      "dayOfYear": 255,
+      "daysUntil": 12,
+      "whenText": "over 12 dagen",
+      "label": "12 Eleint"
+    },
+    "244": {
+      "dayOfYear": 255,
+      "daysUntil": 11,
+      "whenText": "over 11 dagen",
+      "label": "12 Eleint"
+    },
+    "245": {
+      "dayOfYear": 255,
+      "daysUntil": 10,
+      "whenText": "over 10 dagen",
+      "label": "12 Eleint"
+    },
+    "246": {
+      "dayOfYear": 255,
+      "daysUntil": 9,
+      "whenText": "over 9 dagen",
+      "label": "12 Eleint"
+    },
+    "247": {
+      "dayOfYear": 255,
+      "daysUntil": 8,
+      "whenText": "over 8 dagen",
+      "label": "12 Eleint"
+    },
+    "248": {
+      "dayOfYear": 255,
+      "daysUntil": 7,
+      "whenText": "over 7 dagen",
+      "label": "12 Eleint"
+    },
+    "249": {
+      "dayOfYear": 255,
+      "daysUntil": 6,
+      "whenText": "over 6 dagen",
+      "label": "12 Eleint"
+    },
+    "250": {
+      "dayOfYear": 255,
+      "daysUntil": 5,
+      "whenText": "over 5 dagen",
+      "label": "12 Eleint"
+    },
+    "251": {
+      "dayOfYear": 255,
+      "daysUntil": 4,
+      "whenText": "over 4 dagen",
+      "label": "12 Eleint"
+    },
+    "252": {
+      "dayOfYear": 255,
+      "daysUntil": 3,
+      "whenText": "over 3 dagen",
+      "label": "12 Eleint"
+    },
+    "253": {
+      "dayOfYear": 255,
+      "daysUntil": 2,
+      "whenText": "over 2 dagen",
+      "label": "12 Eleint"
+    },
+    "254": {
+      "dayOfYear": 255,
+      "daysUntil": 1,
+      "whenText": "morgen",
+      "label": "12 Eleint"
+    },
+    "255": {
+      "dayOfYear": 255,
+      "daysUntil": 0,
+      "whenText": "vandaag",
+      "label": "12 Eleint"
+    },
+    "256": {
+      "dayOfYear": 285,
+      "daysUntil": 29,
+      "whenText": "over 29 dagen",
+      "label": "11 Marpenoth"
+    },
+    "257": {
+      "dayOfYear": 285,
+      "daysUntil": 28,
+      "whenText": "over 28 dagen",
+      "label": "11 Marpenoth"
+    },
+    "258": {
+      "dayOfYear": 285,
+      "daysUntil": 27,
+      "whenText": "over 27 dagen",
+      "label": "11 Marpenoth"
+    },
+    "259": {
+      "dayOfYear": 285,
+      "daysUntil": 26,
+      "whenText": "over 26 dagen",
+      "label": "11 Marpenoth"
+    },
+    "260": {
+      "dayOfYear": 285,
+      "daysUntil": 25,
+      "whenText": "over 25 dagen",
+      "label": "11 Marpenoth"
+    },
+    "261": {
+      "dayOfYear": 285,
+      "daysUntil": 24,
+      "whenText": "over 24 dagen",
+      "label": "11 Marpenoth"
+    },
+    "262": {
+      "dayOfYear": 285,
+      "daysUntil": 23,
+      "whenText": "over 23 dagen",
+      "label": "11 Marpenoth"
+    },
+    "263": {
+      "dayOfYear": 285,
+      "daysUntil": 22,
+      "whenText": "over 22 dagen",
+      "label": "11 Marpenoth"
+    },
+    "264": {
+      "dayOfYear": 285,
+      "daysUntil": 21,
+      "whenText": "over 21 dagen",
+      "label": "11 Marpenoth"
+    },
+    "265": {
+      "dayOfYear": 285,
+      "daysUntil": 20,
+      "whenText": "over 20 dagen",
+      "label": "11 Marpenoth"
+    },
+    "266": {
+      "dayOfYear": 285,
+      "daysUntil": 19,
+      "whenText": "over 19 dagen",
+      "label": "11 Marpenoth"
+    },
+    "267": {
+      "dayOfYear": 285,
+      "daysUntil": 18,
+      "whenText": "over 18 dagen",
+      "label": "11 Marpenoth"
+    },
+    "268": {
+      "dayOfYear": 285,
+      "daysUntil": 17,
+      "whenText": "over 17 dagen",
+      "label": "11 Marpenoth"
+    },
+    "269": {
+      "dayOfYear": 285,
+      "daysUntil": 16,
+      "whenText": "over 16 dagen",
+      "label": "11 Marpenoth"
+    },
+    "270": {
+      "dayOfYear": 285,
+      "daysUntil": 15,
+      "whenText": "over 15 dagen",
+      "label": "11 Marpenoth"
+    },
+    "271": {
+      "dayOfYear": 285,
+      "daysUntil": 14,
+      "whenText": "over 14 dagen",
+      "label": "11 Marpenoth"
+    },
+    "272": {
+      "dayOfYear": 285,
+      "daysUntil": 13,
+      "whenText": "over 13 dagen",
+      "label": "11 Marpenoth"
+    },
+    "273": {
+      "dayOfYear": 285,
+      "daysUntil": 12,
+      "whenText": "over 12 dagen",
+      "label": "11 Marpenoth"
+    },
+    "274": {
+      "dayOfYear": 285,
+      "daysUntil": 11,
+      "whenText": "over 11 dagen",
+      "label": "11 Marpenoth"
+    },
+    "275": {
+      "dayOfYear": 285,
+      "daysUntil": 10,
+      "whenText": "over 10 dagen",
+      "label": "11 Marpenoth"
+    },
+    "276": {
+      "dayOfYear": 285,
+      "daysUntil": 9,
+      "whenText": "over 9 dagen",
+      "label": "11 Marpenoth"
+    },
+    "277": {
+      "dayOfYear": 285,
+      "daysUntil": 8,
+      "whenText": "over 8 dagen",
+      "label": "11 Marpenoth"
+    },
+    "278": {
+      "dayOfYear": 285,
+      "daysUntil": 7,
+      "whenText": "over 7 dagen",
+      "label": "11 Marpenoth"
+    },
+    "279": {
+      "dayOfYear": 285,
+      "daysUntil": 6,
+      "whenText": "over 6 dagen",
+      "label": "11 Marpenoth"
+    },
+    "280": {
+      "dayOfYear": 285,
+      "daysUntil": 5,
+      "whenText": "over 5 dagen",
+      "label": "11 Marpenoth"
+    },
+    "281": {
+      "dayOfYear": 285,
+      "daysUntil": 4,
+      "whenText": "over 4 dagen",
+      "label": "11 Marpenoth"
+    },
+    "282": {
+      "dayOfYear": 285,
+      "daysUntil": 3,
+      "whenText": "over 3 dagen",
+      "label": "11 Marpenoth"
+    },
+    "283": {
+      "dayOfYear": 285,
+      "daysUntil": 2,
+      "whenText": "over 2 dagen",
+      "label": "11 Marpenoth"
+    },
+    "284": {
+      "dayOfYear": 285,
+      "daysUntil": 1,
+      "whenText": "morgen",
+      "label": "11 Marpenoth"
+    },
+    "285": {
+      "dayOfYear": 285,
+      "daysUntil": 0,
+      "whenText": "vandaag",
+      "label": "11 Marpenoth"
+    },
+    "286": {
+      "dayOfYear": 315,
+      "daysUntil": 29,
+      "whenText": "over 29 dagen",
+      "label": "11 Uktar"
+    },
+    "287": {
+      "dayOfYear": 315,
+      "daysUntil": 28,
+      "whenText": "over 28 dagen",
+      "label": "11 Uktar"
+    },
+    "288": {
+      "dayOfYear": 315,
+      "daysUntil": 27,
+      "whenText": "over 27 dagen",
+      "label": "11 Uktar"
+    },
+    "289": {
+      "dayOfYear": 315,
+      "daysUntil": 26,
+      "whenText": "over 26 dagen",
+      "label": "11 Uktar"
+    },
+    "290": {
+      "dayOfYear": 315,
+      "daysUntil": 25,
+      "whenText": "over 25 dagen",
+      "label": "11 Uktar"
+    },
+    "291": {
+      "dayOfYear": 315,
+      "daysUntil": 24,
+      "whenText": "over 24 dagen",
+      "label": "11 Uktar"
+    },
+    "292": {
+      "dayOfYear": 315,
+      "daysUntil": 23,
+      "whenText": "over 23 dagen",
+      "label": "11 Uktar"
+    },
+    "293": {
+      "dayOfYear": 315,
+      "daysUntil": 22,
+      "whenText": "over 22 dagen",
+      "label": "11 Uktar"
+    },
+    "294": {
+      "dayOfYear": 315,
+      "daysUntil": 21,
+      "whenText": "over 21 dagen",
+      "label": "11 Uktar"
+    },
+    "295": {
+      "dayOfYear": 315,
+      "daysUntil": 20,
+      "whenText": "over 20 dagen",
+      "label": "11 Uktar"
+    },
+    "296": {
+      "dayOfYear": 315,
+      "daysUntil": 19,
+      "whenText": "over 19 dagen",
+      "label": "11 Uktar"
+    },
+    "297": {
+      "dayOfYear": 315,
+      "daysUntil": 18,
+      "whenText": "over 18 dagen",
+      "label": "11 Uktar"
+    },
+    "298": {
+      "dayOfYear": 315,
+      "daysUntil": 17,
+      "whenText": "over 17 dagen",
+      "label": "11 Uktar"
+    },
+    "299": {
+      "dayOfYear": 315,
+      "daysUntil": 16,
+      "whenText": "over 16 dagen",
+      "label": "11 Uktar"
+    },
+    "300": {
+      "dayOfYear": 315,
+      "daysUntil": 15,
+      "whenText": "over 15 dagen",
+      "label": "11 Uktar"
+    },
+    "301": {
+      "dayOfYear": 315,
+      "daysUntil": 14,
+      "whenText": "over 14 dagen",
+      "label": "11 Uktar"
+    },
+    "302": {
+      "dayOfYear": 315,
+      "daysUntil": 13,
+      "whenText": "over 13 dagen",
+      "label": "11 Uktar"
+    },
+    "303": {
+      "dayOfYear": 315,
+      "daysUntil": 12,
+      "whenText": "over 12 dagen",
+      "label": "11 Uktar"
+    },
+    "304": {
+      "dayOfYear": 315,
+      "daysUntil": 11,
+      "whenText": "over 11 dagen",
+      "label": "11 Uktar"
+    },
+    "305": {
+      "dayOfYear": 315,
+      "daysUntil": 10,
+      "whenText": "over 10 dagen",
+      "label": "11 Uktar"
+    },
+    "306": {
+      "dayOfYear": 315,
+      "daysUntil": 9,
+      "whenText": "over 9 dagen",
+      "label": "11 Uktar"
+    },
+    "307": {
+      "dayOfYear": 315,
+      "daysUntil": 8,
+      "whenText": "over 8 dagen",
+      "label": "11 Uktar"
+    },
+    "308": {
+      "dayOfYear": 315,
+      "daysUntil": 7,
+      "whenText": "over 7 dagen",
+      "label": "11 Uktar"
+    },
+    "309": {
+      "dayOfYear": 315,
+      "daysUntil": 6,
+      "whenText": "over 6 dagen",
+      "label": "11 Uktar"
+    },
+    "310": {
+      "dayOfYear": 315,
+      "daysUntil": 5,
+      "whenText": "over 5 dagen",
+      "label": "11 Uktar"
+    },
+    "311": {
+      "dayOfYear": 315,
+      "daysUntil": 4,
+      "whenText": "over 4 dagen",
+      "label": "11 Uktar"
+    },
+    "312": {
+      "dayOfYear": 315,
+      "daysUntil": 3,
+      "whenText": "over 3 dagen",
+      "label": "11 Uktar"
+    },
+    "313": {
+      "dayOfYear": 315,
+      "daysUntil": 2,
+      "whenText": "over 2 dagen",
+      "label": "11 Uktar"
+    },
+    "314": {
+      "dayOfYear": 315,
+      "daysUntil": 1,
+      "whenText": "morgen",
+      "label": "11 Uktar"
+    },
+    "315": {
+      "dayOfYear": 315,
+      "daysUntil": 0,
+      "whenText": "vandaag",
+      "label": "11 Uktar"
+    },
+    "316": {
+      "dayOfYear": 345,
+      "daysUntil": 29,
+      "whenText": "over 29 dagen",
+      "label": "10 Nightal"
+    },
+    "317": {
+      "dayOfYear": 345,
+      "daysUntil": 28,
+      "whenText": "over 28 dagen",
+      "label": "10 Nightal"
+    },
+    "318": {
+      "dayOfYear": 345,
+      "daysUntil": 27,
+      "whenText": "over 27 dagen",
+      "label": "10 Nightal"
+    },
+    "319": {
+      "dayOfYear": 345,
+      "daysUntil": 26,
+      "whenText": "over 26 dagen",
+      "label": "10 Nightal"
+    },
+    "320": {
+      "dayOfYear": 345,
+      "daysUntil": 25,
+      "whenText": "over 25 dagen",
+      "label": "10 Nightal"
+    },
+    "321": {
+      "dayOfYear": 345,
+      "daysUntil": 24,
+      "whenText": "over 24 dagen",
+      "label": "10 Nightal"
+    },
+    "322": {
+      "dayOfYear": 345,
+      "daysUntil": 23,
+      "whenText": "over 23 dagen",
+      "label": "10 Nightal"
+    },
+    "323": {
+      "dayOfYear": 345,
+      "daysUntil": 22,
+      "whenText": "over 22 dagen",
+      "label": "10 Nightal"
+    },
+    "324": {
+      "dayOfYear": 345,
+      "daysUntil": 21,
+      "whenText": "over 21 dagen",
+      "label": "10 Nightal"
+    },
+    "325": {
+      "dayOfYear": 345,
+      "daysUntil": 20,
+      "whenText": "over 20 dagen",
+      "label": "10 Nightal"
+    },
+    "326": {
+      "dayOfYear": 345,
+      "daysUntil": 19,
+      "whenText": "over 19 dagen",
+      "label": "10 Nightal"
+    },
+    "327": {
+      "dayOfYear": 345,
+      "daysUntil": 18,
+      "whenText": "over 18 dagen",
+      "label": "10 Nightal"
+    },
+    "328": {
+      "dayOfYear": 345,
+      "daysUntil": 17,
+      "whenText": "over 17 dagen",
+      "label": "10 Nightal"
+    },
+    "329": {
+      "dayOfYear": 345,
+      "daysUntil": 16,
+      "whenText": "over 16 dagen",
+      "label": "10 Nightal"
+    },
+    "330": {
+      "dayOfYear": 345,
+      "daysUntil": 15,
+      "whenText": "over 15 dagen",
+      "label": "10 Nightal"
+    },
+    "331": {
+      "dayOfYear": 345,
+      "daysUntil": 14,
+      "whenText": "over 14 dagen",
+      "label": "10 Nightal"
+    },
+    "332": {
+      "dayOfYear": 345,
+      "daysUntil": 13,
+      "whenText": "over 13 dagen",
+      "label": "10 Nightal"
+    },
+    "333": {
+      "dayOfYear": 345,
+      "daysUntil": 12,
+      "whenText": "over 12 dagen",
+      "label": "10 Nightal"
+    },
+    "334": {
+      "dayOfYear": 345,
+      "daysUntil": 11,
+      "whenText": "over 11 dagen",
+      "label": "10 Nightal"
+    },
+    "335": {
+      "dayOfYear": 345,
+      "daysUntil": 10,
+      "whenText": "over 10 dagen",
+      "label": "10 Nightal"
+    },
+    "336": {
+      "dayOfYear": 345,
+      "daysUntil": 9,
+      "whenText": "over 9 dagen",
+      "label": "10 Nightal"
+    },
+    "337": {
+      "dayOfYear": 345,
+      "daysUntil": 8,
+      "whenText": "over 8 dagen",
+      "label": "10 Nightal"
+    },
+    "338": {
+      "dayOfYear": 345,
+      "daysUntil": 7,
+      "whenText": "over 7 dagen",
+      "label": "10 Nightal"
+    },
+    "339": {
+      "dayOfYear": 345,
+      "daysUntil": 6,
+      "whenText": "over 6 dagen",
+      "label": "10 Nightal"
+    },
+    "340": {
+      "dayOfYear": 345,
+      "daysUntil": 5,
+      "whenText": "over 5 dagen",
+      "label": "10 Nightal"
+    },
+    "341": {
+      "dayOfYear": 345,
+      "daysUntil": 4,
+      "whenText": "over 4 dagen",
+      "label": "10 Nightal"
+    },
+    "342": {
+      "dayOfYear": 345,
+      "daysUntil": 3,
+      "whenText": "over 3 dagen",
+      "label": "10 Nightal"
+    },
+    "343": {
+      "dayOfYear": 345,
+      "daysUntil": 2,
+      "whenText": "over 2 dagen",
+      "label": "10 Nightal"
+    },
+    "344": {
+      "dayOfYear": 345,
+      "daysUntil": 1,
+      "whenText": "morgen",
+      "label": "10 Nightal"
+    },
+    "345": {
+      "dayOfYear": 345,
+      "daysUntil": 0,
+      "whenText": "vandaag",
+      "label": "10 Nightal"
+    },
+    "346": {
+      "dayOfYear": 15,
+      "daysUntil": 34,
+      "whenText": "over 34 dagen",
+      "label": "15 Hammer"
+    },
+    "347": {
+      "dayOfYear": 15,
+      "daysUntil": 33,
+      "whenText": "over 33 dagen",
+      "label": "15 Hammer"
+    },
+    "348": {
+      "dayOfYear": 15,
+      "daysUntil": 32,
+      "whenText": "over 32 dagen",
+      "label": "15 Hammer"
+    },
+    "349": {
+      "dayOfYear": 15,
+      "daysUntil": 31,
+      "whenText": "over 31 dagen",
+      "label": "15 Hammer"
+    },
+    "350": {
+      "dayOfYear": 15,
+      "daysUntil": 30,
+      "whenText": "over 30 dagen",
+      "label": "15 Hammer"
+    },
+    "351": {
+      "dayOfYear": 15,
+      "daysUntil": 29,
+      "whenText": "over 29 dagen",
+      "label": "15 Hammer"
+    },
+    "352": {
+      "dayOfYear": 15,
+      "daysUntil": 28,
+      "whenText": "over 28 dagen",
+      "label": "15 Hammer"
+    },
+    "353": {
+      "dayOfYear": 15,
+      "daysUntil": 27,
+      "whenText": "over 27 dagen",
+      "label": "15 Hammer"
+    },
+    "354": {
+      "dayOfYear": 15,
+      "daysUntil": 26,
+      "whenText": "over 26 dagen",
+      "label": "15 Hammer"
+    },
+    "355": {
+      "dayOfYear": 15,
+      "daysUntil": 25,
+      "whenText": "over 25 dagen",
+      "label": "15 Hammer"
+    },
+    "356": {
+      "dayOfYear": 15,
+      "daysUntil": 24,
+      "whenText": "over 24 dagen",
+      "label": "15 Hammer"
+    },
+    "357": {
+      "dayOfYear": 15,
+      "daysUntil": 23,
+      "whenText": "over 23 dagen",
+      "label": "15 Hammer"
+    },
+    "358": {
+      "dayOfYear": 15,
+      "daysUntil": 22,
+      "whenText": "over 22 dagen",
+      "label": "15 Hammer"
+    },
+    "359": {
+      "dayOfYear": 15,
+      "daysUntil": 21,
+      "whenText": "over 21 dagen",
+      "label": "15 Hammer"
+    },
+    "360": {
+      "dayOfYear": 15,
+      "daysUntil": 20,
+      "whenText": "over 20 dagen",
+      "label": "15 Hammer"
+    },
+    "361": {
+      "dayOfYear": 15,
+      "daysUntil": 19,
+      "whenText": "over 19 dagen",
+      "label": "15 Hammer"
+    },
+    "362": {
+      "dayOfYear": 15,
+      "daysUntil": 18,
+      "whenText": "over 18 dagen",
+      "label": "15 Hammer"
+    },
+    "363": {
+      "dayOfYear": 15,
+      "daysUntil": 17,
+      "whenText": "over 17 dagen",
+      "label": "15 Hammer"
+    },
+    "364": {
+      "dayOfYear": 15,
+      "daysUntil": 16,
+      "whenText": "over 16 dagen",
+      "label": "15 Hammer"
+    },
+    "365": {
+      "dayOfYear": 15,
+      "daysUntil": 15,
+      "whenText": "over 15 dagen",
+      "label": "15 Hammer"
+    }
+  }
+}

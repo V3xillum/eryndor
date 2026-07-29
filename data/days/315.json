@@ -1,0 +1,30 @@
+{
+  "dayOfYear": 315,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "11 Uktar",
+    "month": "Uktar",
+    "day": 11,
+    "special": null
+  },
+  "gregorian": {
+    "iso": "2026-11-11",
+    "year": 2026,
+    "month": 11,
+    "day": 11
+  },
+  "moon": {
+    "phase": "Full Moon",
+    "emoji": "🌕",
+    "isExactFullMoon": true
+  },
+  "events": [],
+  "nextFullMoon": {
+    "dayOfYear": 315,
+    "daysUntil": 0,
+    "whenText": "vandaag",
+    "label": "11 Uktar"
+  }
+}

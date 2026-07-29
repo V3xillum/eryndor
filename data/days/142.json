@@ -1,0 +1,30 @@
+{
+  "dayOfYear": 142,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "20 Mirtul",
+    "month": "Mirtul",
+    "day": 20,
+    "special": null
+  },
+  "gregorian": {
+    "iso": "2026-05-22",
+    "year": 2026,
+    "month": 5,
+    "day": 22
+  },
+  "moon": {
+    "phase": "Last Quarter",
+    "emoji": "🌗",
+    "isExactFullMoon": false
+  },
+  "events": [],
+  "nextFullMoon": {
+    "dayOfYear": 165,
+    "daysUntil": 23,
+    "whenText": "over 23 dagen",
+    "label": "13 Kythorn"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "dayOfYear": 339,
+  "refYear": 2026,
+  "timezone": "Europe/Amsterdam",
+  "leapYearNote": null,
+  "harptos": {
+    "label": "4 Nightal",
+    "month": "Nightal",
+    "day": 4,
+    "special": null
+  },
+  "gregorian": {
+    "iso": "2026-12-05",
+    "year": 2026,
+    "month": 12,
+    "day": 5
+  },
+  "moon": {
+    "phase": "First Quarter (Fading)",
+    "emoji": "🌓",
+    "isExactFullMoon": false
+  },
+  "events": [],
+  "nextFullMoon": {
+    "dayOfYear": 345,
+    "daysUntil": 6,
+    "whenText": "over 6 dagen",
+    "label": "10 Nightal"
+  }
+}
