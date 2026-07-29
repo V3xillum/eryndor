@@ -20,3 +20,5 @@ Output onder `data/`:
 - `data/meta.json` — metadata / gebruiksinfo
 
 **Discord-bot:** bereken de Gregoriaanse jaardag in `Europe/Amsterdam` (max 365), haal dan `data/days/210.json` (padded) op. Na wijzigingen in `settings.js` opnieuw genereren en committen.
+
+Agent-brief voor het bouwen van de Discord-bot: [`docs/DISCORD_BOT_AGENT.md`](docs/DISCORD_BOT_AGENT.md).
